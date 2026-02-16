@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="ru" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Успешный Преподаватель</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/data_sdk.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Montserrat', sans-serif; }
+    
+    .center-circle {
+      animation: pulse 3s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+    
+    .skill-card {
+      animation: scaleIn 0.4s ease-out;
+      transition: all 0.3s ease;
+    }
+    
+    @keyframes scaleIn {
+      from { 
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    
+    .delete-btn {
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    
+    .skill-card:hover .delete-btn {
+      opacity: 1;
+    }
+    
+    .add-btn-card {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px dashed #cbd5e1;
+    }
+    
+    .add-btn-card:hover {
+      border-color: #0ea5e9;
+      background-color: #f0f9ff;
+      transform: scale(1.05);
+    }
+    
+    .item-text {
+      outline: none;
+      border-radius: 0.375rem;
+      padding: 0.25rem;
+    }
+    
+    .item-text:focus {
+      background-color: #fef3c7;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+ </head>
+ <body class="h-full m-0 p-0">
+  <div id="app-wrapper" class="h-full w-full bg-gradient-to-br from-slate-50 to-blue-50 overflow-auto">
+   <div class="min-h-full w-full p-8 flex flex-col items-center justify-start"><!-- Title -->
+    <h1 id="diagram-title" class="text-5xl font-bold text-slate-800 mb-3 text-center">Успешный Преподаватель</h1>
+    <p class="text-slate-500 text-center mb-8">Нажмите "+" чтобы добавить компетенции и навыки</p><!-- Central Circle -->
+    <div class="center-circle mb-12 flex items-center justify-center">
+     <div class="w-32 h-32 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-2xl">
+      <div class="text-center">
+       <div class="text-white text-2xl font-bold">
+        ✓
+       </div>
+       <div class="text-white text-xs font-semibold mt-1">
+        УСПЕХ
+       </div>
+      </div>
+     </div>
+    </div><!-- Skills Grid -->
+    <div class="w-full max-w-5xl">
+     <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"><!-- Add New Section Card -->
+      <div class="skill-card add-btn-card bg-white rounded-xl p-6 flex items-center justify-center h-48" onclick="addSkill()">
+       <div class="text-center">
+        <div class="text-4xl text-slate-300 mb-2">
+         +
+        </div>
+        <div class="text-slate-400 font-semibold">
+         Добавить компетенцию
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Info Footer -->
+    <div class="mt-12 text-center text-slate-500 text-sm">
+     <p>Все изменения автоматически сохраняются. Нажмите на текст для редактирования.</p>
+    </div>
+   </div>
+  </div>
+  <script>
+    // Configuration
+    const defaultConfig = {
+      diagram_title: 'Успешный Преподаватель',
+      background_color: '#f8fafc',
+      primary_color: '#0ea5e9',
+      accent_color: '#6366f1',
+      text_color: '#1e293b',
+      font_family: 'Montserrat'
+    };
+
+    let config = { ...defaultConfig };
+    let allData = [];
+    let isLoading = false;
+    let recordCount = 0;
+    
+    const colors = [
+      { bg: '#dbeafe', border: '#0284c7', text: '#0c4a6e' },
+      { bg: '#fce7f3', border: '#be185d', text: '#500724' },
+      { bg: '#dcfce7', border: '#15803d', text: '#166534' },
+      { bg: '#fef08a', border: '#ca8a04', text: '#713f12' },
+      { bg: '#f3e8ff', border: '#7e22ce', text: '#581c87' },
+      { bg: '#fecaca', border: '#dc2626', text: '#7f1d1d' }
+    ];
+
+    // Data Handler
+    const dataHandler = {
+      onDataChanged(data) {
+        allData = data;
+        recordCount = data.length;
+        renderSkills();
+      }
+    };
+
+    // Render all skills
+    function renderSkills() {
+      const container = document.getElementById('skills-container');
+      const items = allData.sort((a, b) => a.position - b.position);
+      
+      // Get existing elements
+      const existingMap = new Map();
+      [...container.children].forEach(el => {
+        if (el.dataset.id) existingMap.set(el.dataset.id, el);
+      });
+      
+      // Update or create items
+      items.forEach((item, index) => {
+        const id = item.__backendId;
+        if (existingMap.has(id)) {
+          updateSkillElement(existingMap.get(id), item);
+          existingMap.delete(id);
+        } else {
+          const newEl = createSkillElement(item);
+          container.insertBefore(newEl, container.lastChild);
+        }
+      });
+      
+      // Remove deleted elements
+      existingMap.forEach(el => el.remove());
+    }
+
+    // Create skill element
+    function createSkillElement(item) {
+      const colorScheme = colors[allData.indexOf(item) % colors.length];
+      
+      const div = document.createElement('div');
+      div.className = 'skill-card bg-white rounded-xl p-6 h-48 flex flex-col justify-between shadow-md hover:shadow-lg';
+      div.style.borderTop = `4px solid ${colorScheme.border}`;
+      div.dataset.id = item.__backendId;
+      
+      // Header with title
+      const headerDiv = document.createElement('div');
+      headerDiv.className = 'flex items-start justify-between mb-3';
+      
+      const titleSpan = document.createElement('span');
+      titleSpan.className = 'item-text text-lg font-bold flex-1 mr-2';
+      titleSpan.style.color = colorScheme.border;
+      titleSpan.contentEditable = 'true';
+      titleSpan.textContent = item.section || 'Компетенция';
+      titleSpan.addEventListener('blur', () => updateSkillSection(item, titleSpan.textContent));
+      titleSpan.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          titleSpan.blur();
+        }
+      });
+      
+      const deleteBtn = document.createElement('button');
+      deleteBtn.className = 'delete-btn w-8 h-8 bg-rose-100 hover:bg-rose-200 rounded-full flex items-center justify-center text-rose-500 font-bold text-sm transition-all flex-shrink-0';
+      deleteBtn.innerHTML = '×';
+      deleteBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        confirmDelete(item, div);
+      });
+      
+      headerDiv.appendChild(titleSpan);
+      headerDiv.appendChild(deleteBtn);
+      
+      // Content
+      const contentDiv = document.createElement('div');
+      contentDiv.className = 'item-text text-sm text-slate-600 flex-1 overflow-y-auto';
+      contentDiv.contentEditable = 'true';
+      contentDiv.textContent = item.content || 'Описание компетенции...';
+      contentDiv.style.minHeight = '60px';
+      contentDiv.addEventListener('blur', () => updateSkillContent(item, contentDiv.textContent));
+      
+      div.appendChild(headerDiv);
+      div.appendChild(contentDiv);
+      
+      return div;
+    }
+
+    // Update skill element
+    function updateSkillElement(element, item) {
+      const titleEl = element.querySelector('.item-text');
+      if (titleEl && titleEl.textContent !== item.section) {
+        titleEl.textContent = item.section;
+      }
+    }
+
+    // Add new skill
+    async function addSkill() {
+      if (isLoading) return;
+      
+      if (recordCount >= 999) {
+        showToast('Достигнут максимум (999 элементов). Пожалуйста удалите ненужные.', 'error');
+        return;
+      }
+      
+      isLoading = true;
+      
+      const position = allData.length;
+      const result = await window.dataSdk.create({
+        section: 'Новая компетенция',
+        content: 'Описание компетенции...',
+        position: position
+      });
+      
+      if (!result.isOk) {
+        showToast('Ошибка при добавлении компетенции.', 'error');
+      }
+      
+      isLoading = false;
+    }
+
+    // Update skill section
+    async function updateSkillSection(item, newSection) {
+      if (newSection === item.section) return;
+      
+      const updatedItem = { ...item, section: newSection };
+      const result = await window.dataSdk.update(updatedItem);
+      
+      if (!result.isOk) {
+        showToast('Ошибка при сохранении.', 'error');
+      }
+    }
+
+    // Update skill content
+    async function updateSkillContent(item, newContent) {
+      if (newContent === item.content) return;
+      
+      const updatedItem = { ...item, content: newContent };
+      const result = await window.dataSdk.update(updatedItem);
+      
+      if (!result.isOk) {
+        showToast('Ошибка при сохранении.', 'error');
+      }
+    }
+
+    // Confirm delete
+    function confirmDelete(item, element) {
+      const deleteBtn = element.querySelector('.delete-btn');
+      const originalHTML = deleteBtn.innerHTML;
+      
+      deleteBtn.innerHTML = '✓';
+      deleteBtn.className = 'delete-btn w-8 h-8 bg-rose-500 hover:bg-rose-600 rounded-full flex items-center justify-center text-white font-bold text-sm transition-all flex-shrink-0 opacity-100';
+      
+      const confirmHandler = async (e) => {
+        e.stopPropagation();
+        deleteBtn.innerHTML = '...';
+        deleteBtn.disabled = true;
+        
+        const result = await window.dataSdk.delete(item);
+        if (!result.isOk) {
+          showToast('Ошибка удаления элемента.', 'error');
+          deleteBtn.innerHTML = originalHTML;
+          deleteBtn.disabled = false;
+        }
+        
+        deleteBtn.removeEventListener('click', confirmHandler);
+      };
+      
+      deleteBtn.addEventListener('click', confirmHandler);
+      
+      setTimeout(() => {
+        if (deleteBtn.innerHTML === '✓') {
+          deleteBtn.innerHTML = '×';
+          deleteBtn.className = 'delete-btn w-8 h-8 bg-rose-100 hover:bg-rose-200 rounded-full flex items-center justify-center text-rose-500 font-bold text-sm transition-all flex-shrink-0';
+          deleteBtn.removeEventListener('click', confirmHandler);
+        }
+      }, 3000);
+    }
+
+    // Toast notification
+    function showToast(message, type = 'info') {
+      const toast = document.createElement('div');
+      toast.className = `fixed bottom-4 left-1/2 transform -translate-x-1/2 px-4 py-3 rounded-lg text-white text-sm font-semibold z-50 ${type === 'error' ? 'bg-rose-500' : 'bg-slate-700'}`;
+      toast.textContent = message;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+
+    // Config change handler
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      const title = document.getElementById('diagram-title');
+      title.textContent = config.diagram_title || defaultConfig.diagram_title;
+      title.style.fontFamily = `${config.font_family || defaultConfig.font_family}, sans-serif`;
+      title.style.color = config.text_color || defaultConfig.text_color;
+      
+      document.getElementById('app-wrapper').style.backgroundColor = config.background_color || defaultConfig.background_color;
+    }
+
+    // Map to capabilities
+    function mapToCapabilities(cfg) {
+      return {
+        recolorables: [
+          {
+            get: () => cfg.background_color || defaultConfig.background_color,
+            set: (v) => { cfg.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+          },
+          {
+            get: () => cfg.text_color || defaultConfig.text_color,
+            set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: {
+          get: () => cfg.font_family || defaultConfig.font_family,
+          set: (v) => { cfg.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+        },
+        fontSizeable: undefined
+      };
+    }
+
+    // Map to edit panel values
+    function mapToEditPanelValues(cfg) {
+      return new Map([
+        ['diagram_title', cfg.diagram_title || defaultConfig.diagram_title]
+      ]);
+    }
+
+    // Initialize SDKs
+    async function init() {
+      if (window.elementSdk) {
+        window.elementSdk.init({
+          defaultConfig,
+          onConfigChange,
+          mapToCapabilities,
+          mapToEditPanelValues
+        });
+      }
+      
+      if (window.dataSdk) {
+        const result = await window.dataSdk.init(dataHandler);
+        if (!result.isOk) {
+          console.error('Data SDK initialization failed');
+        }
+      }
+    }
+
+    init();
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cebfb7232f3da54',t:'MTc3MTIzMzc2NC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
