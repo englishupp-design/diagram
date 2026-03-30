@@ -1,878 +1,1049 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuroLab — Emotional Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --teal-dark: #2d4a4e;
-    --teal-mid: #3d6569;
-    --teal-light: #4e7f84;
-    --beige: #b8a48a;
-    --beige-light: #d4c4ae;
-    --charcoal: #1e2b2d;
-    --charcoal-mid: #263335;
-    --off-white: #f5f2ed;
-    --white: #ffffff;
-    --text-dark: #1a2628;
-    --text-mid: #3d5457;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--off-white); color: var(--text-dark); overflow-x: hidden; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindLander — Emotional Intelligence</title>
+  <meta name="description" content="MindLander is an Emotional Intelligence school for leaders, educators, and businesses." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F5F0E8;
+      --dark: #1A1A1A;
+      --accent: #C8956A;
+      --accent-light: #E8D5C0;
+      --muted: #6B6560;
+      --white: #FFFFFF;
+      --card-bg: #FDFAF6;
+      --border: #E2D9CC;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); line-height: 1.6; font-size: 16px; }
 
-  /* NAV */
-  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(26,38,40,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(184,164,138,0.15); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-  .nav-brand img { height: 44px; width: auto; }
-  .nav-links { display: flex; gap: 2px; list-style: none; }
-  .nav-links a { text-decoration: none; color: rgba(245,242,237,0.75); font-size: 0.88rem; font-weight: 400; letter-spacing: 0.03em; padding: 8px 16px; border-radius: 6px; transition: all 0.2s; }
-  .nav-links a:hover { color: var(--beige-light); background: rgba(184,164,138,0.1); }
-  .nav-cta { background: var(--teal-dark) !important; color: var(--white) !important; padding: 9px 22px !important; border-radius: 8px !important; }
-  .nav-cta:hover { background: var(--teal-mid) !important; }
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(245,240,232,0.93); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { display: flex; align-items: center; text-decoration: none; color: var(--dark); }
+    .nav-logo svg { display: block; }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.875rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
 
-  /* HERO */
-  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 120px 5% 80px; position: relative; overflow: hidden; background: linear-gradient(160deg, var(--charcoal) 0%, var(--teal-dark) 55%, var(--teal-mid) 100%); }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 50% at 70% 30%, rgba(78,127,132,0.25) 0%, transparent 70%), radial-gradient(ellipse 40% 60% at 20% 80%, rgba(184,164,138,0.12) 0%, transparent 70%); }
-  .hero-logo { width: 180px; height: auto; margin-bottom: 24px; position: relative; z-index: 1; filter: drop-shadow(0 8px 32px rgba(0,0,0,0.35)); }
-  .hero-eyebrow { font-size: 0.72rem; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--beige-light); margin-bottom: 20px; position: relative; z-index: 1; opacity: 0.65; }
-  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.6rem, 5.5vw, 4.8rem); font-weight: 300; color: var(--white); line-height: 1.25; max-width: 820px; position: relative; z-index: 1; background: rgba(30, 43, 45, 0.45); backdrop-filter: blur(6px); border: 1px solid rgba(184,164,138,0.15); border-radius: 16px; padding: 32px 48px; box-shadow: 0 8px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(184,164,138,0.1); }
-  .hero h1 em { font-style: italic; color: var(--beige-light); }
+    /* ── LANGUAGE SWITCHER ── */
+    .lang-switcher { display: flex; border: 1.5px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      padding: 6px 14px; font-size: 0.8rem; font-weight: 600;
+      font-family: 'DM Sans', sans-serif; letter-spacing: 0.05em;
+      color: var(--muted); transition: all 0.2s;
+    }
+    .lang-btn.active { background: var(--dark); color: var(--white); }
+    .lang-btn:not(.active):hover { background: var(--accent-light); }
 
-  /* SECTION */
-  section { padding: 100px 5%; }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-label { font-size: 0.75rem; font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal-mid); margin-bottom: 16px; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; color: var(--charcoal); line-height: 1.2; margin-bottom: 48px; }
-  .divider { width: 48px; height: 2px; background: var(--beige); margin-bottom: 32px; }
+    .nav-cta {
+      background: var(--dark); color: var(--white);
+      padding: 10px 24px; border-radius: 100px;
+      text-decoration: none; font-size: 0.875rem; font-weight: 500;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: var(--accent); }
 
-  /* QUOTES */
-  .quotes-section { background: var(--charcoal); }
-  .quotes-section .section-label { color: var(--beige); }
-  .quotes-list { display: flex; flex-direction: column; max-width: 840px; margin-top: 48px; }
-  .quote-item { display: flex; align-items: flex-start; gap: 28px; padding: 32px 0; border-bottom: 1px solid rgba(184,164,138,0.13); opacity: 0; transform: translateX(-16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .quote-item.visible { opacity: 1; transform: translateX(0); }
-  .quote-item:last-of-type { border-bottom: none; }
-  .quote-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: rgba(184,164,138,0.22); line-height: 1; flex-shrink: 0; width: 52px; text-align: right; }
-  .quote-body { padding-top: 8px; }
-  .quote-lead { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.5vw, 1.75rem); font-weight: 300; color: var(--off-white); line-height: 1.4; }
-  .quote-lead em { font-style: italic; color: var(--beige-light); }
-  .quotes-cta-block { margin-top: 56px; padding: 28px 36px; background: rgba(78,127,132,0.12); border: 1px solid rgba(78,127,132,0.28); border-radius: 14px; display: inline-block; max-width: 480px; }
-  .quotes-cta-block p { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--beige-light); line-height: 1.4; }
+    /* ── SECTIONS ── */
+    section { padding: 100px 40px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 16px; }
+    h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 600; line-height: 1.2; margin-bottom: 48px; }
+    h2 em { font-style: italic; color: var(--accent); }
 
-  /* FOR WHO */
-  .for-who-intro { margin-bottom: 48px; }
-  .for-who-sub { font-size: 1.05rem; font-weight: 300; color: var(--text-mid); line-height: 1.7; margin-bottom: 28px; }
-  .for-who-question { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 400; color: var(--teal-dark); line-height: 1.25; }
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; text-align: center;
+      padding: 120px 40px 80px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(200,149,106,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 24px; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 700; line-height: 1.1; max-width: 800px; margin-bottom: 32px; }
+    .hero h1 em { font-style: italic; color: var(--accent); }
+    .hero-sub { font-size: 1.125rem; color: var(--muted); max-width: 540px; margin-bottom: 48px; line-height: 1.7; }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary { background: var(--dark); color: var(--white); padding: 14px 36px; border-radius: 100px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: background 0.2s, transform 0.2s; display: inline-block; }
+    .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+    .btn-secondary { border: 1.5px solid var(--border); color: var(--dark); padding: 14px 36px; border-radius: 100px; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: border-color 0.2s, transform 0.2s; display: inline-block; }
+    .btn-secondary:hover { border-color: var(--accent); transform: translateY(-2px); }
 
-  /* CARDS */
-  .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 0; }
-  .card { background: var(--white); border: 1px solid rgba(45,74,78,0.1); border-radius: 16px; padding: 36px 32px; transition: all 0.3s; position: relative; overflow: hidden; }
-  .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal-dark), var(--beige)); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; }
-  .card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(45,74,78,0.1); }
-  .card:hover::before { transform: scaleX(1); }
-  .card-num { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--beige-light); line-height: 1; margin-bottom: 20px; }
-  .card p { font-size: 0.95rem; font-weight: 300; line-height: 1.75; color: var(--text-mid); }
+    /* ── WHO WE ARE ── */
+    .who-we-are { background: var(--white); }
+    .who-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+    }
+    .who-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 24px; overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column;
+    }
+    .who-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(0,0,0,0.09); }
+    .who-card-photo {
+      width: 100%; aspect-ratio: 1/1; object-fit: cover;
+      object-position: top center; display: block;
+    }
+    .who-card-photo-placeholder {
+      width: 100%; aspect-ratio: 1/1;
+      background: var(--accent-light);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem; color: var(--accent); font-weight: 700;
+    }
+    .who-card-body {
+      padding: 28px 28px 32px; display: flex; flex-direction: column; gap: 10px; flex: 1;
+    }
+    .who-card-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--dark);
+    }
+    .who-card-title {
+      font-size: 0.8rem; color: var(--accent); font-weight: 600;
+      letter-spacing: 0.04em; line-height: 1.5;
+    }
+    .who-card-divider {
+      width: 40px; height: 2px; background: var(--accent-light); border-radius: 2px; margin: 4px 0;
+    }
+    .who-card-bio {
+      color: var(--muted); line-height: 1.75; font-size: 0.9rem; flex: 1;
+    }
+    .who-card-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .who-card-tag {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 100px; padding: 4px 12px;
+      font-size: 0.75rem; color: var(--muted); font-weight: 500;
+    }
+    .who-card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--accent); text-decoration: none; font-weight: 600;
+      font-size: 0.85rem; margin-top: 12px; transition: gap 0.2s;
+    }
+    .who-card-link:hover { gap: 10px; }
+    .who-card-link::after { content: '→'; }
+    @media (max-width: 900px) { .who-cards { grid-template-columns: 1fr; } }
 
-  /* MODEL */
-  .model-flow { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 48px; }
-  .model-box { background: rgba(78,127,132,0.15); border: 1px solid rgba(78,127,132,0.3); border-radius: 12px; padding: 24px 40px; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--white); }
-  .model-arrow { font-size: 1.5rem; color: var(--beige); }
-  .model-result { background: var(--beige); border: none; color: var(--charcoal); font-weight: 600; }
+    /* ── FOR WHOM ── */
+    .for-whom { background: var(--white); }
+    .for-whom .intro { font-size: 1.125rem; color: var(--muted); margin-bottom: 56px; max-width: 600px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 36px 32px; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.07); }
+    .card-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 700; color: var(--accent-light); line-height: 1; margin-bottom: 16px; }
+    .card p { color: var(--muted); line-height: 1.7; }
+    .card p strong { color: var(--dark); }
 
-  /* TAGS */
-  .tags-wrap { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    /* ── WHY NOW ── */
+    .why-now { background: var(--dark); color: var(--white); }
+    .why-now h2 { color: var(--white); }
+    .why-now .lead { font-size: 1.2rem; line-height: 1.8; max-width: 680px; color: rgba(255,255,255,0.75); margin-bottom: 48px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 12px; }
+    .tag { border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); padding: 8px 18px; border-radius: 100px; font-size: 0.8rem; letter-spacing: 0.05em; transition: border-color 0.2s, color 0.2s; }
+    .tag:hover { border-color: var(--accent); color: var(--accent); }
+    .tag.highlight { border-color: var(--accent); color: var(--accent); }
 
-  /* ACCORDION */
-  .accordion-item { border: 1px solid rgba(184,164,138,0.2); border-radius: 12px; overflow: hidden; margin-bottom: 10px; }
-  .accordion-trigger { width: 100%; display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: rgba(255,255,255,0.04); cursor: pointer; border: none; text-align: left; transition: background 0.2s; }
-  .accordion-trigger:hover { background: rgba(255,255,255,0.07); }
-  .module-num-badge { width: 32px; height: 32px; background: rgba(184,164,138,0.2); color: var(--beige-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 500; flex-shrink: 0; }
-  .module-name-text { flex: 1; color: var(--off-white); font-size: 0.95rem; font-weight: 400; }
-  .accordion-icon { color: var(--beige); font-size: 1.4rem; font-weight: 300; transition: transform 0.3s; flex-shrink: 0; }
-  .accordion-item.open .accordion-icon { transform: rotate(45deg); }
-  .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; background: rgba(255,255,255,0.02); }
-  .accordion-content.open { max-height: 300px; padding-top: 16px; padding-bottom: 20px; }
-  .accordion-content p { color: rgba(245,242,237,0.65); font-size: 0.9rem; line-height: 1.7; font-weight: 300; }
+    /* ── WHAT IS EQ ── */
+    .what-eq { background: var(--cream); }
+    .eq-list { list-style: none; display: flex; flex-direction: column; gap: 0; }
+    .eq-list li { display: flex; align-items: flex-start; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); font-size: 1.125rem; line-height: 1.6; }
+    .eq-list li:last-child { border-bottom: none; }
+    .eq-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent); font-weight: 600; min-width: 36px; padding-top: 2px; }
+    .eq-list em { font-style: italic; color: var(--accent); }
+    .eq-question { margin-top: 40px; font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--muted); }
 
-  /* SPEAKERS */
-  .speakers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 48px; }
-  .speaker-card { background: var(--white); border: 1.5px solid var(--teal-dark); border-radius: 20px; padding: 40px 36px; display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .speaker-card:hover { transform: translateY(-8px); box-shadow: 0 24px 56px rgba(45,74,78,0.12); }
-  .speaker-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 24px; border: 3px solid var(--beige-light); }
-  .speaker-photo-placeholder { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--teal-dark), var(--teal-mid)); margin-bottom: 24px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--beige-light); }
-  .speaker-name { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 600; color: var(--charcoal); margin-bottom: 6px; }
-  .speaker-title { font-size: 0.82rem; color: var(--teal-mid); letter-spacing: 0.05em; margin-bottom: 24px; }
-  .speaker-facts { list-style: none; text-align: left; width: 100%; margin-bottom: 24px; }
-  .speaker-facts li { font-size: 0.88rem; color: var(--text-mid); font-weight: 300; line-height: 1.6; padding: 7px 0; border-bottom: 1px solid rgba(45,74,78,0.06); text-align: left; }
-  .speaker-facts li:last-child { border-bottom: none; }
-  .bio-toggle { background: none; border: none; font-size: 0.85rem; font-weight: 500; color: var(--teal-dark); cursor: pointer; display: flex; align-items: center; gap: 6px; margin-top: 8px; padding: 8px 16px; border-radius: 6px; transition: background 0.2s; }
-  .bio-toggle:hover { background: rgba(45,74,78,0.07); }
-  .bio-arrow { transition: transform 0.3s; }
-  .bio-content { max-height: 0; overflow: hidden; transition: max-height 0.5s ease, opacity 0.4s ease; opacity: 0; width: 100%; text-align: left; margin-top: 16px; }
-  .bio-content p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.8; font-weight: 300; padding-top: 16px; border-top: 1px solid rgba(45,74,78,0.1); }
+    /* ── APPROACH ── */
+    .approach { background: var(--white); }
+    .approach-model { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 8px; }
+    .model-box { background: var(--card-bg); border: 1.5px solid var(--border); border-radius: 16px; padding: 32px 48px; text-align: center; font-size: 1.25rem; font-weight: 600; }
+    .model-arrow { font-size: 2rem; color: var(--accent); font-weight: 300; }
+    .model-eq { font-size: 1rem; color: var(--muted); font-weight: 400; margin-top: 8px; font-style: italic; }
 
-  /* TABS */
-  .tabs-nav { display: flex; gap: 4px; border-bottom: 1px solid rgba(184,164,138,0.2); margin-bottom: 48px; margin-top: 32px; }
-  .tab-btn { padding: 12px 28px; font-size: 0.9rem; font-weight: 400; letter-spacing: 0.04em; color: rgba(245,242,237,0.5); background: none; border: none; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: all 0.2s; }
-  .tab-btn.active { color: var(--beige-light); border-bottom-color: var(--beige); }
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
-  .tab-individuals p { font-size: 1rem; line-height: 1.85; color: rgba(245,242,237,0.75); max-width: 620px; font-weight: 300; margin-bottom: 32px; }
-  .biz-intro { font-size: 1rem; line-height: 1.85; color: rgba(245,242,237,0.75); max-width: 700px; font-weight: 300; margin-bottom: 48px; }
-  .biz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-  .biz-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(184,164,138,0.2); border-radius: 16px; padding: 32px 28px; transition: all 0.3s; }
-  .biz-card:hover { background: rgba(78,127,132,0.12); border-color: rgba(78,127,132,0.4); transform: translateY(-4px); }
-  .biz-icon { font-size: 1.8rem; margin-bottom: 16px; }
-  .biz-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--off-white); margin-bottom: 10px; }
-  .biz-card p { font-size: 0.88rem; color: rgba(245,242,237,0.6); line-height: 1.7; font-weight: 300; }
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--cream); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .testi-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: transform 0.2s; }
+    .testi-card:hover { transform: translateY(-3px); }
+    .stars { color: var(--accent); font-size: 0.9rem; margin-bottom: 16px; letter-spacing: 2px; }
+    .testi-text { color: var(--muted); line-height: 1.75; margin-bottom: 20px; font-size: 0.95rem; }
+    .testi-author { font-weight: 600; color: var(--dark); font-size: 0.9rem; }
+    .testi-role { color: var(--muted); font-size: 0.8rem; margin-top: 2px; }
 
-  /* OFFERINGS */
-  .offerings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 8px; }
-  .offering-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(184,164,138,0.25); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; gap: 16px; transition: all 0.3s; }
-  .offering-card:hover { background: rgba(78,127,132,0.1); border-color: rgba(78,127,132,0.4); transform: translateY(-4px); }
-  .offering-card--featured { border-color: rgba(184,164,138,0.55); background: rgba(184,164,138,0.07); }
-  .offering-tag { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 14px; border-radius: 100px; background: rgba(78,127,132,0.3); color: var(--beige-light); width: fit-content; }
-  .offering-tag--gold { background: rgba(184,164,138,0.25); color: var(--beige-light); }
-  .offering-title { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 400; color: var(--off-white); line-height: 1.3; }
-  .offering-desc { font-size: 0.88rem; color: rgba(245,242,237,0.6); line-height: 1.75; font-weight: 300; flex: 1; }
-  .offering-card .btn-primary { align-self: flex-start; margin-top: 8px; }
+    /* ── FORMATS ── */
+    .formats { background: var(--dark); color: var(--white); }
+    .formats h2 { color: var(--white); }
+    .tabs { display: flex; gap: 4px; margin-bottom: 48px; }
+    .tab-btn { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); padding: 10px 28px; border-radius: 100px; cursor: pointer; font-size: 0.875rem; font-family: 'DM Sans', sans-serif; transition: all 0.2s; }
+    .tab-btn.active { background: var(--accent); border-color: var(--accent); color: var(--white); }
+    .tab-content { display: none; }
+    .tab-content.active { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+    .format-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 36px 32px; transition: background 0.2s; }
+    .format-card:hover { background: rgba(255,255,255,0.08); }
+    .format-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; font-weight: 600; }
+    .format-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--white); margin-bottom: 16px; }
+    .format-card p { color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 24px; }
+    .format-link { color: var(--accent); text-decoration: none; font-size: 0.875rem; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+    .format-link::after { content: '→'; }
+    .biz-options { display: flex; flex-direction: column; gap: 16px; }
+    .biz-option { display: flex; gap: 16px; align-items: flex-start; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 24px; }
+    .biz-icon { font-size: 1.5rem; }
+    .biz-option h4 { color: var(--white); font-size: 1rem; margin-bottom: 6px; }
+    .biz-option p { color: rgba(255,255,255,0.6); font-size: 0.875rem; line-height: 1.6; }
 
-  /* PRICING */
-  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 28px; margin-top: 8px; }
-  .pricing-card { background: var(--white); border: 1px solid rgba(45,74,78,0.12); border-radius: 24px; padding: 36px; display: flex; flex-direction: column; gap: 0; position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
-  .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 20px 48px rgba(45,74,78,0.1); }
-  .pricing-card--featured { border: 2px solid var(--beige); background: linear-gradient(135deg, var(--white) 0%, rgba(184,164,138,0.08) 100%); }
-  .pricing-featured-badge { position: absolute; top: 20px; right: 20px; background: var(--teal-dark); color: var(--white); padding: 5px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em; }
-  .pricing-card-header { margin-bottom: 20px; }
-  .pricing-type-badge { display: inline-block; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 4px 12px; border-radius: 100px; background: rgba(61,101,105,0.1); color: var(--teal-mid); margin-bottom: 12px; }
-  .pricing-type-badge--gold { background: rgba(184,164,138,0.18); color: var(--beige); }
-  .pricing-product-title { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; color: var(--charcoal); line-height: 1.3; text-decoration: none; transition: color 0.2s; }
-  a.pricing-product-title:hover { color: var(--teal-mid); text-decoration: underline; text-underline-offset: 3px; }
-  .pricing-product-title--btn { background: none; border: none; cursor: pointer; text-align: left; padding: 0; }
-  .pricing-product-title--btn:hover { color: var(--teal-mid); text-decoration: underline; text-underline-offset: 3px; }
-  .pricing-card-body { flex: 1; margin-bottom: 28px; }
-  .pricing-desc { font-size: 0.9rem; color: var(--text-mid); line-height: 1.75; font-weight: 300; margin-bottom: 12px; }
-  .pricing-installment { font-size: 0.85rem; color: var(--teal-dark); font-weight: 500; }
-  .pricing-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-top: 1px solid rgba(45,74,78,0.08); padding-top: 24px; }
-  .pricing-price-wrap { display: flex; flex-direction: column; }
-  .pricing-price-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-mid); opacity: 0.6; margin-bottom: 2px; }
-  .pricing-price { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--teal-dark); line-height: 1; }
-  .pricing-price--featured { font-size: 2.4rem; }
-  .pricing-price-old { font-size: 0.95rem; text-decoration: line-through; color: var(--beige); margin-bottom: 2px; }
-  .pricing-btn { white-space: nowrap; }
+    /* ── PRICING ── */
+    .pricing { background: var(--white); }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .price-card { border: 1.5px solid var(--border); border-radius: 20px; padding: 40px; position: relative; transition: transform 0.2s; }
+    .price-card:hover { transform: translateY(-4px); }
+    .price-card.featured { border-color: var(--accent); background: linear-gradient(135deg, rgba(200,149,106,0.05), transparent); }
+    .price-badge { position: absolute; top: -14px; left: 32px; background: var(--accent); color: var(--white); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; padding: 6px 16px; border-radius: 100px; }
+    .price-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+    .price-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 16px; }
+    .price-card p { color: var(--muted); line-height: 1.7; margin-bottom: 24px; font-size: 0.95rem; }
+    .price-old { text-decoration: line-through; color: var(--muted); font-size: 1.1rem; }
+    .price-new { font-size: 2.5rem; font-weight: 700; color: var(--dark); font-family: 'Playfair Display', serif; }
+    .price-note { font-size: 0.8rem; color: var(--muted); margin-bottom: 28px; }
+    .price-cta { display: block; text-align: center; background: var(--dark); color: var(--white); padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 500; transition: background 0.2s; }
+    .price-cta:hover { background: var(--accent); }
+    .price-card.featured .price-cta { background: var(--accent); }
+    .price-card.featured .price-cta:hover { background: var(--dark); }
 
-  /* BTNS */
-  .btn-primary { display: inline-block; background: var(--beige); color: var(--charcoal); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; padding: 16px 44px; border-radius: 4px; transition: all 0.25s; border: none; cursor: pointer; }
-  .btn-primary:hover { background: var(--beige-light); transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.2); }
-  .btn-outline { display: inline-block; background: transparent; border: 1px solid rgba(184,164,138,0.5); color: var(--beige-light); text-decoration: none; font-size: 0.88rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 36px; border-radius: 4px; transition: all 0.25s; }
-  .btn-outline:hover { border-color: var(--beige); color: var(--off-white); }
+    /* ── CURRICULUM ── */
+    .curriculum { background: var(--cream); }
+    .modules { display: flex; flex-direction: column; gap: 2px; }
+    .module { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: var(--white); }
+    .module-header { display: flex; align-items: center; gap: 20px; padding: 24px 28px; cursor: pointer; transition: background 0.2s; }
+    .module-header:hover { background: var(--card-bg); }
+    .module-num { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--accent); min-width: 28px; }
+    .module-title { font-weight: 600; font-size: 1rem; flex: 1; }
+    .module-toggle { color: var(--muted); font-size: 1.2rem; transition: transform 0.3s; }
+    .module.open .module-toggle { transform: rotate(45deg); }
+    .module-body { display: none; padding: 0 28px 24px 68px; color: var(--muted); line-height: 1.75; font-size: 0.95rem; }
+    .module.open .module-body { display: block; }
+    .module-bonus { background: linear-gradient(135deg, rgba(200,149,106,0.08), transparent); }
+    .module-includes { margin-top: 32px; padding: 20px 24px; border: 1px dashed var(--accent); border-radius: 12px; text-align: center; color: var(--muted); font-size: 0.95rem; }
+    .module-includes strong { color: var(--dark); }
 
-  /* CTA */
-  .cta-section { background: var(--teal-dark); text-align: center; padding: 100px 5%; }
-  .cta-section h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; color: var(--white); max-width: 800px; margin: 0 auto 16px; }
-  .cta-section p { color: rgba(245,242,237,0.7); font-size: 1rem; margin-bottom: 40px; font-weight: 300; }
+    /* ── CTA BANNER ── */
+    .cta-banner { background: var(--accent); padding: 80px 40px; text-align: center; }
+    .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 3rem); color: var(--white); margin-bottom: 32px; }
+    .btn-white { background: var(--white); color: var(--accent); padding: 16px 48px; border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 1rem; display: inline-block; transition: transform 0.2s; }
+    .btn-white:hover { transform: translateY(-3px); }
 
-  /* FOOTER */
-  footer { background: var(--charcoal); padding: 56px 5% 32px; }
-  .footer-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 40px; }
-  .footer-brand-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--off-white); margin-bottom: 8px; }
-  .footer-brand-sub { font-size: 0.85rem; color: var(--beige); font-weight: 300; }
-  .footer-col h4 { font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--beige); margin-bottom: 16px; }
-  .footer-col a, .footer-col p { font-size: 0.85rem; color: rgba(245,242,237,0.45); font-weight: 300; line-height: 1.8; text-decoration: none; display: block; }
-  .footer-col a:hover { color: var(--beige-light); }
-  .footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 24px; border-top: 1px solid rgba(245,242,237,0.07); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-  .footer-bottom p { font-size: 0.78rem; color: rgba(245,242,237,0.25); }
+    /* ── FOOTER ── */
+    footer { background: var(--dark); color: rgba(255,255,255,0.6); padding: 60px 40px 40px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-brand { display: flex; flex-direction: column; gap: 12px; }
+    .footer-brand img { height: 32px; }
+    .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
+    .footer-brand p { font-size: 0.875rem; line-height: 1.6; }
+    footer h4 { color: var(--white); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
+    footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    footer ul a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.875rem; transition: color 0.2s; }
+    footer ul a:hover { color: var(--accent); }
+    .footer-bottom { max-width: 1100px; margin: 0 auto; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 32px; font-size: 0.8rem; color: rgba(255,255,255,0.4); }
 
-  /* MODAL */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1rem; }
-  .modal-box { background: var(--white); border-radius: 16px; max-width: 600px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 40px; position: relative; }
-  .modal-close { position: absolute; top: 16px; right: 20px; background: none; border: none; font-size: 1.8rem; color: var(--text-mid); cursor: pointer; line-height: 1; }
+    /* ── MODAL ── */
+    .modal-overlay { display: none; position: fixed; inset: 0; z-index: 200; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; padding: 20px; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: var(--white); border-radius: 20px; padding: 48px; max-width: 560px; width: 100%; position: relative; max-height: 80vh; overflow-y: auto; }
+    .modal-close { position: absolute; top: 20px; right: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted); line-height: 1; }
+    .modal h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 24px; }
+    .modal h4 { font-size: 1rem; font-weight: 600; margin: 20px 0 8px; }
+    .modal p { color: var(--muted); line-height: 1.7; font-size: 0.95rem; }
 
-  /* REVIEWS */
-  .reviews-slider-wrap { position: relative; }
-  .reviews-track-outer { overflow: hidden; }
-  .reviews-track { display: flex; gap: 28px; transition: transform 0.5s cubic-bezier(0.4,0,0.2,1); }
-  .review-card { background: var(--white); border: 1px solid rgba(45,74,78,0.1); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; gap: 20px; transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s; cursor: default; position: relative; overflow: hidden; flex: 0 0 calc((100% - 56px) / 3); min-width: 0; }
-  .review-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--teal-dark), var(--beige)); transform: scaleX(0); transform-origin: left; transition: transform 0.35s; }
-  .review-card:hover { transform: translateY(-6px); box-shadow: 0 24px 56px rgba(45,74,78,0.12); border-color: rgba(45,74,78,0.18); }
-  .review-card:hover::before { transform: scaleX(1); }
-  .review-stars { color: var(--beige); font-size: 1.2rem; letter-spacing: 3px; }
-  .review-text-wrap { position: relative; }
-  .review-text { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; font-weight: 300; overflow: hidden; max-height: 112px; transition: max-height 0.5s ease; }
-  .review-text.expanded { max-height: 600px; }
-  .review-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 48px; background: linear-gradient(transparent, var(--white)); transition: opacity 0.3s; pointer-events: none; }
-  .review-fade.hidden { opacity: 0; }
-  .review-toggle { background: none; border: none; font-size: 0.82rem; font-weight: 500; color: var(--teal-dark); cursor: pointer; padding: 0; display: flex; align-items: center; gap: 5px; transition: color 0.2s; margin-top: -8px; }
-  .review-toggle:hover { color: var(--teal-mid); }
-  .review-toggle svg { transition: transform 0.3s; }
-  .review-toggle.expanded svg { transform: rotate(180deg); }
-  .review-footer { border-top: 1px solid rgba(45,74,78,0.08); padding-top: 16px; margin-top: auto; }
-  .review-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--charcoal); margin-bottom: 4px; }
-  .review-meta { font-size: 0.8rem; color: var(--teal-mid); letter-spacing: 0.04em; }
-  .reviews-controls { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 40px; }
-  .reviews-arrow { width: 48px; height: 48px; border-radius: 50%; border: 1px solid rgba(45,74,78,0.18); background: var(--white); color: var(--teal-dark); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; }
-  .reviews-arrow:hover { background: var(--teal-dark); color: var(--white); border-color: var(--teal-dark); }
-  .reviews-arrow:disabled { opacity: 0.3; cursor: default; pointer-events: none; }
-  .reviews-dots { display: flex; gap: 8px; }
-  .reviews-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(45,74,78,0.2); cursor: pointer; transition: all 0.25s; border: none; padding: 0; }
-  .reviews-dot.active { background: var(--teal-dark); transform: scale(1.25); }
-  @media (max-width: 900px) { .review-card { flex: 0 0 calc((100% - 28px) / 2); } }
-  @media (max-width: 600px) { .review-card { flex: 0 0 100%; } }
-
-  .tag { background: var(--teal-dark); color: var(--white); padding: 10px 22px; border-radius: 100px; font-size: 0.88rem; cursor: pointer; display: inline-block; transition: transform 0.15s, box-shadow 0.15s; user-select: none; }
-  .tag:hover { background: var(--teal-mid); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45,74,78,0.3); }
-  .tag.pop { animation: tagPop 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97); }
-  @keyframes tagPop {
-    0%   { transform: scale(1); background: var(--teal-dark); }
-    20%  { transform: scale(1.18); background: var(--beige); color: var(--charcoal); box-shadow: 0 8px 28px rgba(184,164,138,0.5); }
-    50%  { transform: scale(0.95); }
-    75%  { transform: scale(1.06); }
-    100% { transform: scale(1); background: var(--teal-dark); color: var(--white); box-shadow: none; }
-  }
-
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  @media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-    .nav-links { display: none; }
-    .quote-num { display: none; }
-  }
-</style>
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 70px 20px; }
+      .hero { padding: 100px 20px 60px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+      .approach-model { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ── NAVIGATION ── -->
 <nav>
-  <a href="#" class="nav-brand">
-    <img src="https://raw.githubusercontent.com/englishupp-design/eq-course/main/logo%20(2).png" alt="NeuroLab">
-    <span style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--beige-light); letter-spacing: 0.05em;">NeuroLab</span>
+  <a href="#" class="nav-logo">
+    <svg width="180" height="44" viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 34 C14 22 20 16 28 16 C30 12 35 10 40 13 C43 9 50 9 54 13 C60 10 66 14 66 22 C72 22 76 27 74 34 C76 40 72 46 66 46 C64 52 58 56 52 54 C49 58 43 58 40 54 C37 58 31 58 28 54 C22 54 14 48 14 34Z" fill="none" stroke="#C8956A" stroke-width="1.8" stroke-linejoin="round"/>
+      <path d="M40 13 C40 20 40 28 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.4" stroke-dasharray="2 2"/>
+      <path d="M28 24 C33 26 37 28 40 28" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+      <path d="M52 24 C47 26 43 28 40 28" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+      <path d="M22 36 C28 34 34 34 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+      <path d="M58 36 C52 34 46 34 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+      <polygon points="46,14 38,34 44,34 36,54 52,28 44,28" fill="#C8956A" opacity="0.9"/>
+      <polygon points="46,14 38,34 44,34 36,54 52,28 44,28" fill="none" stroke="#F5F0E8" stroke-width="0.8"/>
+      <text x="86" y="31" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#1A1A1A" letter-spacing="-0.8">Mind</text>
+      <text x="150" y="31" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="400" fill="#C8956A" letter-spacing="-0.8">Lander</text>
+    </svg>
   </a>
   <ul class="nav-links">
-    <li><a href="#forwho">About</a></li>
-    <li><a href="#business" onclick="switchTab('individuals', document.querySelectorAll('.tab-btn')[0])">Individuals</a></li>
-    <li><a href="#business" onclick="switchTabFromNav()">For Business</a></li>
-    <li><a href="#speakers">Speakers</a></li>
-    <li><a href="#pricing">Pricing</a></li>
-    <li><a href="#register" class="nav-cta">Enroll Now</a></li>
+    <li><a href="#forwho" data-i18n="nav_about"></a></li>
+    <li><a href="#formats" data-i18n="nav_individuals"></a></li>
+    <li><a href="#formats" data-i18n="nav_business"></a></li>
+    <li><a href="#pricing" data-i18n="nav_pricing"></a></li>
   </ul>
+  <div class="nav-right">
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('uk')">UK</button>
+    </div>
+    <a href="#register" class="nav-cta" data-i18n="nav_enroll"></a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <img src="https://raw.githubusercontent.com/englishupp-design/eq-course/main/logo%20(2).png" alt="NeuroLab" class="hero-logo">
-  <div class="hero-eyebrow"><span style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--white); letter-spacing: 0.08em; text-transform: none; text-shadow: 0 2px 16px rgba(0,0,0,0.4), 0 0 32px rgba(184,164,138,0.3);">NeuroLab</span> <span style="opacity: 0.5; font-size: 0.8rem;">·</span> School of Emotional Intelligence for Leaders</div>
-  <h1>Emotional Intelligence — <em>your Superpower</em></h1>
+<!-- ── HERO ── -->
+<section class="hero" id="home">
+  <p class="hero-eyebrow" data-i18n="hero_eyebrow"></p>
+  <svg width="260" height="58" viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;">
+    <path d="M14 34 C14 22 20 16 28 16 C30 12 35 10 40 13 C43 9 50 9 54 13 C60 10 66 14 66 22 C72 22 76 27 74 34 C76 40 72 46 66 46 C64 52 58 56 52 54 C49 58 43 58 40 54 C37 58 31 58 28 54 C22 54 14 48 14 34Z" fill="none" stroke="#C8956A" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="M40 13 C40 20 40 28 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.4" stroke-dasharray="2 2"/>
+    <path d="M28 24 C33 26 37 28 40 28" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+    <path d="M52 24 C47 26 43 28 40 28" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+    <path d="M22 36 C28 34 34 34 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+    <path d="M58 36 C52 34 46 34 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+    <polygon points="46,14 38,34 44,34 36,54 52,28 44,28" fill="#C8956A" opacity="0.9"/>
+    <polygon points="46,14 38,34 44,34 36,54 52,28 44,28" fill="none" stroke="#F5F0E8" stroke-width="0.8"/>
+    <text x="86" y="31" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#1A1A1A" letter-spacing="-0.8">Mind</text>
+    <text x="150" y="31" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="400" fill="#C8956A" letter-spacing="-0.8">Lander</text>
+  </svg>
+  <h1 data-i18n="hero_h1"></h1>
+  <p class="hero-sub" data-i18n="hero_sub"></p>
+  <div class="hero-actions">
+    <a href="#register" class="btn-primary" data-i18n="hero_cta1"></a>
+    <a href="#forwho" class="btn-secondary" data-i18n="hero_cta2"></a>
+  </div>
 </section>
 
-<!-- FOR WHO -->
-<section style="background:var(--off-white); padding:100px 5%;" id="forwho">
+<!-- ── WHO WE ARE ── -->
+<section class="who-we-are" id="whoweare">
   <div class="section-inner">
-    <div class="section-label">Who it's for</div>
-    <h2 class="section-title">Our project is dedicated to developing emotional intelligence skills.</h2>
-    <div class="divider"></div>
-    <div class="for-who-intro">
-      <p class="for-who-question">Who will benefit most from this program?</p>
-    </div>
-    <div class="cards-grid">
-      <div class="card reveal">
-        <div class="card-num">01</div>
-        <p>Teachers who want to stay ahead of AI competition — because no technology can replace truly human qualities.</p>
+    <p class="section-label" data-i18n="who_label"></p>
+    <h2 style="margin-bottom:48px;" data-i18n="who_h2"></h2>
+    <div class="who-cards">
+
+      <!-- Valeriia -->
+      <div class="who-card">
+        <img class="who-card-photo" src="https://i.ibb.co/tTjZTxtv/image.jpg" alt="Valeriia Bakanova" />
+        <div class="who-card-body">
+          <div class="who-card-name" data-i18n="who1_name"></div>
+          <div class="who-card-title" data-i18n="who1_title"></div>
+          <div class="who-card-divider"></div>
+          <p class="who-card-bio" data-i18n="who1_bio"></p>
+          <div class="who-card-tags">
+            <span class="who-card-tag" data-i18n="who1_tag1"></span>
+            <span class="who-card-tag" data-i18n="who1_tag2"></span>
+            <span class="who-card-tag" data-i18n="who1_tag3"></span>
+          </div>
+          <a href="https://valeriianeurocoach.com" class="who-card-link" target="_blank" data-i18n="who1_link"></a>
+        </div>
       </div>
-      <div class="card reveal">
-        <div class="card-num">02</div>
-        <p>Language school owners and tutoring service providers — if you want your school to stand out from all the rest, and have people talk about your quality, understanding, and approach for years to come.</p>
+
+      <!-- Natalia -->
+      <div class="who-card">
+        <img class="who-card-photo" src="https://i.ibb.co/qYYQjbp5/image.jpg" alt="Natalia Shubnikova" />
+        <div class="who-card-body">
+          <div class="who-card-name" data-i18n="who2_name"></div>
+          <div class="who-card-title" data-i18n="who2_title"></div>
+          <div class="who-card-divider"></div>
+          <p class="who-card-bio" data-i18n="who2_bio"></p>
+          <div class="who-card-tags">
+            <span class="who-card-tag" data-i18n="who2_tag1"></span>
+            <span class="who-card-tag" data-i18n="who2_tag2"></span>
+            <span class="who-card-tag" data-i18n="who2_tag3"></span>
+          </div>
+        </div>
       </div>
-      <div class="card reveal">
-        <div class="card-num">03</div>
-        <p>Professionals and service providers who work with people and want to be truly unmatched — not just because you're skilled, but because you always know exactly what your clients need right now.</p>
+
+      <!-- Oleg -->
+      <div class="who-card">
+        <div class="who-card-photo-placeholder">O</div>
+        <div class="who-card-body">
+          <div class="who-card-name" data-i18n="who3_name"></div>
+          <div class="who-card-title" data-i18n="who3_title"></div>
+          <div class="who-card-divider"></div>
+          <p class="who-card-bio" data-i18n="who3_bio"></p>
+          <div class="who-card-tags">
+            <span class="who-card-tag" data-i18n="who3_tag1"></span>
+            <span class="who-card-tag" data-i18n="who3_tag2"></span>
+            <span class="who-card-tag" data-i18n="who3_tag3"></span>
+            <span class="who-card-tag" data-i18n="who3_tag4"></span>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- WHY NOW -->
-<section style="background:var(--off-white); padding:100px 5%;">
+<!-- ── FOR WHOM ── -->
+<section class="for-whom" id="forwho">
   <div class="section-inner">
-    <div class="section-label">Why it matters now</div>
-    <h2 class="section-title">Why is EI so important right now?</h2>
-    <div class="divider"></div>
-    <p style="font-size:1rem; line-height:1.85; color:var(--text-mid); max-width:680px; font-weight:300; margin-bottom:32px;">
-      In a world where automation is replacing tasks, human connection becomes the ultimate competitive advantage. EQ is the top educational trend of 2026. It is scientifically proven to impact academic performance, mental health, and the prevention of burnout.
-    </p>
-    <div class="tags-wrap">
-      <span class="tag" onclick="animateTag(this)">First in Russia</span>
-      <span class="tag" onclick="animateTag(this)">Trend 2026</span>
-      <span class="tag" onclick="animateTag(this)">Science-backed</span>
-      <span class="tag" onclick="animateTag(this)">Teaching</span>
-      <span class="tag" onclick="animateTag(this)">Leadership</span>
-      <span class="tag" onclick="animateTag(this)">Customer Service</span>
-      <span class="tag" onclick="animateTag(this)">Conflict Management</span>
+    <p class="section-label" data-i18n="forwho_label"></p>
+    <h2 data-i18n="forwho_h2"></h2>
+    <p class="intro" data-i18n="forwho_intro"></p>
+    <div class="cards">
+      <div class="card"><div class="card-num">01</div><p data-i18n="forwho_card1"></p></div>
+      <div class="card"><div class="card-num">02</div><p data-i18n="forwho_card2"></p></div>
+      <div class="card"><div class="card-num">03</div><p data-i18n="forwho_card3"></p></div>
     </div>
   </div>
 </section>
 
-<!-- QUOTES -->
-<section class="quotes-section" id="about">
+<!-- ── WHY NOW ── -->
+<section class="why-now">
   <div class="section-inner">
-    <div class="section-label">What is EI</div>
-    <h2 class="section-title" style="color:var(--white); margin-bottom:0;">Emotional intelligence is...</h2>
-    <div class="quotes-list">
-      <div class="quote-item">
-        <div class="quote-num">01</div>
-        <div class="quote-body"><p class="quote-lead">the ability to understand and manage emotions — <em>your own and others'</em></p></div>
-      </div>
-      <div class="quote-item">
-        <div class="quote-num">02</div>
-        <div class="quote-body"><p class="quote-lead">understanding the <em>language of feelings</em> and translating it into action</p></div>
-      </div>
-      <div class="quote-item">
-        <div class="quote-num">03</div>
-        <div class="quote-body"><p class="quote-lead">the skill of <em>understanding people</em> without words</p></div>
-      </div>
-      <div class="quote-item">
-        <div class="quote-num">04</div>
-        <div class="quote-body"><p class="quote-lead">seeing situations more clearly and finding <em>the right solutions</em> to conflicts</p></div>
-      </div>
-      <div class="quote-item">
-        <div class="quote-num">05</div>
-        <div class="quote-body"><p class="quote-lead" style="font-style:italic; color:var(--beige-light);">knowing when it's time to leave the party 😄</p></div>
-      </div>
-    </div>
-    <div class="quotes-cta-block">
-      <p>What's your definition of EI?</p>
+    <p class="section-label" data-i18n="why_label"></p>
+    <h2 data-i18n="why_h2"></h2>
+    <p class="lead" data-i18n="why_lead"></p>
+    <div class="tags">
+      <span class="tag highlight" data-i18n="tag1"></span>
+      <span class="tag" data-i18n="tag2"></span>
+      <span class="tag" data-i18n="tag3"></span>
+      <span class="tag" data-i18n="tag4"></span>
+      <span class="tag" data-i18n="tag5"></span>
+      <span class="tag" data-i18n="tag6"></span>
     </div>
   </div>
 </section>
 
-<!-- MODEL -->
-<section style="background:var(--charcoal-mid); padding:100px 5%; text-align:center;">
+<!-- ── WHAT IS EQ ── -->
+<section class="what-eq" id="about">
   <div class="section-inner">
-    <div class="section-label" style="color:var(--beige);">Our approach</div>
-    <h2 class="section-title" style="color:var(--white);">Our program is essential for everyone<br>working in the model</h2>
-    <div class="model-flow">
-      <div class="model-box">Provider</div>
+    <p class="section-label" data-i18n="eq_label"></p>
+    <h2 data-i18n="eq_h2"></h2>
+    <ul class="eq-list">
+      <li><span class="eq-num">01</span><span data-i18n="eq1"></span></li>
+      <li><span class="eq-num">02</span><span data-i18n="eq2"></span></li>
+      <li><span class="eq-num">03</span><span data-i18n="eq3"></span></li>
+      <li><span class="eq-num">04</span><span data-i18n="eq4"></span></li>
+      <li><span class="eq-num">05</span><span data-i18n="eq5"></span></li>
+    </ul>
+    <p class="eq-question" data-i18n="eq_question"></p>
+  </div>
+</section>
+
+<!-- ── APPROACH ── -->
+<section class="approach">
+  <div class="section-inner">
+    <p class="section-label" data-i18n="approach_label"></p>
+    <h2 data-i18n="approach_h2"></h2>
+    <div class="approach-model">
+      <div class="model-box" data-i18n="approach_box1"></div>
       <div class="model-arrow">→</div>
-      <div class="model-box">Client</div>
+      <div class="model-box" data-i18n="approach_box2"></div>
       <div class="model-arrow">=</div>
-      <div class="model-box model-result">Successful long-term collaboration</div>
-    </div>
-  </div>
-</section>
-
-<!-- SPEAKERS -->
-<section style="background:var(--off-white); padding:100px 5%;" id="speakers">
-  <div class="section-inner">
-    <div class="section-label">Course experts</div>
-    <h2 class="section-title">Speakers</h2>
-    <div class="speakers-grid">
-      <div class="speaker-card reveal">
-        <img src="https://i.ibb.co/tTjZTxtv/image.jpg" alt="Valeria Bakanova" class="speaker-photo"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="speaker-photo-placeholder" style="display:none;">V</div>
-        <div class="speaker-name">Valeria Bakanova</div>
-        <div class="speaker-title">Professional Neurolanguage Coach & Teacher Trainer</div>
-        <ul class="speaker-facts">
-          <li>Certified and accredited Neurolanguage Coach and Teacher Trainer</li>
-          <li>English language teacher with 20 years of experience</li>
-          <li>Founder of a language school</li>
-          <li>Expert in integrating neuroscience into teaching practice and personalised learning</li>
-        </ul>
-        <button class="bio-toggle">
-          <span class="bio-toggle-text">Read her story</span>
-          <svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="bio-content">
-          <p>Valeria began teaching English over 20 years ago and grew from a private tutor into the founder of her own language school. Throughout her career, she noticed that technical language knowledge is only part of the equation — the emotional connection with a student and the ability to create a safe learning environment play a crucial role. This led her to explore neuroscience and coaching. Today, Valeria is a certified Neurolanguage Coach and Teacher Trainer who helps educators transform their practice through the science of the brain and emotional intelligence.</p>
-        </div>
-      </div>
-      <div class="speaker-card reveal">
-        <img src="https://i.ibb.co/qYYQjbp5/image.jpg" alt="Natalia Shubnikova" class="speaker-photo"
-             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-        <div class="speaker-photo-placeholder" style="display:none;">N</div>
-        <div class="speaker-name">Natalia Shubnikova</div>
-        <div class="speaker-title">Professional Life & Business Strategic Coach</div>
-        <ul class="speaker-facts">
-          <li>Certified and accredited Life & Business Strategic Coach</li>
-          <li>Business management expert</li>
-          <li>Former top executive at an IT company</li>
-          <li>Specialist in personal and career strategic development</li>
-        </ul>
-        <button class="bio-toggle">
-          <span class="bio-toggle-text">Read her story</span>
-          <svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="bio-content">
-          <p>Natalia built a successful career in IT, rising from specialist to top executive and co-founder. Managing teams and processes, she became convinced that true effectiveness is impossible without understanding human nature, motivation, and emotions. This led her to deeply study coaching and strategic personal development. Today, Natalia is a certified Life & Business Strategic Coach who helps professionals build a conscious and profitable career path.</p>
-        </div>
+      <div class="model-box">
+        <span data-i18n="approach_box3"></span>
+        <div class="model-eq" data-i18n="approach_box3_sub"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REVIEWS -->
-<section style="background:var(--off-white); padding:100px 5%;" id="reviews">
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials" id="reviews">
   <div class="section-inner">
-    <div class="section-label">Testimonials</div>
-    <h2 class="section-title">What participants say</h2>
-    <div class="reviews-slider-wrap">
-      <div class="reviews-track-outer">
-        <div class="reviews-track" id="reviewsTrack">
-
-      <div class="review-card reveal">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text-wrap">
-          <p class="review-text">Taking this course turned out to be a strategically important decision for my project. The knowledge offered goes far beyond basic management skills: a deep understanding of various professional contexts made the program highly applicable and relevant to the specifics of my team's work. During the training, we not only strengthened our understanding of business processes, but fundamentally changed how we communicate, collaborate with each other, and build relationships with our external partners and colleagues. Each module brought a unique combination of clarity, support, and motivation. We are genuinely grateful for the systematic approach and the immense value this experience brought to our business.</p>
-          <div class="review-fade"></div>
-        </div>
-        <button class="review-toggle" onclick="toggleReview(this)">
-          Read more <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="review-footer">
-          <div class="review-name">Alexander</div>
-          <div class="review-meta">Information business owner</div>
-        </div>
+    <p class="section-label" data-i18n="testi_label"></p>
+    <h2 data-i18n="testi_h2"></h2>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text" data-i18n="t1_text"></p>
+        <div class="testi-author" data-i18n="t1_name"></div>
+        <div class="testi-role" data-i18n="t1_role"></div>
       </div>
-
-      <div class="review-card reveal">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text-wrap">
-          <p class="review-text">Huge thanks for the knowledge gained on this course! The module on emotional intelligence — especially about the importance of rest and not taking students' behaviour personally — was a true lifesaver for me. The program helped me realise that reactions in the classroom often reflect group dynamics, not my professional worth. The tools for staying calm in emotionally charged situations were invaluable: I now feel far more confident, balanced, and resilient, even when things get difficult at school.</p>
-          <div class="review-fade"></div>
-        </div>
-        <button class="review-toggle" onclick="toggleReview(this)">
-          Read more <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="review-footer">
-          <div class="review-name">Ekaterina</div>
-          <div class="review-meta">Secondary school English teacher</div>
-        </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text" data-i18n="t2_text"></p>
+        <div class="testi-author" data-i18n="t2_name"></div>
+        <div class="testi-role" data-i18n="t2_role"></div>
       </div>
-
-      <div class="review-card reveal">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text-wrap">
-          <p class="review-text">After completing the course, my small team and I felt like we'd grown wings. We needed to prepare for a major industry event in a short time, and in just two months of training we learned to confidently represent my brand using the principles of effective business interaction. I wholeheartedly recommend this course to any entrepreneur who needs fast, focused results and wants to work only on what truly matters for their business, without wasting time on the unnecessary.</p>
-          <div class="review-fade"></div>
-        </div>
-        <button class="review-toggle" onclick="toggleReview(this)">
-          Read more <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="review-footer">
-          <div class="review-name">Julia</div>
-          <div class="review-meta">Owner of a beauty clinic and natural cosmetics brand</div>
-        </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text" data-i18n="t3_text"></p>
+        <div class="testi-author" data-i18n="t3_name"></div>
+        <div class="testi-role" data-i18n="t3_role"></div>
       </div>
-
-      <div class="review-card reveal">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text-wrap">
-          <p class="review-text">This course was a genuine revelation and gave a powerful boost to my private practice. The program helped me not only improve business communication, but deeply understand the psychology of interacting with people. The most valuable part was the applied use of emotional intelligence: I now know how not to take clients' reactions personally and how to maintain inner calm even in the most challenging situations. The training provided a kind of "safe space" to discuss difficult moments at work and gave me concrete tools to stay resourceful and understand the true drivers behind people's behaviour.</p>
-          <div class="review-fade"></div>
-        </div>
-        <button class="review-toggle" onclick="toggleReview(this)">
-          Read more <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="review-footer">
-          <div class="review-name">Irina</div>
-          <div class="review-meta">Corporate language trainer</div>
-        </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text" data-i18n="t4_text"></p>
+        <div class="testi-author" data-i18n="t4_name"></div>
+        <div class="testi-role" data-i18n="t4_role"></div>
       </div>
-
-      <div class="review-card reveal">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text-wrap">
-          <p class="review-text">The training became a turning point in my battle with imposter syndrome and helped me unravel a tangle of limiting beliefs about my status. Thanks to the course, I gained a structured vision of my goals, set clear priorities, and now know exactly what my next steps are. The program offers a remarkable opportunity to find your own answers to difficult questions through a well-designed learning system — allowing you to confidently present your brand and focus only on what truly matters, without wasting energy on the rest.</p>
-          <div class="review-fade"></div>
-        </div>
-        <button class="review-toggle" onclick="toggleReview(this)">
-          Read more <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="review-footer">
-          <div class="review-name">Natalia</div>
-          <div class="review-meta">Self-employed entrepreneur</div>
-        </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text" data-i18n="t5_text"></p>
+        <div class="testi-author" data-i18n="t5_name"></div>
+        <div class="testi-role" data-i18n="t5_role"></div>
       </div>
-
-      <div class="review-card reveal">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text-wrap">
-          <p class="review-text">Already after the first modules, real productive changes began in my work: I learned to stay grounded in emotionally charged situations and focus only on what truly matters for growing my business, without spending energy on the unnecessary. The program gave me not just knowledge, but practical tools to understand what really lies behind people's behaviour — and how to use that to achieve business goals.</p>
-          <div class="review-fade"></div>
-        </div>
-        <button class="review-toggle" onclick="toggleReview(this)">
-          Read more <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="review-footer">
-          <div class="review-name">Tatiana</div>
-          <div class="review-meta">Business owner</div>
-        </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text" data-i18n="t6_text"></p>
+        <div class="testi-author" data-i18n="t6_name"></div>
+        <div class="testi-role" data-i18n="t6_role"></div>
       </div>
-
-      <div class="review-card reveal">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text-wrap">
-          <p class="review-text">It was especially valuable to realise, through the training, how my emotions directly affect my decision-making and my professional standing. I was amazed at how effectively the program builds the skill of state management: through deep practices and a structured approach, I found my own answers to difficult questions that previously caused only anxiety and mental paralysis. The program gave me not just theory, but a real experience of living through and transforming my inner states. It's a completely new level of self-understanding!</p>
-          <div class="review-fade"></div>
-        </div>
-        <button class="review-toggle" onclick="toggleReview(this)">
-          Read more <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="review-footer">
-          <div class="review-name">Julia</div>
-          <div class="review-meta">Language school owner</div>
-        </div>
-      </div>
-
-      </div>
-      </div>
-      <div class="reviews-controls">
-        <button class="reviews-arrow" id="reviewsPrev" onclick="slideReviews(-1)" aria-label="Previous">
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-        </button>
-        <div class="reviews-dots" id="reviewsDots"></div>
-        <button class="reviews-arrow" id="reviewsNext" onclick="slideReviews(1)" aria-label="Next">
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-        </button>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text" data-i18n="t7_text"></p>
+        <div class="testi-author" data-i18n="t7_name"></div>
+        <div class="testi-role" data-i18n="t7_role"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BUSINESS TABS -->
-<section style="background:var(--charcoal-mid); padding:100px 5%;" id="business">
+<!-- ── FORMATS ── -->
+<section class="formats" id="formats">
   <div class="section-inner">
-    <div class="section-label" style="color:var(--beige);">Participation formats</div>
-    <h2 class="section-title" style="color:var(--white); margin-bottom:0;">Choose your path</h2>
-    <div class="tabs-nav">
-      <button class="tab-btn active" onclick="switchTab('individuals',this)">Individuals</button>
-      <button class="tab-btn" onclick="switchTab('business',this)">For Business</button>
+    <p class="section-label" data-i18n="formats_label"></p>
+    <h2 data-i18n="formats_h2"></h2>
+    <div class="tabs">
+      <button class="tab-btn active" id="tab-ind-btn" onclick="switchTab('individuals', this)" data-i18n="tab_individuals"></button>
+      <button class="tab-btn" id="tab-biz-btn" onclick="switchTab('business', this)" data-i18n="tab_business"></button>
     </div>
-    <div id="tab-individuals" class="tab-content active tab-individuals">
-      <div class="offerings-grid">
-        <div class="offering-card">
-          <div class="offering-tag">Webinar</div>
-          <h3 class="offering-title">Emotional Intelligence as a Key Factor for Success</h3>
-          <p class="offering-desc">A one-time online webinar — the perfect entry point to explore the topic of EQ, ask the speakers your questions, and see how it works in practice.</p>
-          <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="btn-primary">Learn more about the webinar</a>
-        </div>
-        <div class="offering-card offering-card--featured">
-          <div class="offering-tag offering-tag--gold">Course</div>
-          <h3 class="offering-title">Emotional Intelligence — the Key to Your Success</h3>
-          <p class="offering-desc">A full 9-module course with practical assignments, live sessions, and a community of like-minded people. Hybrid format: recorded lessons + weekly live meetings.</p>
-          <button class="btn-primary" onclick="showModal('modules')">Learn more about the course</button>
-        </div>
+    <div id="tab-individuals" class="tab-content active">
+      <div class="format-card">
+        <div class="format-label" data-i18n="fmt_webinar_label"></div>
+        <h3 data-i18n="fmt_webinar_h3"></h3>
+        <p data-i18n="fmt_webinar_p"></p>
+        <a href="https://englishupp-design.github.io/webinar/" class="format-link" data-i18n="fmt_webinar_link"></a>
+      </div>
+      <div class="format-card">
+        <div class="format-label" data-i18n="fmt_course_label"></div>
+        <h3 data-i18n="fmt_course_h3"></h3>
+        <p data-i18n="fmt_course_p"></p>
+        <a href="https://shorturl.at/6xUts" class="format-link" data-i18n="fmt_course_link"></a>
       </div>
     </div>
     <div id="tab-business" class="tab-content">
-      <p class="biz-intro">We offer customised versions of our course and training programmes. We work with businesses across all industries and tailor the curriculum to your specific needs and team.</p>
-      <div class="biz-grid">
-        <div class="biz-card reveal"><div class="biz-icon">📚</div><h3>Full Course</h3><p>We deliver a complete training course for your team, fully adapted to the specifics of your business.</p></div>
-        <div class="biz-card reveal"><div class="biz-icon">🎤</div><h3>Thematic Webinars</h3><p>One-off webinars focused on key aspects of EQ tailored to your specific request.</p></div>
-        <div class="biz-card reveal"><div class="biz-icon">⚡</div><h3>Workshops</h3><p>Intensive practical workshops for hands-on skill development in real situations relevant to your team.</p></div>
+      <div style="grid-column:1/-1;">
+        <p style="color:rgba(255,255,255,0.7);margin-bottom:32px;font-size:1.05rem;line-height:1.7;" data-i18n="biz_intro"></p>
+        <div class="biz-options">
+          <div class="biz-option"><div class="biz-icon">📚</div><div><h4 data-i18n="biz1_h4"></h4><p data-i18n="biz1_p"></p></div></div>
+          <div class="biz-option"><div class="biz-icon">🎤</div><div><h4 data-i18n="biz2_h4"></h4><p data-i18n="biz2_p"></p></div></div>
+          <div class="biz-option"><div class="biz-icon">⚡</div><div><h4 data-i18n="biz3_h4"></h4><p data-i18n="biz3_p"></p></div></div>
+        </div>
+        <div style="margin-top:32px;">
+          <a href="https://form.jotform.com/260822334021040" class="btn-primary" data-i18n="biz_cta"></a>
+        </div>
       </div>
-      <a href="https://form.jotform.com/260822334021040" target="_blank" class="btn-outline" style="margin-top:40px; display:inline-block;">Discuss partnership</a>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section style="background:var(--off-white); padding:100px 5%;" id="pricing">
+<!-- ── PRICING ── -->
+<section class="pricing" id="pricing">
   <div class="section-inner">
-    <div class="section-label">Invest in yourself</div>
-    <h2 class="section-title">Pricing</h2>
+    <p class="section-label" data-i18n="pricing_label"></p>
+    <h2 data-i18n="pricing_h2"></h2>
     <div class="pricing-grid">
-
-      <div class="pricing-card reveal">
-        <div class="pricing-card-header">
-          <span class="pricing-type-badge">Webinar</span>
-          <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="pricing-product-title">
-            Emotional Intelligence — Your Key to Success
-          </a>
-        </div>
-        <div class="pricing-card-body">
-          <p class="pricing-desc">A one-time online webinar — the ideal entry point into the world of EQ. Live Q&A with speakers, practical insights, and your first step toward change.</p>
-        </div>
-        <div class="pricing-card-footer">
-          <div class="pricing-price-wrap">
-            <span class="pricing-price-label">Price</span>
-            <span class="pricing-price">— ₽</span>
-          </div>
-          <a href="#" class="btn-primary pricing-btn">Purchase</a>
-        </div>
+      <div class="price-card">
+        <div class="price-label" data-i18n="price1_label"></div>
+        <h3 data-i18n="price1_h3"></h3>
+        <p data-i18n="price1_p"></p>
+        <div style="margin-bottom:8px;"><div class="price-new" style="font-size:1.4rem;color:var(--muted);" data-i18n="price1_amount"></div></div>
+        <a href="https://englishupp-design.github.io/webinar/" class="price-cta" data-i18n="price1_cta"></a>
       </div>
-
-      <div class="pricing-card pricing-card--featured reveal">
-        <div class="pricing-featured-badge">30% off now</div>
-        <div class="pricing-card-header">
-          <span class="pricing-type-badge pricing-type-badge--gold">Full Course</span>
-          <button class="pricing-product-title pricing-product-title--btn" onclick="showModal('modules')">
-            Emotional Intelligence — Your Key to Success
-          </button>
-        </div>
-        <div class="pricing-card-body">
-          <p class="pricing-desc">9 modules of deep immersion, live sessions, practice, and a community of like-minded people. Hybrid format: recordings + weekly live meetings.</p>
-          <p class="pricing-installment">✦ Instalment payment available</p>
-        </div>
-        <div class="pricing-card-footer">
-          <div class="pricing-price-wrap">
-            <span class="pricing-price-old">70 000 ₽</span>
-            <span class="pricing-price pricing-price--featured">49 000 ₽</span>
-          </div>
-          <a href="https://shorturl.at/6xUts" target="_blank" class="btn-primary pricing-btn">Purchase course</a>
-        </div>
+      <div class="price-card featured">
+        <div class="price-badge" data-i18n="price2_badge"></div>
+        <div class="price-label" data-i18n="price2_label"></div>
+        <h3 data-i18n="price2_h3"></h3>
+        <p data-i18n="price2_p"></p>
+        <div><span class="price-old">70,000 ₽</span><div class="price-new">49,000 ₽</div></div>
+        <p class="price-note" data-i18n="price2_note"></p>
+        <a href="https://shorturl.at/6xUts" class="price-cta" data-i18n="price2_cta"></a>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="cta-section" id="register">
-  <div style="max-width:1100px; margin:0 auto; text-align:center;">
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:300; color:var(--white); max-width:800px; margin:0 auto 40px; background:rgba(30,43,45,0.45); backdrop-filter:blur(6px); border:1px solid rgba(184,164,138,0.15); border-radius:16px; padding:32px 48px; box-shadow:0 8px 48px rgba(0,0,0,0.35), inset 0 1px 0 rgba(184,164,138,0.1);">Emotional Intelligence:<br>a trendy buzzword or<br>the ultimate key to success?</h2>
-    <a href="https://shorturl.at/6xUts" target="_blank" class="btn-primary" style="background:var(--white); color:var(--teal-dark);">Choose your format</a>
+<!-- ── CURRICULUM ── -->
+<section class="curriculum" id="curriculum">
+  <div class="section-inner">
+    <p class="section-label" data-i18n="curr_label"></p>
+    <h2 data-i18n="curr_h2"></h2>
+    <div class="modules">
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">1</span>
+          <span class="module-title" data-i18n="m1_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="m1_body"></div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">2</span>
+          <span class="module-title" data-i18n="m2_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="m2_body"></div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">3</span>
+          <span class="module-title" data-i18n="m3_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="m3_body"></div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">4</span>
+          <span class="module-title" data-i18n="m4_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="m4_body"></div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">5</span>
+          <span class="module-title" data-i18n="m5_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="m5_body"></div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">6</span>
+          <span class="module-title" data-i18n="m6_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="m6_body"></div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">7</span>
+          <span class="module-title" data-i18n="m7_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="m7_body"></div>
+      </div>
+      <div class="module">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">8</span>
+          <span class="module-title" data-i18n="m8_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="m8_body"></div>
+      </div>
+      <div class="module module-bonus">
+        <div class="module-header" onclick="toggleModule(this)">
+          <span class="module-num">★</span>
+          <span class="module-title" data-i18n="mb_title"></span>
+          <span class="module-toggle">+</span>
+        </div>
+        <div class="module-body" data-i18n="mb_body"></div>
+      </div>
+    </div>
+    <div class="module-includes"><strong data-i18n="curr_includes_label"></strong> <span data-i18n="curr_includes_text"></span></div>
+    <div style="margin-top:40px;text-align:center;">
+      <a href="https://shorturl.at/6xUts" class="btn-primary" data-i18n="curr_cta"></a>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner" id="register">
+  <h2 data-i18n="cta_h2"></h2>
+  <a href="https://shorturl.at/6xUts" class="btn-white" data-i18n="cta_btn"></a>
+</section>
+
+<!-- ── FOOTER ── -->
 <footer>
-  <div class="footer-grid">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg width="180" height="44" viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 34 C14 22 20 16 28 16 C30 12 35 10 40 13 C43 9 50 9 54 13 C60 10 66 14 66 22 C72 22 76 27 74 34 C76 40 72 46 66 46 C64 52 58 56 52 54 C49 58 43 58 40 54 C37 58 31 58 28 54 C22 54 14 48 14 34Z" fill="none" stroke="#C8956A" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M40 13 C40 20 40 28 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.4" stroke-dasharray="2 2"/>
+        <path d="M28 24 C33 26 37 28 40 28" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+        <path d="M52 24 C47 26 43 28 40 28" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+        <path d="M22 36 C28 34 34 34 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+        <path d="M58 36 C52 34 46 34 40 34" fill="none" stroke="#C8956A" stroke-width="0.9" opacity="0.35"/>
+        <polygon points="46,14 38,34 44,34 36,54 52,28 44,28" fill="#C8956A" opacity="0.95"/>
+        <polygon points="46,14 38,34 44,34 36,54 52,28 44,28" fill="none" stroke="#1A1A1A" stroke-width="0.8"/>
+        <text x="86" y="31" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="#F5F0E8" letter-spacing="-0.8">Mind</text>
+        <text x="150" y="31" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="400" fill="#C8956A" letter-spacing="-0.8">Lander</text>
+      </svg>
+      <p data-i18n="footer_tagline"></p>
+    </div>
     <div>
-      <div class="footer-brand-name">NeuroLab</div>
-      <div class="footer-brand-sub">Emotional intelligence for educators and business</div>
+      <h4 data-i18n="footer_docs_h4"></h4>
+      <ul>
+        <li><a href="#" onclick="document.getElementById('modal-privacy').classList.add('open')" data-i18n="footer_privacy"></a></li>
+        <li><a href="#" onclick="document.getElementById('modal-cookies').classList.add('open')" data-i18n="footer_cookies"></a></li>
+      </ul>
     </div>
-    <div class="footer-col">
-      <h4>Legal</h4>
-      <a href="#" onclick="showModal('privacy'); return false;">Privacy Policy</a>
-      <a href="#" onclick="showModal('cookies'); return false;">Cookie Policy</a>
-      <a href="agreement.pdf" target="_blank">Public Offer Agreement (PDF)</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p>For inquiries, please use the registration form</p>
+    <div>
+      <h4 data-i18n="footer_contact_h4"></h4>
+      <ul><li><a href="#register" data-i18n="footer_contact_text"></a></li></ul>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p>© 2026 All rights reserved</p>
-    <p>IE Shubnikova Natalia Tagirovna · TIN 434550053003 · OGRNIP 318435000037929</p>
-  </div>
+  <div class="footer-bottom">© 2026 <span data-i18n="footer_rights"></span></div>
 </footer>
 
-<!-- MODALS -->
-<div id="privacy-modal" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--teal-dark); margin-bottom:20px;">Privacy Policy</h2>
-    <h3 style="margin-top:16px; margin-bottom:8px;">1. Introduction</h3>
-    <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom:12px; line-height:1.7;">This Policy describes how we collect, use, and protect your personal data.</p>
-    <h3 style="margin-top:16px; margin-bottom:8px;">2. Data collected</h3>
-    <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom:12px; line-height:1.7;">We collect information provided during registration: name, email, and data required for the learning process.</p>
-    <h3 style="margin-top:16px; margin-bottom:8px;">3. Use of data</h3>
-    <p style="font-size:0.9rem; color:var(--text-mid); line-height:1.7;">Data is used to provide access to the course, deliver materials, and communicate with participants.</p>
+<!-- ── PRIVACY MODAL ── -->
+<div class="modal-overlay" id="modal-privacy" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-privacy').classList.remove('open')">×</button>
+    <h3 data-i18n="privacy_h3"></h3>
+    <h4 data-i18n="privacy_h4_1"></h4><p data-i18n="privacy_p1"></p>
+    <h4 data-i18n="privacy_h4_2"></h4><p data-i18n="privacy_p2"></p>
+    <h4 data-i18n="privacy_h4_3"></h4><p data-i18n="privacy_p3"></p>
   </div>
 </div>
 
-<div id="cookies-modal" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:1.8rem; color:var(--teal-dark); margin-bottom:20px;">Cookie Policy</h2>
-    <h3 style="margin-top:16px; margin-bottom:8px;">1. What are cookies?</h3>
-    <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom:12px; line-height:1.7;">Small text files stored on your device when you visit a website.</p>
-    <h3 style="margin-top:16px; margin-bottom:8px;">2. How we use cookies</h3>
-    <p style="font-size:0.9rem; color:var(--text-mid); line-height:1.7;">To remember your preferences, analyse website usage, and improve the user experience.</p>
+<!-- ── COOKIES MODAL ── -->
+<div class="modal-overlay" id="modal-cookies" onclick="if(event.target===this)this.classList.remove('open')">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal-cookies').classList.remove('open')">×</button>
+    <h3 data-i18n="cookies_h3"></h3>
+    <h4 data-i18n="cookies_h4_1"></h4><p data-i18n="cookies_p1"></p>
+    <h4 data-i18n="cookies_h4_2"></h4><p data-i18n="cookies_p2"></p>
   </div>
 </div>
-
-<!-- MODULES MODAL -->
-<div id="modules-modal" class="modal-overlay" style="display:none;" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box" style="max-width:680px;">
-    <button class="modal-close" onclick="closeModal()">×</button>
-    <div style="margin-bottom:8px; font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--teal-mid);">Course curriculum</div>
-    <h2 style="font-family:'Cormorant Garamond',serif; font-size:1.9rem; color:var(--teal-dark); margin-bottom:28px; line-height:1.2;">9 modules of transformational practice</h2>
-    <div id="modal-accordion">
-      <div class="modal-acc-item">
-        <button class="modal-acc-trigger"><span class="modal-acc-num">1</span><span class="modal-acc-name">The origins of EI and why it matters</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>How people came to recognise the importance of EI and began studying it. The history of the term from ancient philosophers to the present day, the evolution of the EQ concept, key research, and the introduction of SEL programmes in educational institutions. The impact of EQ on different areas of life.</p></div>
-      </div>
-      <div class="modal-acc-item">
-        <button class="modal-acc-trigger"><span class="modal-acc-num">2</span><span class="modal-acc-name">The benefits of EI in foreign language teaching</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>Richard Boyatzis's model of EI. Practical scenarios: how to hold a student's attention, work with "closing off" students, and cope with emotional exhaustion. The connection between EI and learner motivation, memory, and identity. The role of empathy, emotional resonance, and reflection as tools for the teacher.</p></div>
-      </div>
-      <div class="modal-acc-item">
-        <button class="modal-acc-trigger"><span class="modal-acc-num">3</span><span class="modal-acc-name">Threats to the brain and creating a safe learning environment</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>Brain states that positively and negatively affect learning. Words, formats, and actions perceived as threats: pressure, criticism, comparisons, trick questions. How to work with a student whose brain is in a threat state. Coaching practices for communicating with parents and decision-makers. The link between EI and monetising a teacher's practice.</p></div>
-      </div>
-      <div class="modal-acc-item">
-        <button class="modal-acc-trigger"><span class="modal-acc-num">4</span><span class="modal-acc-name">Neurophysiology: the brain, the amygdala, and learning</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>The "triune brain" and the role of each part. The amygdala and the processing of fear and stress — analysis of real-life situations. The prefrontal cortex, working memory, and neuroplasticity. Cortisol and its dangers. How positive and negative emotions affect the formation of neural connections and a student's progress.</p></div>
-      </div>
-      <div class="modal-acc-item">
-        <button class="modal-acc-trigger"><span class="modal-acc-num">5</span><span class="modal-acc-name">The ideal state for learning</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>What an ideal learning environment is and how to create it. Dopamine vs. cortisol — motivation and demotivation. Positive and negative emotional attractors. The "flow" state and brainwaves. The two brain states — emotional and rational — and how to work with each.</p></div>
-      </div>
-      <div class="modal-acc-item">
-        <button class="modal-acc-trigger"><span class="modal-acc-num">6</span><span class="modal-acc-name">Emotional triggers and the SCARF model</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>What a trigger is and its connection to past experience. Typical teacher triggers, techniques for immediate self-regulation, and long-term strategies for working with them. The SCARF model — teacher behaviour through the lens of social factors. How to give feedback and coaching practices for effective teaching.</p></div>
-      </div>
-      <div class="modal-acc-item">
-        <button class="modal-acc-trigger"><span class="modal-acc-num">7</span><span class="modal-acc-name">Student triggers and trauma: recognising and helping</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>The difference between triggers and trauma in learning. Analysis of real situations: how trauma continues to live in the body and affect the learning process. Techniques for recognising and responding to the situation — coaching, simulations, exercises.</p></div>
-      </div>
-      <div class="modal-acc-item">
-        <button class="modal-acc-trigger"><span class="modal-acc-num">8</span><span class="modal-acc-name">Burnout: recognising it and staying in balance</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>Stages and symptoms of professional burnout. Emotional exhaustion vs. emotional resilience. Techniques for restoring emotional resources and burnout prevention through emotional hygiene.</p></div>
-      </div>
-      <div class="modal-acc-item modal-acc-item--bonus">
-        <button class="modal-acc-trigger"><span class="modal-acc-num" style="background:var(--beige);color:var(--charcoal);">★</span><span class="modal-acc-name">Bonus: The financial side of your practice</span><span class="modal-acc-icon">+</span></button>
-        <div class="modal-acc-content"><p>Practical aspects of running a teaching practice: drawing up contracts, handling payment issues, setting your rates, collaboration options, and structuring package offers.</p></div>
-      </div>
-    </div>
-    <div style="margin-top:24px; padding:14px 20px; background:rgba(78,127,132,0.07); border:1px solid rgba(78,127,132,0.2); border-radius:10px; font-size:0.85rem; color:var(--text-mid);">✨ The course includes: demo practices, brainstorming sessions, and group work</div>
-    <div style="margin-top:28px; text-align:center;">
-      <a href="https://shorturl.at/6xUts" target="_blank" class="btn-primary" onclick="closeModal()">Enroll in the course</a>
-    </div>
-  </div>
-</div>
-
-<style>
-  .modal-acc-item { border-bottom: 1px solid rgba(45,74,78,0.12); }
-  .modal-acc-item:last-child { border-bottom: none; }
-  .modal-acc-item--bonus .modal-acc-trigger { background: rgba(184,164,138,0.06); }
-  .modal-acc-trigger { width:100%; display:flex; align-items:center; gap:14px; padding:16px 4px; background:none; border:none; cursor:pointer; text-align:left; transition:background 0.2s; }
-  .modal-acc-trigger:hover { background: rgba(45,74,78,0.04); }
-  .modal-acc-num { width:28px; height:28px; background:rgba(45,74,78,0.1); color:var(--teal-mid); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:500; flex-shrink:0; }
-  .modal-acc-name { flex:1; color:var(--text-dark); font-size:0.92rem; font-weight:400; }
-  .modal-acc-icon { color:var(--teal-mid); font-size:1.3rem; font-weight:300; transition:transform 0.3s; flex-shrink:0; }
-  .modal-acc-item.open .modal-acc-icon { transform:rotate(45deg); }
-  .modal-acc-content { max-height:0; overflow:hidden; transition:max-height 0.35s ease, padding 0.25s ease; padding:0 42px; }
-  .modal-acc-content.open { max-height:200px; padding-top:4px; padding-bottom:16px; }
-  .modal-acc-content p { font-size:0.88rem; color:var(--text-mid); line-height:1.75; font-weight:300; }
-</style>
 
 <script>
-  document.querySelectorAll('.accordion-trigger').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.accordion-item');
-      const content = item.querySelector('.accordion-content');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.accordion-item').forEach(i => { i.classList.remove('open'); i.querySelector('.accordion-content').classList.remove('open'); });
-      if(!isOpen){ item.classList.add('open'); content.classList.add('open'); }
-    });
+const i18n = {
+  en: {
+    who_label: "Who We Are",
+    who_h2: "Meet the team behind the course",
+    who1_name: "Valeriia Bakanova",
+    who1_title: "Professional Neurolanguage Coach® & Licensed Teacher Trainer®",
+    who1_bio: "Valeriia began teaching English over 20 years ago, growing from a private tutor into the founder of her own language school. Her path led her to neuroscience and coaching — today she is a certified Neurolanguage Coach® and Licensed Trainer® at ELC Ltd., helping educators transform their practice through brain science and emotional intelligence.",
+    who1_tag1: "20+ years of experience",
+    who1_tag2: "ICF & CCE Accredited",
+    who1_tag3: "Founder of English-Up",
+    who1_link: "Learn more about Valeriia",
+    who2_name: "Natalia Shubnikova",
+    who2_title: "Professional Life & Business Strategic Coach",
+    who2_bio: "Natalia built a successful career in the tech industry, rising from specialist to senior executive and co-founder. Managing teams and processes, she became convinced that real effectiveness is impossible without understanding human nature, motivation, and emotion. Today she is a certified Life & Business Strategic Coach helping professionals build conscious, profitable career paths.",
+    who2_tag1: "Former IT Top-Manager",
+    who2_tag2: "ICF Certified Coach",
+    who2_tag3: "Business Strategy Expert",
+    who3_name: "Oleg Poruchenko",
+    who3_title: "Neuropsychologist · Brain Injury Rehabilitation Practician",
+    who3_bio: "Oleg brings deep clinical expertise in neuropsychology and brain rehabilitation to the course. His work at a Brain Injury Rehab Centre gives him a rare, science-grounded perspective on how the brain learns, recovers, and adapts — knowledge that directly informs the neuroscience foundation of this programme.",
+    who3_tag1: "Clinical Neuropsychologist",
+    who3_tag2: "Brain Injury Rehab Specialist",
+    who3_tag3: "Neurologist",
+    who3_tag4: "Psychologist",
+    nav_about: "About the Project",
+    nav_individuals: "For Individuals",
+    nav_business: "For Business",
+    nav_pricing: "Pricing",
+    nav_enroll: "Enroll",
+    hero_eyebrow: "MindLander · Emotional Intelligence School for Leaders",
+    hero_h1: "Emotional Intelligence —<br><em>Your Superpower</em>",
+    hero_sub: "In a world driven by automation, human connection is the ultimate advantage. Develop the one skill no AI can replicate.",
+    hero_cta1: "Enroll Now",
+    hero_cta2: "Learn More",
+    forwho_label: "For Whom",
+    forwho_h2: "Our project is dedicated to developing emotional intelligence skills.",
+    forwho_intro: "Who will benefit most?",
+    forwho_card1: "<strong>Educators</strong> who want to stay ahead of AI competition — because no machine can replace the power of genuine human connection.",
+    forwho_card2: "<strong>Language school owners</strong> and tutoring services — if you want your school to stand out from all the rest and become the one people talk about: for its quality, understanding, and approach.",
+    forwho_card3: "<strong>Professionals and service providers</strong> who work with people and want to be in a league of their own — not just because you're skilled, but because you truly understand what your clients need right now.",
+    why_label: "Relevant Now",
+    why_h2: "Why does Emotional Intelligence matter right now?",
+    why_lead: "In a world where automation is replacing tasks, human connection has become the ultimate competitive advantage. EQ is the educational trend of 2026 — a scientifically proven force that impacts learning outcomes, mental wellbeing, and burnout prevention.",
+    tag1: "Trend 2026", tag2: "Scientifically Proven", tag3: "Teaching", tag4: "Leadership", tag5: "Client Service", tag6: "Conflict Management",
+    eq_label: "What is EQ",
+    eq_h2: "Emotional Intelligence is…",
+    eq1: "the ability to understand and manage emotions — <em>your own and others'</em>",
+    eq2: "understanding the <em>language of feelings</em> and translating it into action",
+    eq3: "the skill of <em>reading people</em> without words",
+    eq4: "knowing how to navigate situations and find the <em>right resolution</em> to conflict",
+    eq5: "knowing when it's time to leave a party 😄",
+    eq_question: "What's your definition of EQ?",
+    approach_label: "Our Approach",
+    approach_h2: "This program is essential for everyone working in the model:",
+    approach_box1: "Provider",
+    approach_box2: "Client",
+    approach_box3: "Successful, long-term partnership",
+    approach_box3_sub: "built on emotional intelligence",
+    testi_label: "Testimonials",
+    testi_h2: "What participants say",
+    t1_text: "Taking this course was a strategically important decision for my business. The knowledge went far beyond basic management skills — it fundamentally changed how we communicate, collaborate, and build relationships with partners and colleagues. Every module brought a unique blend of clarity, support, and motivation.",
+    t1_name: "Alexander", t1_role: "Information business owner",
+    t2_text: "The module on emotional intelligence — especially about the importance of rest and learning not to take students' behavior personally — was a true lifesaver. I now feel far more confident, balanced, and resilient, even when things get difficult at school.",
+    t2_name: "Ekaterina", t2_role: "Secondary school English teacher",
+    t3_text: "After completing the course, my small team and I felt like we'd grown wings. Within just two months of training, we learned how to confidently present my brand. I wholeheartedly recommend this course to any entrepreneur who needs fast, focused results.",
+    t3_name: "Yulia", t3_role: "Owner of a cosmetics clinic and natural skincare brand",
+    t4_text: "This course was a genuine revelation and gave powerful momentum to my private practice. I now know how not to take clients' reactions personally and how to maintain inner calm even in the most challenging situations.",
+    t4_name: "Irina", t4_role: "Corporate English trainer",
+    t5_text: "This training became my anchor in overcoming impostor syndrome and helped me untangle a web of limiting beliefs. The course gave me a structured vision of my goals and now I know exactly what my next steps are.",
+    t5_name: "Natalia", t5_role: "Independent entrepreneur",
+    t6_text: "From the very first modules, real productive changes began to show up in my work. The program didn't just give me knowledge — it gave me working tools for understanding what's really behind people's behavior.",
+    t6_name: "Tatyana", t6_role: "Business owner",
+    t7_text: "What was especially valuable was realizing how directly my emotions affect my decision-making. Through deep practices and a structured approach, I arrived at answers to questions that used to cause only anxiety. This is an entirely new level of self-understanding!",
+    t7_name: "Yulia", t7_role: "Language school owner",
+    formats_label: "Formats",
+    formats_h2: "Choose Your Path",
+    tab_individuals: "For Individuals",
+    tab_business: "For Business",
+    fmt_webinar_label: "Webinar",
+    fmt_webinar_h3: "Emotional Intelligence as a Key Success Factor",
+    fmt_webinar_p: "A one-time online webinar — the perfect entry point to explore the world of EQ, ask the speakers your questions, and discover how it works in real life.",
+    fmt_webinar_link: "Learn more about the webinar",
+    fmt_course_label: "Full Course",
+    fmt_course_h3: "Emotional Intelligence — the Key Factor in Your Success",
+    fmt_course_p: "A comprehensive 9-module course with practical assignments, live sessions, and a community of like-minded people. Hybrid format: recorded lessons + weekly live meetings.",
+    fmt_course_link: "Learn more about the course",
+    biz_intro: "We offer fully customized training solutions for businesses in any industry. We tailor the program to your team's specific needs and goals.",
+    biz1_h4: "Full Corporate Course", biz1_p: "A complete training program adapted to the specific needs of your business and team.",
+    biz2_h4: "Thematic Webinars", biz2_p: "One-time webinars focused on key aspects of EQ, tailored to your specific request.",
+    biz3_h4: "Workshops", biz3_p: "Intensive, hands-on workshops for practicing skills in real-world team scenarios.",
+    biz_cta: "Discuss a Partnership",
+    pricing_label: "Investment in Yourself",
+    pricing_h2: "Pricing",
+    price1_label: "Webinar", price1_h3: "Emotional Intelligence — Your Key to Success",
+    price1_p: "A one-time online webinar — the ideal entry point into the world of EQ. Live Q&A with speakers, practical insights, and your first step toward real change.",
+    price1_amount: "Price on request", price1_cta: "Find Out More",
+    price2_badge: "30% OFF",
+    price2_label: "Full Course", price2_h3: "Emotional Intelligence — Your Key to Success",
+    price2_p: "9 modules of deep immersion, live sessions, practice, and a community of like-minded professionals. Hybrid format: recordings + weekly live meetings.",
+    price2_note: "✦ Installment payment available", price2_cta: "Enroll in the Course",
+    curr_label: "Course Programme",
+    curr_h2: "9 Modules of Transformational Practice",
+    m1_title: "The Origins of EI and Why It Matters",
+    m1_body: "How people came to recognize the importance of EI. The history of the term from ancient philosophers to the present day, the evolution of EQ as a concept, key research, and the introduction of SEL programs in educational institutions. How EQ influences different areas of life.",
+    m2_title: "The Benefits of EI in Language Teaching",
+    m2_body: "Richard Boyatzis's model of emotional intelligence. Practical scenarios: how to maintain a student's attention, work with \"withdrawn\" learners, and manage emotional exhaustion. The connection between EI and student motivation, memory, and identity. The role of empathy, emotional resonance, and reflection as tools for educators.",
+    m3_title: "Threats to the Brain and Creating a Safe Learning Environment",
+    m3_body: "Brain states that positively and negatively impact learning. Words, formats, and actions perceived as threats: pressure, criticism, comparisons, leading questions. How to work with a student whose brain is in a threat state. Coaching practices for communicating with parents and decision-makers. The link between EI and the financial success of a teaching practice.",
+    m4_title: "Neuroscience: The Brain, the Amygdala, and Learning",
+    m4_body: "The \"triune brain\" and the role of each part. The amygdala and its processing of fear and stress — real-life case studies. The prefrontal cortex, working memory, and neuroplasticity. Cortisol and its dangers. How positive and negative emotions affect neural pathway formation and a student's progress.",
+    m5_title: "The Ideal State for Learning",
+    m5_body: "What an ideal learning environment looks like and how to create it. Dopamine vs. cortisol — motivation and demotivation. Positive and negative emotional attractors. The \"flow\" state and brainwave patterns. The brain's two modes — emotional and rational — and how to work with both.",
+    m6_title: "Emotional Triggers and the SCARF Model",
+    m6_body: "What a trigger is and how it connects to past experience. Common triggers for educators, techniques for immediate self-regulation, and long-term strategies. The SCARF model — educator behavior through the lens of social factors. How to give feedback and coaching practices for successful teaching.",
+    m7_title: "Student Triggers and Trauma: Recognize and Respond",
+    m7_body: "The difference between triggers and trauma in a learning context. Real-life case studies: how trauma continues to live in the body and affect the learning process. Recognition techniques and approaches for handling these situations — coaching, simulations, and exercises.",
+    m8_title: "Burnout: Recognizing It and Finding Balance",
+    m8_body: "The stages and symptoms of professional burnout. Emotional exhaustion vs. emotional resilience. Techniques for restoring emotional resources and burnout prevention through emotional hygiene.",
+    mb_title: "Bonus: The Financial Side of Your Practice",
+    mb_body: "Practical aspects of running a teaching practice: drafting contracts, navigating payment challenges, setting your rates, exploring different collaboration models, and structuring package offerings.",
+    curr_includes_label: "The course includes:",
+    curr_includes_text: "demo practices, brainstorming sessions, and group work",
+    curr_cta: "Enroll in the Course",
+    cta_h2: "Emotional Intelligence: a buzzword or the ultimate success factor?",
+    cta_btn: "Choose Your Format",
+    footer_tagline: "Emotional Intelligence for Educators and Business",
+    footer_docs_h4: "Documents",
+    footer_privacy: "Privacy Policy",
+    footer_cookies: "Cookie Policy",
+    footer_contact_h4: "Contact",
+    footer_contact_text: "For enquiries, please use the registration form",
+    footer_rights: "All Rights Reserved",
+    privacy_h3: "Privacy Policy",
+    privacy_h4_1: "1. Introduction", privacy_p1: "This Policy describes how we collect, use, and protect your personal data.",
+    privacy_h4_2: "2. Data We Collect", privacy_p2: "We collect information provided during registration: your name, email, and data necessary for participation in the course.",
+    privacy_h4_3: "3. Use of Data", privacy_p3: "Data is used to provide access to the course, send materials, and communicate with participants.",
+    cookies_h3: "Cookie Policy",
+    cookies_h4_1: "1. What are cookies?", cookies_p1: "Small text files saved on your device when you visit our website.",
+    cookies_h4_2: "2. How do we use cookies?", cookies_p2: "To remember your preferences, analyse how the site is used, and improve the overall user experience.",
+  },
+  uk: {
+    who_label: "Хто ми",
+    who_h2: "Команда курсу",
+    who1_name: "Валерія Баканова",
+    who1_title: "Professional Neurolanguage Coach® та Licensed Teacher Trainer®",
+    who1_bio: "Валерія почала викладати англійську мову понад 20 років тому і пройшла шлях від приватного репетитора до засновниці власної мовної школи. Її шлях привів до нейронауки та коучингу — сьогодні вона сертифікований Neurolanguage Coach® та Licensed Trainer® в ELC Ltd., яка допомагає викладачам трансформувати свою практику через науку про мозок та емоційний інтелект.",
+    who1_tag1: "20+ років досвіду",
+    who1_tag2: "Акредитація ICF & CCE",
+    who1_tag3: "Засновниця English-Up",
+    who1_link: "Дізнатися більше про Валерію",
+    who2_name: "Наталія Шубнікова",
+    who2_title: "Professional Life & Business Strategic Coach",
+    who2_bio: "Наталія збудувала успішну кар'єру в IT-бізнесі, пройшовши шлях від спеціаліста до топ-менеджера та співзасновника компанії. Керуючи командами та процесами, вона переконалась: справжня ефективність неможлива без розуміння людської природи, мотивації та емоцій. Сьогодні вона сертифікований Life & Business Strategic Coach, яка допомагає будувати усвідомлений і прибутковий професійний шлях.",
+    who2_tag1: "Колишній IT топ-менеджер",
+    who2_tag2: "Сертифікований ICF коуч",
+    who2_tag3: "Експерт з бізнес-стратегії",
+    who3_name: "Олег Порученко",
+    who3_title: "Нейропсихолог · Практик реабілітації після черепно-мозкових травм",
+    who3_bio: "Олег привносить глибоку клінічну експертизу з нейропсихології та реабілітації мозку. Його практика в Центрі реабілітації після ЧМТ дає унікальний, науково обґрунтований погляд на те, як мозок навчається, відновлюється та адаптується — знання, які безпосередньо формують нейронаукову основу цієї програми.",
+    who3_tag1: "Клінічний нейропсихолог",
+    who3_tag2: "Спеціаліст з реабілітації мозку",
+    who3_tag3: "Невролог",
+    who3_tag4: "Психолог",
+    nav_about: "Про проєкт",
+    nav_individuals: "Для приватних осіб",
+    nav_business: "Для бізнесу",
+    nav_pricing: "Вартість",
+    nav_enroll: "Записатися",
+    hero_eyebrow: "MindLander · Школа емоційного інтелекту для лідерів",
+    hero_h1: "Емоційний Інтелект —<br><em>твоя Суперсила</em>",
+    hero_sub: "У світі, де автоматизація замінює задачі, людський зв'язок стає головною перевагою. Розвивайте навичку, яку жоден штучний інтелект не зможе замінити.",
+    hero_cta1: "Записатися",
+    hero_cta2: "Дізнатися більше",
+    forwho_label: "Для кого",
+    forwho_h2: "Наш проєкт присвячено розвитку навичок емоційного інтелекту.",
+    forwho_intro: "Кому цей проєкт допоможе найбільше?",
+    forwho_card1: "<strong>Викладачі</strong>, які хочуть не боятися конкуренції зі штучним інтелектом — адже жодна машина не зможе замінити справжніх людських якостей.",
+    forwho_card2: "<strong>Власники мовних шкіл</strong> і репетиторських сервісів — якщо ви хочете, щоб ваша школа вирізнялася серед усіх інших і про неї ходили легенди: якість, розуміння, підхід.",
+    forwho_card3: "<strong>Люди та сервіси</strong>, що працюють з людьми і прагнуть бути поза конкуренцією — не лише тому, що ви професіонали, а тому що точно знаєте, що потрібно вашим клієнтам саме зараз.",
+    why_label: "Актуально зараз",
+    why_h2: "Чому емоційний інтелект такий важливий саме зараз?",
+    why_lead: "У світі, де автоматизація замінює задачі, людські зв'язки стають головною конкурентною перевагою. EQ — освітній тренд 2026 року. Це науково доведений факт, що впливає на успішність, ментальне здоров'я та відсутність вигорання.",
+    tag1: "Тренд 2026", tag2: "Науково доведено", tag3: "Викладання", tag4: "Лідерство", tag5: "Клієнтський сервіс", tag6: "Управління конфліктами",
+    eq_label: "Що таке ЕІ",
+    eq_h2: "Емоційний інтелект — це…",
+    eq1: "здатність розуміти емоції та керувати ними — <em>своїми й чужими</em>",
+    eq2: "розуміти <em>мову почуттів</em> і перетворювати її на дії",
+    eq3: "вміння <em>читати людей</em> без слів",
+    eq4: "вміння краще розуміти ситуації та знаходити <em>правильні рішення</em> конфліктів",
+    eq5: "коли знаєш, коли вже час іти додому 😄",
+    eq_question: "А яке твоє визначення ЕІ?",
+    approach_label: "Наш підхід",
+    approach_h2: "Наш проєкт необхідний усім, хто працює у моделі:",
+    approach_box1: "Виконавець",
+    approach_box2: "Клієнт",
+    approach_box3: "Успішна та довгострокова співпраця",
+    approach_box3_sub: "побудована на емоційному інтелекті",
+    testi_label: "Відгуки",
+    testi_h2: "Що кажуть учасники",
+    t1_text: "Проходження цього курсу стало для мого проєкту стратегічно важливим рішенням. Ми не лише прокачали розуміння бізнес-процесів, а й кардинально змінили те, як спілкуємось, співпрацюємо та будуємо стосунки з партнерами і колегами. Кожен блок програми приносив унікальне поєднання ясності, підтримки та мотивації.",
+    t1_name: "Олександр", t1_role: "Власник інформаційного бізнесу",
+    t2_text: "Блок про емоційний інтелект — особливо про важливість відпочинку і про те, як не сприймати поведінку учнів особисто — став для мене справжнім порятунком. Тепер я почуваюся значно впевненіше, збалансованіше та стійкіше, навіть коли в школі стає складно.",
+    t2_name: "Катерина", t2_role: "Вчителька англійської в середній школі",
+    t3_text: "Після курсу в мене і моєї команди немов виросли крила. Вже за два місяці навчання ми навчились впевнено представляти бренд. Щиро рекомендую цей курс усім підприємцям, яким потрібні швидкі, сфокусовані результати.",
+    t3_name: "Юлія", t3_role: "Власниця косметичної клініки та бренду натуральної косметики",
+    t4_text: "Цей курс став для мене справжнім відкриттям і дав потужний імпульс моїй практиці. Тепер я знаю, як не сприймати реакції клієнтів особисто та зберігати внутрішній спокій навіть у найскладніших ситуаціях.",
+    t4_name: "Ірина", t4_role: "Корпоративна викладачка",
+    t5_text: "Навчання стало для мене точкою опори в подоланні синдрому самозванця і допомогло розплутати клубок обмежувальних переконань. Завдяки курсу я отримала структуроване бачення своїх цілей і тепер точно знаю свої наступні кроки.",
+    t5_name: "Наталія", t5_role: "Приватна підприємниця",
+    t6_text: "Вже після перших модулів у моїй роботі почались реальні зміни. Програма дала мені не просто знання, а робочі інструменти для розуміння того, що насправді стоїть за поведінкою людей.",
+    t6_name: "Тетяна", t6_role: "Власниця бізнесу",
+    t7_text: "Особливо цінним було усвідомити, як мої емоції безпосередньо впливають на прийняття рішень. Завдяки глибоким практикам я сама дійшла до відповідей на запитання, які раніше викликали лише тривогу. Це абсолютно новий рівень розуміння себе!",
+    t7_name: "Юлія", t7_role: "Власниця мовної школи",
+    formats_label: "Формати",
+    formats_h2: "Оберіть свій шлях",
+    tab_individuals: "Для приватних осіб",
+    tab_business: "Для бізнесу",
+    fmt_webinar_label: "Вебінар",
+    fmt_webinar_h3: "Емоційний Інтелект як ключовий фактор успіху",
+    fmt_webinar_p: "Одноразовий онлайн-вебінар — ідеальна точка входу, щоб познайомитись із темою EQ, поставити запитання спікерам і зрозуміти, як це працює на практиці.",
+    fmt_webinar_link: "Дізнатися більше про вебінар",
+    fmt_course_label: "Повний курс",
+    fmt_course_h3: "Емоційний Інтелект — ключовий фактор вашого успіху",
+    fmt_course_p: "Повноцінний курс із 9 модулів з практичними завданнями, живими сесіями та спільнотою однодумців. Гібридний формат: уроки в записі + щотижневі зустрічі.",
+    fmt_course_link: "Дізнатися більше про курс",
+    biz_intro: "Ми адаптуємо нашу програму під будь-яку сферу та під конкретний запит вашої команди.",
+    biz1_h4: "Повний корпоративний курс", biz1_p: "Комплексна програма навчання, адаптована під специфіку вашого бізнесу та команди.",
+    biz2_h4: "Тематичні вебінари", biz2_p: "Одноразові вебінари з ключових аспектів EQ з фокусом на ваш конкретний запит.",
+    biz3_h4: "Воркшопи", biz3_p: "Інтенсивні практичні воркшопи для відпрацювання навичок у реальних ситуаціях команди.",
+    biz_cta: "Обговорити співпрацю",
+    pricing_label: "Інвестиція в себе",
+    pricing_h2: "Вартість",
+    price1_label: "Вебінар", price1_h3: "Емоційний Інтелект — ваш ключовий фактор успіху",
+    price1_p: "Одноразовий онлайн-вебінар — ідеальна точка входу в тему EQ. Живі запитання спікерам, практичні інсайти та перший крок до змін.",
+    price1_amount: "Вартість уточнюється", price1_cta: "Дізнатися більше",
+    price2_badge: "Знижка 30%",
+    price2_label: "Повний курс", price2_h3: "Емоційний Інтелект — ваш ключовий фактор успіху",
+    price2_p: "9 модулів глибокого занурення, живі сесії, практика та спільнота однодумців. Гібридний формат: записи + щотижневі зустрічі.",
+    price2_note: "✦ Доступна оплата частинами", price2_cta: "Записатися на курс",
+    curr_label: "Програма курсу",
+    curr_h2: "9 модулів трансформаційної практики",
+    m1_title: "Виникнення ЕІ та його важливість",
+    m1_body: "Як люди дійшли до важливості ЕІ та його вивчення. Історія терміна від давніх філософів до наших днів, еволюція поняття EQ, ключові дослідження та впровадження програм SEL в освітніх закладах. Вплив EQ на різні сфери життя людини.",
+    m2_title: "Переваги ЕІ у викладанні іноземної мови",
+    m2_body: "Модель ЕІ Річарда Бояціса. Практичні сценарії: як утримати увагу учня, працювати із «закритими» студентами, справлятися з емоційним виснаженням. Зв'язок ЕІ з мотивацією, пам'яттю та ідентичністю учня. Роль емпатії, емоційного резонансу та рефлексії як інструментів викладача.",
+    m3_title: "Загрози для мозку та безпечне середовище навчання",
+    m3_body: "Стани мозку, що позитивно й негативно впливають на навчання. Слова, формати й дії, що сприймаються як загрози: тиск, критика, порівняння, запитання-пастки. Як працювати з учнем, мозок якого перебуває в стані загрози. Коучингові практики для комунікації з батьками та особами, що приймають рішення.",
+    m4_title: "Нейрофізіологія: мозок, амигдала та навчання",
+    m4_body: "«Триєдиний мозок» і роль кожної його частини. Амигдала та обробка страху й стресу — розбір реальних ситуацій. Префронтальна кора, робоча пам'ять і нейропластичність. Кортизол та його небезпека. Як позитивні та негативні емоції впливають на формування нейронних зв'язків і прогрес учня.",
+    m5_title: "Ідеальний стан для навчання",
+    m5_body: "Що таке ідеальне навчальне середовище і як його створити. Дофамін vs. кортизол — мотивація та демотивація. Позитивні та негативні емоційні атрактори. Стан «потоку» (Flow) і хвилі головного мозку. Два стани мозку — емоційний і раціональний — і як з ними працювати.",
+    m6_title: "Емоційні тригери та модель SCARF",
+    m6_body: "Що таке тригер і його зв'язок із минулим досвідом. Типові тригери викладача, техніки миттєвої саморегуляції та довгострокові стратегії роботи з ними. Модель SCARF — поведінка викладача з точки зору соціальних факторів. Як давати зворотний зв'язок і коучингові практики для успішного викладання.",
+    m7_title: "Тригери та травми студента: розпізнати й допомогти",
+    m7_body: "Різниця між тригерами та травмами в навчанні. Розбір реальних ситуацій: як травма продовжує жити в тілі й впливати на навчальний процес. Техніки розпізнавання та впливу на ситуацію — коучинг, симуляції, вправи.",
+    m8_title: "Вигорання: помітити й зберегти баланс",
+    m8_body: "Стадії та симптоми професійного вигорання. Емоційне виснаження vs. емоційна стійкість. Техніки відновлення емоційного ресурсу та профілактика через емоційну гігієну.",
+    mb_title: "Бонус: Матеріальна складова практики",
+    mb_body: "Практичні аспекти ведення викладацької практики: укладання договору, складнощі з оплатою, визначення вартості послуг, варіанти співпраці та формати пакетних пропозицій.",
+    curr_includes_label: "Курс включає:",
+    curr_includes_text: "демо-практики, мозкові штурми та групову роботу",
+    curr_cta: "Записатися на курс",
+    cta_h2: "Емоційний інтелект: модний термін чи головний фактор успіху?",
+    cta_btn: "Обрати формат",
+    footer_tagline: "Емоційний інтелект для викладачів і бізнесу",
+    footer_docs_h4: "Документи",
+    footer_privacy: "Політика конфіденційності",
+    footer_cookies: "Політика cookies",
+    footer_contact_h4: "Контакти",
+    footer_contact_text: "З питань звертайтеся через форму реєстрації",
+    footer_rights: "Усі права захищені",
+    privacy_h3: "Політика конфіденційності",
+    privacy_h4_1: "1. Вступ", privacy_p1: "Ця Політика описує, як ми збираємо, використовуємо та захищаємо ваші особисті дані.",
+    privacy_h4_2: "2. Дані, що збираються", privacy_p2: "Ми збираємо інформацію, надану під час реєстрації: ім'я, email та дані, необхідні для навчання.",
+    privacy_h4_3: "3. Використання даних", privacy_p3: "Дані використовуються для надання доступу до курсу, надсилання матеріалів та комунікації.",
+    cookies_h3: "Політика cookies",
+    cookies_h4_1: "1. Що таке cookie?", cookies_p1: "Невеликі текстові файли, що зберігаються на пристрої під час відвідування сайту.",
+    cookies_h4_2: "2. Як ми використовуємо cookies?", cookies_p2: "Для запам'ятовування вподобань, аналізу використання сайту та покращення користувацького досвіду.",
+  }
+};
+
+let currentLang = 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  // Update button states
+  document.querySelectorAll('.lang-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (i === 0 && lang === 'en') || (i === 1 && lang === 'uk'));
   });
 
-  document.querySelectorAll('.bio-toggle').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const bio = btn.closest('.speaker-card').querySelector('.bio-content');
-      const arrow = btn.querySelector('.bio-arrow');
-      const label = btn.querySelector('.bio-toggle-text');
-      const isOpen = bio.style.maxHeight && bio.style.maxHeight !== '0px';
-      if(isOpen){ bio.style.maxHeight='0px'; bio.style.opacity='0'; arrow.style.transform='rotate(0deg)'; label.textContent='Read her story'; }
-      else { bio.style.maxHeight=bio.scrollHeight+'px'; bio.style.opacity='1'; arrow.style.transform='rotate(180deg)'; label.textContent='Collapse'; }
-    });
-  });
-
-  function switchTabFromNav(){
-    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById('tab-business').classList.add('active');
-    document.querySelectorAll('.tab-btn')[1].classList.add('active');
-  }
-
-  function switchTab(name, btn){
-    document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-    document.getElementById('tab-'+name).classList.add('active');
-    btn.classList.add('active');
-  }
-
-  function showModal(type){ document.getElementById(type+'-modal').style.display='flex'; document.body.style.overflow='hidden'; }
-  function closeModal(){ document.querySelectorAll('.modal-overlay').forEach(m=>m.style.display='none'); document.body.style.overflow=''; }
-  document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeModal(); });
-
-  document.querySelectorAll('.modal-acc-trigger').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.modal-acc-item');
-      const content = item.querySelector('.modal-acc-content');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.modal-acc-item').forEach(i => { i.classList.remove('open'); i.querySelector('.modal-acc-content').classList.remove('open'); });
-      if(!isOpen){ item.classList.add('open'); content.classList.add('open'); }
-    });
-  });
-
-  function animateTag(el) {
-    el.classList.remove('pop');
-    void el.offsetWidth;
-    el.classList.add('pop');
-    el.addEventListener('animationend', () => el.classList.remove('pop'), { once: true });
-  }
-
-  (function() {
-    const track = document.getElementById('reviewsTrack');
-    const dotsContainer = document.getElementById('reviewsDots');
-    const cards = track.querySelectorAll('.review-card');
-    let current = 0;
-
-    function getVisible() {
-      if (window.innerWidth <= 600) return 1;
-      if (window.innerWidth <= 900) return 2;
-      return 3;
+  // Update all translatable elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (i18n[lang][key] !== undefined) {
+      el.innerHTML = i18n[lang][key];
     }
-
-    function totalSlides() { return Math.ceil(cards.length / getVisible()); }
-
-    function buildDots() {
-      dotsContainer.innerHTML = '';
-      for (let i = 0; i < totalSlides(); i++) {
-        const d = document.createElement('button');
-        d.className = 'reviews-dot' + (i === current ? ' active' : '');
-        d.onclick = () => goTo(i);
-        dotsContainer.appendChild(d);
-      }
-    }
-
-    function goTo(index) {
-      current = Math.max(0, Math.min(index, totalSlides() - 1));
-      const visible = getVisible();
-      const cardWidth = cards[0].offsetWidth + 28;
-      track.style.transform = `translateX(-${current * visible * cardWidth}px)`;
-      document.getElementById('reviewsPrev').disabled = current === 0;
-      document.getElementById('reviewsNext').disabled = current >= totalSlides() - 1;
-      dotsContainer.querySelectorAll('.reviews-dot').forEach((d, i) => d.classList.toggle('active', i === current));
-    }
-
-    window.slideReviews = (dir) => goTo(current + dir);
-
-    buildDots();
-    goTo(0);
-    window.addEventListener('resize', () => { buildDots(); goTo(0); });
-  })();
-
-  function toggleReview(btn) {
-    const text = btn.previousElementSibling.querySelector('.review-text');
-    const fade = btn.previousElementSibling.querySelector('.review-fade');
-    const isExpanded = text.classList.contains('expanded');
-    text.classList.toggle('expanded');
-    fade.classList.toggle('hidden');
-    btn.classList.toggle('expanded');
-    btn.childNodes[0].textContent = isExpanded ? 'Read more ' : 'Collapse ';
-  }
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  const qObs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  document.querySelectorAll('.quote-item').forEach((el, i) => {
-    el.style.transitionDelay = (i * 0.1) + 's';
-    qObs.observe(el);
   });
+
+  // Update page title
+  document.title = lang === 'uk' ? 'MindLander — Емоційний Інтелект' : 'MindLander — Emotional Intelligence';
+
+  // Re-sync tab buttons text (they get overwritten by data-i18n but need active class preserved)
+  const activeTab = document.querySelector('.tab-btn.active');
+  if (activeTab) activeTab.classList.add('active');
+}
+
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function toggleModule(header) {
+  header.parentElement.classList.toggle('open');
+}
+
+// Init English on load
+setLang('en');
 </script>
 </body>
 </html>
