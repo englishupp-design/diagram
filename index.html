@@ -205,24 +205,6 @@
     .biz-option h4 { color: var(--white); font-size: 1rem; margin-bottom: 6px; }
     .biz-option p { color: rgba(255,255,255,0.6); font-size: 0.875rem; line-height: 1.6; }
 
-    /* ── PRICING ── */
-    .pricing { background: var(--white); }
-    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-    .price-card { border: 1.5px solid var(--border); border-radius: 20px; padding: 40px; position: relative; transition: transform 0.2s; }
-    .price-card:hover { transform: translateY(-4px); }
-    .price-card.featured { border-color: var(--accent); background: linear-gradient(135deg, rgba(200,149,106,0.05), transparent); }
-    .price-badge { position: absolute; top: -14px; left: 32px; background: var(--accent); color: var(--white); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; padding: 6px 16px; border-radius: 100px; }
-    .price-label { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
-    .price-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 16px; }
-    .price-card p { color: var(--muted); line-height: 1.7; margin-bottom: 24px; font-size: 0.95rem; }
-    .price-old { text-decoration: line-through; color: var(--muted); font-size: 1.1rem; }
-    .price-new { font-size: 2.5rem; font-weight: 700; color: var(--dark); font-family: 'Playfair Display', serif; }
-    .price-note { font-size: 0.8rem; color: var(--muted); margin-bottom: 28px; }
-    .price-cta { display: block; text-align: center; background: var(--dark); color: var(--white); padding: 14px; border-radius: 12px; text-decoration: none; font-weight: 500; transition: background 0.2s; }
-    .price-cta:hover { background: var(--accent); }
-    .price-card.featured .price-cta { background: var(--accent); }
-    .price-card.featured .price-cta:hover { background: var(--dark); }
-
     /* ── CURRICULUM ── */
     .curriculum { background: var(--cream); }
     .modules { display: flex; flex-direction: column; gap: 2px; }
@@ -250,7 +232,6 @@
     .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
     .footer-brand { display: flex; flex-direction: column; gap: 12px; }
     .footer-brand img { height: 32px; }
-    .footer-brand-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); }
     .footer-brand p { font-size: 0.875rem; line-height: 1.6; }
     footer h4 { color: var(--white); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
     footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
@@ -690,7 +671,6 @@ const i18n = {
     nav_about: "About the Project",
     nav_individuals: "For Individuals",
     nav_business: "For Business",
-    nav_pricing: "Pricing",
     nav_enroll: "Enroll",
     hero_eyebrow: "MindLander · Emotional Intelligence School for Leaders",
     hero_h1: "Emotional Intelligence —<br><em>Your Superpower</em>",
@@ -754,15 +734,6 @@ const i18n = {
     biz2_h4: "Thematic Webinars", biz2_p: "One-time webinars focused on key aspects of EQ, tailored to your specific request.",
     biz3_h4: "Workshops", biz3_p: "Intensive, hands-on workshops for practicing skills in real-world team scenarios.",
     biz_cta: "Discuss a Partnership",
-    pricing_label: "Investment in Yourself",
-    pricing_h2: "Pricing",
-    price1_label: "Webinar", price1_h3: "Emotional Intelligence — Your Key to Success",
-    price1_p: "A one-time online webinar — the ideal entry point into the world of EQ. Live Q&A with speakers, practical insights, and your first step toward real change.",
-    price1_amount: "Price on request", price1_cta: "Find Out More",
-    price2_badge: "30% OFF",
-    price2_label: "Full Course", price2_h3: "Emotional Intelligence — Your Key to Success",
-    price2_p: "9 modules of deep immersion, live sessions, practice, and a community of like-minded professionals. Hybrid format: recordings + weekly live meetings.",
-    price2_note: "✦ Installment payment available", price2_cta: "Enroll in the Course",
     curr_label: "Course Programme",
     curr_h2: "9 Modules of Transformational Practice",
     m1_title: "The Origins of EI and Why It Matters",
@@ -829,7 +800,6 @@ const i18n = {
     nav_about: "Про проєкт",
     nav_individuals: "Для приватних осіб",
     nav_business: "Для бізнесу",
-    nav_pricing: "Вартість",
     nav_enroll: "Записатися",
     hero_eyebrow: "MindLander · Школа емоційного інтелекту для лідерів",
     hero_h1: "Емоційний Інтелект —<br><em>твоя Суперсила</em>",
@@ -893,15 +863,6 @@ const i18n = {
     biz2_h4: "Тематичні вебінари", biz2_p: "Одноразові вебінари з ключових аспектів EQ з фокусом на ваш конкретний запит.",
     biz3_h4: "Воркшопи", biz3_p: "Інтенсивні практичні воркшопи для відпрацювання навичок у реальних ситуаціях команди.",
     biz_cta: "Обговорити співпрацю",
-    pricing_label: "Інвестиція в себе",
-    pricing_h2: "Вартість",
-    price1_label: "Вебінар", price1_h3: "Емоційний Інтелект — ваш ключовий фактор успіху",
-    price1_p: "Одноразовий онлайн-вебінар — ідеальна точка входу в тему EQ. Живі запитання спікерам, практичні інсайти та перший крок до змін.",
-    price1_amount: "Вартість уточнюється", price1_cta: "Дізнатися більше",
-    price2_badge: "Знижка 30%",
-    price2_label: "Повний курс", price2_h3: "Емоційний Інтелект — ваш ключовий фактор успіху",
-    price2_p: "9 модулів глибокого занурення, живі сесії, практика та спільнота однодумців. Гібридний формат: записи + щотижневі зустрічі.",
-    price2_note: "✦ Доступна оплата частинами", price2_cta: "Записатися на курс",
     curr_label: "Програма курсу",
     curr_h2: "9 модулів трансформаційної практики",
     m1_title: "Виникнення ЕІ та його важливість",
