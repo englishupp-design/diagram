@@ -41,6 +41,8 @@
   .lang-btn:not(.active):hover{background:rgba(201,168,124,0.15);}
   .nav-cta{background:var(--sand)!important;color:var(--near-black)!important;padding:9px 22px!important;border-radius:4px!important;font-size:0.88rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;}
   .nav-cta:hover{background:var(--sand-light)!important;transform:translateY(-1px);}
+  .nav-book{background:transparent!important;color:var(--teal-light)!important;padding:9px 22px!important;border-radius:4px!important;border:1px solid var(--teal-light)!important;font-size:0.88rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;}
+  .nav-book:hover{background:var(--teal-light)!important;color:var(--near-black)!important;transform:translateY(-1px);}
 
   /* HERO */
   .hero{
@@ -66,9 +68,9 @@
     inset:0;
     background: linear-gradient(
       160deg,
-      rgba(26,31,31,0.72) 0%,
-      rgba(45,74,74,0.65) 55%,
-      rgba(61,107,107,0.55) 100%
+      rgba(8,12,12,0.96) 0%,
+      rgba(15,25,25,0.93) 55%,
+      rgba(25,45,45,0.88) 100%
     );
     z-index:0;
   }
@@ -78,15 +80,15 @@
     position:absolute;
     inset:0;
     background:
-      radial-gradient(ellipse 60% 50% at 70% 30%,rgba(91,184,178,0.15) 0%,transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 80%,rgba(201,168,124,0.1) 0%,transparent 70%);
+      radial-gradient(ellipse 60% 50% at 70% 30%,rgba(91,184,178,0.1) 0%,transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%,rgba(201,168,124,0.08) 0%,transparent 70%);
     z-index:1;
   }
   .hero > *{position:relative;z-index:2;}
-  .hero-logo{width:180px;height:auto;margin-bottom:24px;filter:drop-shadow(0 8px 32px rgba(0,0,0,0.45));}
-  .hero-eyebrow{font-size:0.72rem;font-weight:400;letter-spacing:0.18em;text-transform:uppercase;color:var(--sand-light);margin-bottom:20px;opacity:0.85;}
-  .hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:300;color:var(--white);line-height:1.25;max-width:820px;background:rgba(26,31,31,0.45);backdrop-filter:blur(6px);border:1px solid rgba(91,184,178,0.18);border-radius:16px;padding:32px 48px;box-shadow:0 8px 48px rgba(0,0,0,0.35);}
-  .hero h1 em{font-style:italic;color:var(--sand-light);}
+  .hero-logo{width:180px;height:auto;margin-bottom:24px;filter:drop-shadow(0 8px 32px rgba(0,0,0,0.6));}
+  .hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--sand-light);margin-bottom:20px;opacity:1;text-shadow:0 2px 8px rgba(0,0,0,0.6);}
+  .hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:400;color:var(--white);line-height:1.25;max-width:820px;background:rgba(10,18,18,0.65);backdrop-filter:blur(10px);border:1px solid rgba(91,184,178,0.25);border-radius:16px;padding:32px 48px;box-shadow:0 8px 48px rgba(0,0,0,0.5);text-shadow:0 2px 16px rgba(0,0,0,0.5);}
+  .hero h1 em{font-style:italic;color:var(--sand-light);text-shadow:0 2px 12px rgba(0,0,0,0.4);}
 
   /* SECTIONS */
   section{padding:100px 5%;}
@@ -112,18 +114,32 @@
   @keyframes tagPop{0%{transform:scale(1);background:var(--teal-dark);}20%{transform:scale(1.18);background:var(--sand);color:var(--near-black);box-shadow:0 8px 28px rgba(201,168,124,0.5);}50%{transform:scale(0.95);}75%{transform:scale(1.06);}100%{transform:scale(1);background:var(--teal-dark);color:var(--white);box-shadow:none;}}
 
   /* QUOTES / EQ */
-  .quotes-section{background:var(--deep-teal);}
-  .quotes-section .section-label{color:var(--sand);}
+  .quotes-section{
+    background-image: url('https://raw.githubusercontent.com/englishupp-design/diagram/main/photo%202.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  .quotes-section::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: rgba(5,10,10,0.97);
+    z-index:0;
+  }
+  .quotes-section .section-inner{position:relative;z-index:1;}
+  .quotes-section .section-label{color:var(--sand);position:relative;z-index:1;}
   .quotes-list{display:flex;flex-direction:column;max-width:840px;margin-top:48px;}
-  .quote-item{display:flex;align-items:flex-start;gap:28px;padding:32px 0;border-bottom:1px solid rgba(91,184,178,0.15);opacity:0;transform:translateX(-16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+  .quote-item{display:flex;align-items:flex-start;gap:28px;padding:22px 28px;margin-bottom:12px;border-radius:12px;background:rgba(217,224,227,0.07);backdrop-filter:blur(12px);border:1px solid rgba(217,224,227,0.18);border-left:3px solid rgba(217,224,227,0.35);opacity:0;transform:translateX(-16px);transition:opacity 0.5s ease,transform 0.5s ease;}
   .quote-item.visible{opacity:1;transform:translateX(0);}
-  .quote-item:last-of-type{border-bottom:none;}
-  .quote-num{font-family:"Cormorant Garamond",serif;font-size:3.5rem;font-weight:300;color:rgba(91,184,178,0.22);line-height:1;flex-shrink:0;width:52px;text-align:right;}
+  .quote-item:last-of-type{margin-bottom:0;}
+  .quote-num{font-family:"Cormorant Garamond",serif;font-size:3.5rem;font-weight:300;color:rgba(217,224,227,0.4);line-height:1;flex-shrink:0;width:52px;text-align:right;}
   .quote-body{padding-top:8px;}
-  .quote-lead{font-family:"Cormorant Garamond",serif;font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:300;color:var(--off-white);line-height:1.4;}
+  .quote-lead{font-family:"Cormorant Garamond",serif;font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:400;color:#d9e0e3;line-height:1.4;text-shadow:0 1px 8px rgba(0,0,0,0.8);}
   .quote-lead em{font-style:italic;color:var(--teal-light);}
-  .quotes-cta-block{margin-top:56px;padding:28px 36px;background:rgba(91,184,178,0.1);border:1px solid rgba(91,184,178,0.25);border-radius:14px;display:inline-block;max-width:480px;}
-  .quotes-cta-block p{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-style:italic;color:var(--sand-light);line-height:1.4;}
+  .quotes-cta-block{margin-top:40px;padding:28px 36px;background:rgba(217,224,227,0.07);backdrop-filter:blur(12px);border:1px solid rgba(217,224,227,0.2);border-radius:14px;display:inline-block;max-width:480px;}
+  .quotes-cta-block p{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-style:italic;color:#d9e0e3;line-height:1.4;text-shadow:0 1px 8px rgba(0,0,0,0.8);}
 
   /* MODEL */
   .model-flow{display:flex;align-items:center;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:48px;}
@@ -190,21 +206,40 @@
 
   /* OFFERINGS */
   .offerings-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-top:8px;}
-  .offering-card{background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,124,0.25);border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;gap:16px;transition:all 0.3s;}
-  .offering-card:hover{background:rgba(91,184,178,0.1);border-color:rgba(91,184,178,0.4);transform:translateY(-4px);}
-  .offering-card--featured{border-color:rgba(201,168,124,0.55);background:rgba(201,168,124,0.07);}
+  .offering-card{background:rgba(10,18,18,0.75);border:1px solid rgba(201,168,124,0.35);border-radius:20px;padding:36px 32px;display:flex;flex-direction:column;gap:16px;transition:all 0.3s;cursor:pointer;}
+  .offering-card:hover{background:rgba(91,184,178,0.15);border-color:rgba(91,184,178,0.5);transform:translateY(-4px);}
+  .offering-card--featured{border-color:rgba(201,168,124,0.65);background:rgba(10,18,18,0.8);}
+  .offering-card.pop{animation:offeringPop 0.5s cubic-bezier(0.36,0.07,0.19,0.97);}
+  @keyframes offeringPop{
+    0%  {transform:scale(1);}
+    20% {transform:scale(1.03);box-shadow:0 8px 32px rgba(201,168,124,0.45);border-color:rgba(201,168,124,0.9);}
+    50% {transform:scale(0.98);}
+    75% {transform:scale(1.015);}
+    100%{transform:scale(1);box-shadow:none;}
+  }
   .offering-tag{display:inline-block;font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:5px 14px;border-radius:100px;background:rgba(91,184,178,0.3);color:var(--sand-light);width:fit-content;}
   .offering-tag--gold{background:rgba(201,168,124,0.25);color:var(--sand-light);}
-  .offering-title{font-family:"Cormorant Garamond",serif;font-size:1.45rem;font-weight:400;color:var(--off-white);line-height:1.3;}
-  .offering-desc{font-size:0.88rem;color:rgba(237,224,206,0.65);line-height:1.75;font-weight:300;flex:1;}
+  .offering-title{font-family:"Cormorant Garamond",serif;font-size:1.75rem;font-weight:400;color:#d9e0e3;line-height:1.3;text-shadow:0 2px 10px rgba(0,0,0,0.7);}
+  .offering-desc{font-size:1rem;color:rgba(237,224,206,0.9);line-height:1.8;font-weight:400;flex:1;text-shadow:0 1px 6px rgba(0,0,0,0.6);}
 
   /* BIZ GRID */
   .biz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-  .biz-card{background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,124,0.2);border-radius:16px;padding:32px 28px;transition:all 0.3s;}
-  .biz-card:hover{background:rgba(91,184,178,0.12);border-color:rgba(91,184,178,0.4);transform:translateY(-4px);}
+  .biz-card{background:rgba(10,18,18,0.75);border:1px solid rgba(201,168,124,0.3);border-radius:16px;padding:32px 28px;transition:all 0.3s;cursor:pointer;}
+  .biz-card:hover{background:rgba(91,184,178,0.15);border-color:rgba(91,184,178,0.5);transform:translateY(-4px);}
+  .biz-card.pop{animation:offeringPop 0.5s cubic-bezier(0.36,0.07,0.19,0.97);}
+  .biz-intro-box{font-size:1rem;line-height:1.85;color:rgba(237,224,206,0.9);max-width:700px;font-weight:400;margin-bottom:48px;text-shadow:0 1px 6px rgba(0,0,0,0.6);background:rgba(10,18,18,0.75);backdrop-filter:blur(12px);border:1px solid rgba(217,224,227,0.18);border-left:3px solid rgba(217,224,227,0.35);border-radius:12px;padding:22px 28px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;user-select:none;}
+  .biz-intro-box:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,74,74,0.3);}
+  .biz-intro-box.pop{animation:bizPop 0.5s cubic-bezier(0.36,0.07,0.19,0.97);}
+  @keyframes bizPop{
+    0%{transform:scale(1);background:rgba(10,18,18,0.75);border-color:rgba(217,224,227,0.18);}
+    20%{transform:scale(1.02);background:rgba(201,168,124,0.25);border-color:rgba(201,168,124,0.6);box-shadow:0 8px 28px rgba(201,168,124,0.4);}
+    50%{transform:scale(0.99);}
+    75%{transform:scale(1.01);}
+    100%{transform:scale(1);background:rgba(10,18,18,0.75);border-color:rgba(217,224,227,0.18);box-shadow:none;}
+  }
   .biz-icon{font-size:1.8rem;margin-bottom:16px;}
-  .biz-card h3{font-family:"Cormorant Garamond",serif;font-size:1.25rem;color:var(--off-white);margin-bottom:10px;}
-  .biz-card p{font-size:0.88rem;color:rgba(237,224,206,0.6);line-height:1.7;font-weight:300;}
+  .biz-card h3{font-family:"Cormorant Garamond",serif;font-size:1.35rem;color:#d9e0e3;margin-bottom:10px;text-shadow:0 1px 6px rgba(0,0,0,0.6);}
+  .biz-card p{font-size:0.92rem;color:rgba(237,224,206,0.9);line-height:1.75;font-weight:400;text-shadow:0 1px 4px rgba(0,0,0,0.5);}
 
   /* CURRICULUM ACCORDION */
   .accordion-item{border:1px solid rgba(201,168,124,0.2);border-radius:12px;overflow:hidden;margin-bottom:10px;}
@@ -218,7 +253,20 @@
   .accordion-content.open{max-height:300px;padding-top:16px;padding-bottom:20px;}
   .accordion-content p{color:rgba(237,224,206,0.65);font-size:0.9rem;line-height:1.7;font-weight:300;}
 
-  /* BTNS */
+  /* BOOK A CALL */
+  .book-section{background:var(--bg);padding:100px 5%;}
+  .book-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .book-text .section-label{color:var(--teal-mid);}
+  .book-text h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--near-black);line-height:1.2;margin-bottom:20px;}
+  .book-text p{font-size:1rem;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:36px;}
+  .book-form{background:var(--white);border:1px solid rgba(45,74,74,0.12);border-radius:20px;padding:40px 36px;display:flex;flex-direction:column;gap:16px;box-shadow:0 12px 40px rgba(45,74,74,0.08);}
+  .book-form input,.book-form select,.book-form textarea{width:100%;padding:13px 16px;border:1px solid rgba(45,74,74,0.18);border-radius:8px;font-family:"DM Sans",sans-serif;font-size:0.9rem;color:var(--text-dark);background:var(--bg);outline:none;transition:border-color 0.2s;}
+  .book-form input:focus,.book-form select:focus,.book-form textarea:focus{border-color:var(--teal-mid);}
+  .book-form textarea{resize:vertical;min-height:100px;}
+  .book-form select{appearance:none;cursor:pointer;}
+  .book-form-label{font-size:0.78rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:-8px;}
+  .book-form .btn-primary{width:100%;text-align:center;margin-top:8px;}
+  @media(max-width:768px){.book-inner{grid-template-columns:1fr;gap:40px;}}
   .btn-primary{display:inline-block;background:var(--sand);color:var(--near-black);text-decoration:none;font-size:0.88rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:16px 44px;border-radius:4px;transition:all 0.25s;border:none;cursor:pointer;}
   .btn-primary:hover{background:var(--sand-light);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.2);}
   .btn-outline{display:inline-block;background:transparent;border:1px solid rgba(201,168,124,0.5);color:var(--sand-light);text-decoration:none;font-size:0.88rem;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;padding:14px 36px;border-radius:4px;transition:all 0.25s;}
@@ -279,7 +327,8 @@
     <li><a href="#formats" onclick="switchTab('individuals',document.querySelectorAll('.tab-btn')[0])" data-i18n="nav_individuals"></a></li>
     <li><a href="#formats" onclick="switchTabBiz()" data-i18n="nav_business"></a></li>
     <li><a href="#curriculum" data-i18n="nav_curriculum"></a></li>
-    <li><a href="#register" class="nav-cta" data-i18n="nav_enroll"></a></li>
+    <li><a href="#formats" class="nav-cta" data-i18n="nav_enroll"></a></li>
+    <li style="margin-left:16px;"><a href="#bookcall" class="nav-book" data-i18n="nav_book"></a></li>
   </ul>
   <div class="nav-right">
     <div class="lang-switcher">
@@ -333,7 +382,7 @@
 <section class="quotes-section" id="about">
   <div class="section-inner">
     <div class="section-label" data-i18n="eq_label"></div>
-    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:0;" data-i18n="eq_h2"></h2>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:#d9e0e3;line-height:1.2;margin-bottom:0;text-shadow:0 2px 12px rgba(0,0,0,0.5);" data-i18n="eq_h2"></h2>
     <div class="quotes-list">
       <div class="quote-item"><div class="quote-num">01</div><div class="quote-body"><p class="quote-lead" data-i18n="eq1"></p></div></div>
       <div class="quote-item"><div class="quote-num">02</div><div class="quote-body"><p class="quote-lead" data-i18n="eq2"></p></div></div>
@@ -499,30 +548,40 @@
       <button class="tab-btn" onclick="switchTab('business',this)" data-i18n="tab_business"></button>
     </div>
     <div id="tab-individuals" class="tab-content active">
-      <div class="offerings-grid">
-        <div class="offering-card">
+      <div style="position:relative;border-radius:20px;overflow:hidden;background-image:url('https://raw.githubusercontent.com/englishupp-design/diagram/main/image%203.png');background-size:cover;background-position:center;padding:48px 40px;">
+        <div style="position:absolute;inset:0;background:rgba(5,10,10,0.65);z-index:0;border-radius:20px;"></div>
+        <div style="position:relative;z-index:1;">
+          <div class="offerings-grid">
+        <div class="offering-card" onclick="animateTag(this)">
           <div class="offering-tag" data-i18n="fmt_webinar_label"></div>
           <h3 class="offering-title" data-i18n="fmt_webinar_h3"></h3>
           <p class="offering-desc" data-i18n="fmt_webinar_p"></p>
           <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="btn-primary" data-i18n="fmt_webinar_link"></a>
         </div>
-        <div class="offering-card offering-card--featured">
+        <div class="offering-card offering-card--featured" onclick="animateTag(this)">
           <div class="offering-tag offering-tag--gold" data-i18n="fmt_course_label"></div>
           <h3 class="offering-title" data-i18n="fmt_course_h3"></h3>
           <p class="offering-desc" data-i18n="fmt_course_p"></p>
           <button class="btn-primary" onclick="showModal('modules')" data-i18n="fmt_course_link"></button>
         </div>
-      </div>
-    </div>
+        </div><!-- /offerings-grid -->
+        </div><!-- /z-index inner -->
+      </div><!-- /image wrapper -->
+    </div><!-- /tab-individuals -->
     <div id="tab-business" class="tab-content">
-      <p style="font-size:1rem;line-height:1.85;color:rgba(237,224,206,0.75);max-width:700px;font-weight:300;margin-bottom:48px;" data-i18n="biz_intro"></p>
+      <div style="position:relative;border-radius:20px;overflow:hidden;background-image:url('https://raw.githubusercontent.com/englishupp-design/diagram/main/image%204.png');background-size:cover;background-position:center;padding:48px 40px;">
+        <div style="position:absolute;inset:0;background:rgba(5,10,10,0.65);z-index:0;border-radius:20px;"></div>
+        <div style="position:relative;z-index:1;">
+      <p style="font-size:1rem;line-height:1.85;color:rgba(237,224,206,0.9);max-width:700px;font-weight:400;margin-bottom:48px;text-shadow:0 1px 6px rgba(0,0,0,0.6);background:rgba(10,18,18,0.75);backdrop-filter:blur(12px);border:1px solid rgba(217,224,227,0.18);border-left:3px solid rgba(217,224,227,0.35);border-radius:12px;padding:22px 28px;" data-i18n="biz_intro"></p>
       <div class="biz-grid">
-        <div class="biz-card reveal"><div class="biz-icon">&#128218;</div><h3 data-i18n="biz1_h4"></h3><p data-i18n="biz1_p"></p></div>
-        <div class="biz-card reveal"><div class="biz-icon">&#127908;</div><h3 data-i18n="biz2_h4"></h3><p data-i18n="biz2_p"></p></div>
-        <div class="biz-card reveal"><div class="biz-icon">&#9889;</div><h3 data-i18n="biz3_h4"></h3><p data-i18n="biz3_p"></p></div>
+        <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#128218;</div><h3 data-i18n="biz1_h4"></h3><p data-i18n="biz1_p"></p></div>
+        <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#127908;</div><h3 data-i18n="biz2_h4"></h3><p data-i18n="biz2_p"></p></div>
+        <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#9889;</div><h3 data-i18n="biz3_h4"></h3><p data-i18n="biz3_p"></p></div>
       </div>
-      <a href="https://form.jotform.com/260822334021040" target="_blank" class="btn-outline" style="margin-top:40px;display:inline-block;" data-i18n="biz_cta"></a>
-    </div>
+      <a href="" target="_blank" class="btn-outline" style="margin-top:40px;display:inline-block;" data-i18n="biz_cta" data-i18n-href="biz_cta_url"></a>
+        </div><!-- /z-index inner -->
+      </div><!-- /image wrapper -->
+    </div><!-- /tab-business -->
   </div>
 </section>
 
@@ -544,7 +603,25 @@
     </div>
     <div style="margin-top:28px;padding:14px 20px;background:rgba(91,184,178,0.08);border:1px solid rgba(91,184,178,0.2);border-radius:10px;font-size:0.85rem;color:rgba(237,224,206,0.7);">&#10024; <span data-i18n="curr_includes"></span></div>
     <div style="margin-top:32px;text-align:center;">
-      <a href="https://shorturl.at/6xUts" target="_blank" class="btn-primary" data-i18n="curr_cta"></a>
+      <a href="" target="_blank" class="btn-primary" data-i18n="curr_cta" data-i18n-href="curr_cta_url"></a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOK A CALL -->
+<section class="book-section" id="bookcall">
+  <div class="section-inner">
+    <div class="book-text reveal" style="max-width:680px;margin:0 auto;text-align:center;">
+      <div class="section-label" style="text-align:center;" data-i18n="book_label"></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--near-black);line-height:1.2;margin-bottom:20px;" data-i18n="book_h2"></h2>
+      <div class="divider" style="margin:0 auto 28px;"></div>
+      <p style="font-size:1rem;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:36px;" data-i18n="book_p"></p>
+      <div class="tags-wrap" style="justify-content:center;margin-bottom:40px;">
+        <span class="tag" style="pointer-events:none;" data-i18n="book_tag1"></span>
+        <span class="tag" style="pointer-events:none;" data-i18n="book_tag2"></span>
+        <span class="tag" style="pointer-events:none;" data-i18n="book_tag3"></span>
+      </div>
+      <a href="" target="_blank" class="btn-primary" data-i18n="book_form_btn" data-i18n-href="book_form_btn_url"></a>
     </div>
   </div>
 </section>
@@ -553,7 +630,7 @@
 <section class="cta-section" id="register">
   <div style="max-width:1100px;margin:0 auto;text-align:center;">
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:300;color:var(--white);max-width:800px;margin:0 auto 40px;background:rgba(26,31,31,0.45);backdrop-filter:blur(6px);border:1px solid rgba(91,184,178,0.18);border-radius:16px;padding:32px 48px;box-shadow:0 8px 48px rgba(0,0,0,0.35);" data-i18n="cta_h2"></h2>
-    <a href="https://shorturl.at/6xUts" target="_blank" class="btn-primary" style="background:var(--white);color:var(--teal-dark);" data-i18n="cta_btn"></a>
+    <a href="" target="_blank" class="btn-primary" style="background:var(--white);color:var(--teal-dark);" data-i18n="cta_btn" data-i18n-href="cta_btn_url"></a>
   </div>
 </section>
 
@@ -618,14 +695,14 @@
       <div class="modal-acc-item modal-acc-item--bonus"><button class="modal-acc-trigger"><span class="modal-acc-num" style="background:var(--sand);color:var(--near-black);">&#9733;</span><span class="modal-acc-name" data-i18n="mb_title"></span><span class="modal-acc-icon">+</span></button><div class="modal-acc-content"><p data-i18n="mb_body"></p></div></div>
     </div>
     <div style="margin-top:24px;padding:14px 20px;background:rgba(91,184,178,0.07);border:1px solid rgba(91,184,178,0.2);border-radius:10px;font-size:0.85rem;color:var(--text-mid);">&#10024; <span data-i18n="curr_includes"></span></div>
-    <div style="margin-top:28px;text-align:center;"><a href="https://shorturl.at/6xUts" target="_blank" class="btn-primary" onclick="closeModal()" data-i18n="curr_cta"></a></div>
+    <div style="margin-top:28px;text-align:center;"><a href="" target="_blank" class="btn-primary" onclick="closeModal()" data-i18n="curr_cta" data-i18n-href="curr_cta_url"></a></div>
   </div>
 </div>
 
 <script>
 const i18n = {
   en: {
-    nav_about:"About the Project", nav_team:"Our Team", nav_individuals:"For Individuals", nav_business:"For Business", nav_curriculum:"Programme", nav_enroll:"Enroll",
+    nav_about:"About the Project", nav_team:"Our Team", nav_individuals:"For Individuals", nav_business:"For Business", nav_curriculum:"Programme", nav_enroll:"Enroll", nav_book:"Book a Call",
     hero_brand:"MindLander", hero_sub_eyebrow:"Emotional Intelligence School for Leaders",
     hero_h1:"Emotional Intelligence — <em>Your Superpower</em>",
     forwho_label:"For Whom", forwho_h2:"Our project is dedicated to developing emotional intelligence skills.",
@@ -678,7 +755,7 @@ const i18n = {
     biz1_h4:"Full Corporate Course", biz1_p:"A complete training program adapted to the specific needs of your business and team.",
     biz2_h4:"Thematic Webinars", biz2_p:"One-time webinars focused on key aspects of EQ, tailored to your specific request.",
     biz3_h4:"Workshops", biz3_p:"Intensive, hands-on workshops for practicing skills in real-world team scenarios.",
-    biz_cta:"Discuss a Partnership",
+    biz_cta:"Discuss a Partnership", biz_cta_url:"https://form.jotform.com/261165961809061",
     curr_label:"Course Programme", curr_h2:"9 Modules of Transformational Practice",
     m1_title:"The Origins of EI and Why It Matters", m1_body:"How people came to recognize the importance of EI. The history of the term from ancient philosophers to the present day, the evolution of EQ as a concept, key research, and the introduction of SEL programs in educational institutions. How EQ influences different areas of life.",
     m2_title:"The Benefits of EI in Language Teaching", m2_body:"Richard Boyatzis\'s model of emotional intelligence. Practical scenarios: how to maintain a student\'s attention, work with \'withdrawn\' learners, and manage emotional exhaustion. The connection between EI and student motivation, memory, and identity. The role of empathy, emotional resonance, and reflection as tools for educators.",
@@ -690,18 +767,25 @@ const i18n = {
     m8_title:"Burnout: Recognizing It and Finding Balance", m8_body:"The stages and symptoms of professional burnout. Emotional exhaustion vs. emotional resilience. Techniques for restoring emotional resources and burnout prevention through emotional hygiene.",
     mb_title:"Bonus: The Financial Side of Your Practice", mb_body:"Practical aspects of running a teaching practice: drafting contracts, navigating payment challenges, setting your rates, exploring different collaboration models, and structuring package offerings.",
     curr_includes:"The course includes: demo practices, brainstorming sessions, and group work",
-    curr_cta:"Enroll in the Course",
+    curr_cta:"Enroll in the Course", curr_cta_url:"https://form.jotform.com/261162310591044",
     cta_h2:"Emotional Intelligence: a buzzword or the ultimate success factor?",
-    cta_btn:"Choose Your Format",
+    cta_btn:"Choose Your Format", cta_btn_url:"https://form.jotform.com/261162310591044",
     footer_tagline:"Emotional Intelligence for Educators and Business",
     footer_docs_h4:"Documents", footer_privacy:"Privacy Policy", footer_cookies:"Cookie Policy",
     footer_contact_h4:"Contact", footer_contact_text:"For enquiries, please use the registration form",
     footer_rights:"All Rights Reserved",
     privacy_h3:"Privacy Policy", privacy_h4_1:"1. Introduction", privacy_p1:"This Policy describes how we collect, use, and protect your personal data.", privacy_h4_2:"2. Data We Collect", privacy_p2:"We collect information provided during registration: your name, email, and data necessary for participation in the course.", privacy_h4_3:"3. Use of Data", privacy_p3:"Data is used to provide access to the course, send materials, and communicate with participants.",
-    cookies_h3:"Cookie Policy", cookies_h4_1:"1. What are cookies?", cookies_p1:"Small text files saved on your device when you visit our website.", cookies_h4_2:"2. How do we use cookies?", cookies_p2:"To remember your preferences, analyse how the site is used, and improve the overall user experience."
+    cookies_h3:"Cookie Policy", cookies_h4_1:"1. What are cookies?", cookies_p1:"Small text files saved on your device when you visit our website.", cookies_h4_2:"2. How do we use cookies?", cookies_p2:"To remember your preferences, analyse how the site is used, and improve the overall user experience.",
+    book_label:"Book a Call", book_h2:"Let's Talk", book_p:"Not sure which format is right for you? Book a free 30-minute call with our team — we'll listen to your situation and help you find the best path forward.",
+    book_tag1:"Free Consultation", book_tag2:"30 Minutes", book_tag3:"No Obligation",
+    book_form_name_label:"Your Name", book_form_name:"e.g. Anna Smith",
+    book_form_email_label:"Email Address", book_form_email:"your@email.com",
+    book_form_topic_label:"I'm interested in", book_form_topic_default:"Select a topic...", book_form_topic1:"For Individuals", book_form_topic2:"For Business", book_form_topic3:"Other",
+    book_form_msg_label:"Anything you'd like us to know?", book_form_msg:"Tell us a bit about your situation...",
+    book_form_btn:"Book My Free Call", book_form_btn_url:"https://form.jotform.com/261156776294063"
   },
   uk: {
-    nav_about:"Про проєкт", nav_team:"Наша команда", nav_individuals:"Для приватних осіб", nav_business:"Для бізнесу", nav_curriculum:"Програма", nav_enroll:"Записатися",
+    nav_about:"Про проєкт", nav_team:"Наша команда", nav_individuals:"Для приватних осіб", nav_business:"Для бізнесу", nav_curriculum:"Програма", nav_enroll:"Записатися", nav_book:"Забронювати дзвінок",
     hero_brand:"MindLander", hero_sub_eyebrow:"Школа емоційного інтелекту для лідерів",
     hero_h1:"Емоційний Інтелект — <em>твоя Суперсила</em>",
     forwho_label:"Для кого", forwho_h2:"Наш проєкт присвячено розвитку навичок емоційного інтелекту.",
@@ -754,7 +838,7 @@ const i18n = {
     biz1_h4:"Повний корпоративний курс", biz1_p:"Комплексна програма навчання, адаптована під специфіку вашого бізнесу та команди.",
     biz2_h4:"Тематичні вебінари", biz2_p:"Одноразові вебінари з ключових аспектів EQ з фокусом на ваш конкретний запит.",
     biz3_h4:"Воркшопи", biz3_p:"Інтенсивні практичні воркшопи для відпрацювання навичок у реальних ситуаціях команди.",
-    biz_cta:"Обговорити співпрацю",
+    biz_cta:"Обговорити співпрацю", biz_cta_url:"https://form.jotform.com/261165916881061",
     curr_label:"Програма курсу", curr_h2:"9 модулів трансформаційної практики",
     m1_title:"Виникнення ЕІ та його важливість", m1_body:"Як люди дійшли до важливості ЕІ та його вивчення. Історія терміна від давніх філософів до наших днів, еволюція поняття EQ, ключові дослідження та впровадження програм SEL в освітніх закладах. Вплив EQ на різні сфери життя людини.",
     m2_title:"Переваги ЕІ у викладанні іноземної мови", m2_body:"Модель ЕІ Річарда Бояціса. Практичні сценарії: як утримати увагу учня, працювати із «закритими» студентами, справлятися з емоційним виснаженням. Зв\'язок ЕІ з мотивацією, пам\'яттю та ідентичністю учня. Роль емпатії, емоційного резонансу та рефлексії як інструментів викладача.",
@@ -766,15 +850,22 @@ const i18n = {
     m8_title:"Вигорання: помітити й зберегти баланс", m8_body:"Стадії та симптоми професійного вигорання. Емоційне виснаження vs. емоційна стійкість. Техніки відновлення емоційного ресурсу та профілактика через емоційну гігієну.",
     mb_title:"Бонус: Матеріальна складова практики", mb_body:"Практичні аспекти ведення викладацької практики: укладання договору, складнощі з оплатою, визначення вартості послуг, варіанти співпраці та формати пакетних пропозицій.",
     curr_includes:"Курс включає: демо-практики, мозкові штурми та групову роботу",
-    curr_cta:"Записатися на курс",
+    curr_cta:"Записатися на курс", curr_cta_url:"https://form.jotform.com/261162453104042",
     cta_h2:"Емоційний інтелект: модний термін чи головний фактор успіху?",
-    cta_btn:"Обрати формат",
+    cta_btn:"Обрати формат", cta_btn_url:"https://form.jotform.com/261162453104042",
     footer_tagline:"Емоційний інтелект для викладачів і бізнесу",
     footer_docs_h4:"Документи", footer_privacy:"Політика конфіденційності", footer_cookies:"Політика cookies",
     footer_contact_h4:"Контакти", footer_contact_text:"З питань звертайтеся через форму реєстрації",
     footer_rights:"Усі права захищені",
     privacy_h3:"Політика конфіденційності", privacy_h4_1:"1. Вступ", privacy_p1:"Ця Політика описує, як ми збираємо, використовуємо та захищаємо ваші особисті дані.", privacy_h4_2:"2. Дані, що збираються", privacy_p2:"Ми збираємо інформацію, надану під час реєстрації: ім\'я, email та дані, необхідні для навчання.", privacy_h4_3:"3. Використання даних", privacy_p3:"Дані використовуються для надання доступу до курсу, надсилання матеріалів та комунікації.",
-    cookies_h3:"Політика cookies", cookies_h4_1:"1. Що таке cookie?", cookies_p1:"Невеликі текстові файли, що зберігаються на пристрої під час відвідування сайту.", cookies_h4_2:"2. Як ми використовуємо cookies?", cookies_p2:"Для запам\'ятовування вподобань, аналізу використання сайту та покращення користувацького досвіду."
+    cookies_h3:"Політика cookies", cookies_h4_1:"1. Що таке cookie?", cookies_p1:"Невеликі текстові файли, що зберігаються на пристрої під час відвідування сайту.", cookies_h4_2:"2. Як ми використовуємо cookies?", cookies_p2:"Для запам\'ятовування вподобань, аналізу використання сайту та покращення користувацького досвіду.",
+    book_label:"Забронювати дзвінок", book_h2:"Поговоримо", book_p:"Не впевнені, який формат підходить саме вам? Забронюйте безкоштовний 30-хвилинний дзвінок з нашою командою — ми вислухаємо вашу ситуацію і допоможемо знайти найкращий шлях.",
+    book_tag1:"Безкоштовна консультація", book_tag2:"30 хвилин", book_tag3:"Без зобов\'язань",
+    book_form_name_label:"Ваше ім\'я", book_form_name:"напр. Анна Коваль",
+    book_form_email_label:"Електронна пошта", book_form_email:"ваша@пошта.com",
+    book_form_topic_label:"Мене цікавить", book_form_topic_default:"Оберіть тему...", book_form_topic1:"Для приватних осіб", book_form_topic2:"Для бізнесу", book_form_topic3:"Інше",
+    book_form_msg_label:"Що нам варто знати?", book_form_msg:"Розкажіть трохи про свою ситуацію...",
+    book_form_btn:"Забронювати безкоштовний дзвінок", book_form_btn_url:"https://form.jotform.com/261165731528054"
   }
 };
 
@@ -789,6 +880,16 @@ function setLang(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     const key = el.getAttribute("data-i18n");
     if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
+    const urlKey = key + "_url";
+    if (i18n[lang][urlKey] !== undefined) el.setAttribute("href", i18n[lang][urlKey]);
+  });
+  document.querySelectorAll("[data-i18n-href]").forEach(el => {
+    const urlKey = el.getAttribute("data-i18n-href");
+    if (i18n[lang][urlKey] !== undefined) el.setAttribute("href", i18n[lang][urlKey]);
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-i18n-placeholder");
+    if (i18n[lang][key] !== undefined) el.placeholder = i18n[lang][key];
   });
   document.title = lang==="uk" ? "MindLander — Емоційний Інтелект" : "MindLander — Emotional Intelligence";
   const activeTabBtn = document.querySelector(".tab-btn.active");
@@ -815,6 +916,10 @@ function animateTag(el){
   el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop");
   el.addEventListener("animationend",()=>el.classList.remove("pop"),{once:true});
 }
+
+document.querySelectorAll(".offering-card .btn-primary").forEach(btn=>{
+  btn.addEventListener("click", e=>e.stopPropagation());
+});
 
 document.querySelectorAll(".bio-toggle").forEach(btn => {
   btn.addEventListener("click", () => {
