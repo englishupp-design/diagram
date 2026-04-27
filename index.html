@@ -86,7 +86,7 @@
   }
   .hero > *{position:relative;z-index:2;}
   .hero-logo{width:180px;height:auto;margin-bottom:24px;filter:drop-shadow(0 8px 32px rgba(0,0,0,0.6));}
-  .hero-eyebrow{font-size:0.72rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:var(--sand-light);margin-bottom:20px;opacity:1;text-shadow:0 2px 8px rgba(0,0,0,0.6);}
+  .hero-eyebrow{font-size:1rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sand-light);margin-bottom:20px;opacity:1;text-shadow:0 2px 8px rgba(0,0,0,0.6);}
   .hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.6rem,5.5vw,4.8rem);font-weight:400;color:var(--white);line-height:1.25;max-width:820px;background:rgba(10,18,18,0.65);backdrop-filter:blur(10px);border:1px solid rgba(91,184,178,0.25);border-radius:16px;padding:32px 48px;box-shadow:0 8px 48px rgba(0,0,0,0.5);text-shadow:0 2px 16px rgba(0,0,0,0.5);}
   .hero h1 em{font-style:italic;color:var(--sand-light);text-shadow:0 2px 12px rgba(0,0,0,0.4);}
 
@@ -104,7 +104,7 @@
   .card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(45,74,74,0.12);}
   .card:hover::before{transform:scaleX(1);}
   .card-num{font-family:"Cormorant Garamond",serif;font-size:3rem;font-weight:300;color:var(--sand-light);line-height:1;margin-bottom:20px;}
-  .card p{font-size:0.95rem;font-weight:300;line-height:1.75;color:var(--text-mid);}
+  .card p{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--text-mid);}
 
   /* TAGS */
   .tags-wrap{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;}
@@ -320,6 +320,7 @@
 <nav>
   <a href="#" class="nav-brand">
     <img src="https://raw.githubusercontent.com/englishupp-design/eq-course/main/logo%20(2).png" alt="MindLander">
+    <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--sand-light);letter-spacing:0.06em;">MindLander</span>
   </a>
   <ul class="nav-links">
     <li><a href="#forwho" data-i18n="nav_about"></a></li>
@@ -341,7 +342,7 @@
 <!-- HERO -->
 <section class="hero" id="home">
   <img src="https://raw.githubusercontent.com/englishupp-design/eq-course/main/logo%20(2).png" alt="MindLander" class="hero-logo">
-  <div class="hero-eyebrow"><span style="font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--white);letter-spacing:0.08em;text-transform:none;" data-i18n="hero_brand"></span> <span style="opacity:0.5;font-size:0.8rem;">·</span> <span data-i18n="hero_sub_eyebrow"></span></div>
+  <div class="hero-eyebrow"><span style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);letter-spacing:0.08em;text-transform:none;" data-i18n="hero_brand"></span> <span style="opacity:0.5;font-size:1rem;">·</span> <span style="font-size:1rem;" data-i18n="hero_sub_eyebrow"></span></div>
   <h1 data-i18n="hero_h1"></h1>
 </section>
 
@@ -645,6 +646,7 @@
       <h4 data-i18n="footer_docs_h4"></h4>
       <a href="#" onclick="showModal('privacy');return false;" data-i18n="footer_privacy"></a>
       <a href="#" onclick="showModal('cookies');return false;" data-i18n="footer_cookies"></a>
+      <a href="" target="_blank" data-i18n="footer_offer" data-i18n-href="footer_offer_url" id="offer-link"></a>
     </div>
     <div class="footer-col">
       <h4 data-i18n="footer_contact_h4"></h4>
@@ -771,8 +773,8 @@ const i18n = {
     cta_h2:"Emotional Intelligence: a buzzword or the ultimate success factor?",
     cta_btn:"Choose Your Format", cta_btn_url:"https://form.jotform.com/261162310591044",
     footer_tagline:"Emotional Intelligence for Educators and Business",
-    footer_docs_h4:"Documents", footer_privacy:"Privacy Policy", footer_cookies:"Cookie Policy",
-    footer_contact_h4:"Contact", footer_contact_text:"For enquiries, please use the registration form",
+    footer_docs_h4:"Documents", footer_privacy:"Privacy Policy", footer_cookies:"Cookie Policy", footer_offer:"Public Offer", footer_offer_url:"https://drive.google.com/file/d/1gtV3JhDZ9T6feftbH71XdbqQlazNs5vr/view?usp=drive_link",
+    footer_contact_h4:"Contact", footer_contact_text:"<a href='mailto:mindlander.eq@gmail.com' style='color:rgba(237,224,206,0.45);text-decoration:none;' onmouseover=\"this.style.color='#DFC9A8'\" onmouseout=\"this.style.color='rgba(237,224,206,0.45)'\">mindlander.eq@gmail.com</a>",
     footer_rights:"All Rights Reserved",
     privacy_h3:"Privacy Policy", privacy_h4_1:"1. Introduction", privacy_p1:"This Policy describes how we collect, use, and protect your personal data.", privacy_h4_2:"2. Data We Collect", privacy_p2:"We collect information provided during registration: your name, email, and data necessary for participation in the course.", privacy_h4_3:"3. Use of Data", privacy_p3:"Data is used to provide access to the course, send materials, and communicate with participants.",
     cookies_h3:"Cookie Policy", cookies_h4_1:"1. What are cookies?", cookies_p1:"Small text files saved on your device when you visit our website.", cookies_h4_2:"2. How do we use cookies?", cookies_p2:"To remember your preferences, analyse how the site is used, and improve the overall user experience.",
@@ -854,8 +856,8 @@ const i18n = {
     cta_h2:"Емоційний інтелект: модний термін чи головний фактор успіху?",
     cta_btn:"Обрати формат", cta_btn_url:"https://form.jotform.com/261162453104042",
     footer_tagline:"Емоційний інтелект для викладачів і бізнесу",
-    footer_docs_h4:"Документи", footer_privacy:"Політика конфіденційності", footer_cookies:"Політика cookies",
-    footer_contact_h4:"Контакти", footer_contact_text:"З питань звертайтеся через форму реєстрації",
+    footer_docs_h4:"Документи", footer_privacy:"Політика конфіденційності", footer_cookies:"Політика cookies", footer_offer:"Публічна оферта", footer_offer_url:"https://drive.google.com/file/d/1LF1tPbMa3csdf0LWGTeNCTm0ItRGkZ3M/view?usp=drive_link",
+    footer_contact_h4:"Контакти", footer_contact_text:"<a href='mailto:mindlander.eq@gmail.com' style='color:rgba(237,224,206,0.45);text-decoration:none;' onmouseover=\"this.style.color='#DFC9A8'\" onmouseout=\"this.style.color='rgba(237,224,206,0.45)'\">mindlander.eq@gmail.com</a>",
     footer_rights:"Усі права захищені",
     privacy_h3:"Політика конфіденційності", privacy_h4_1:"1. Вступ", privacy_p1:"Ця Політика описує, як ми збираємо, використовуємо та захищаємо ваші особисті дані.", privacy_h4_2:"2. Дані, що збираються", privacy_p2:"Ми збираємо інформацію, надану під час реєстрації: ім\'я, email та дані, необхідні для навчання.", privacy_h4_3:"3. Використання даних", privacy_p3:"Дані використовуються для надання доступу до курсу, надсилання матеріалів та комунікації.",
     cookies_h3:"Політика cookies", cookies_h4_1:"1. Що таке cookie?", cookies_p1:"Невеликі текстові файли, що зберігаються на пристрої під час відвідування сайту.", cookies_h4_2:"2. Як ми використовуємо cookies?", cookies_p2:"Для запам\'ятовування вподобань, аналізу використання сайту та покращення користувацького досвіду.",
