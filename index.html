@@ -311,6 +311,62 @@
     .quote-num{display:none;}
     section{padding:70px 5%;}
     .hero{padding:100px 5% 60px;}
+
+    /* HAMBURGER */
+    .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:101;}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--sand-light);border-radius:2px;transition:all 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+    .mobile-menu{position:fixed;top:68px;left:0;right:0;background:rgba(30,53,53,0.99);backdrop-filter:blur(16px);z-index:99;padding:24px 5% 32px;display:flex;flex-direction:column;gap:4px;transform:translateY(-120%);transition:transform 0.35s cubic-bezier(0.4,0,0.2,1);border-bottom:1px solid rgba(201,168,124,0.18);}
+    .mobile-menu.open{transform:translateY(0);}
+    .mobile-menu a{color:rgba(237,224,206,0.85);text-decoration:none;font-size:1rem;font-weight:400;padding:14px 0;border-bottom:1px solid rgba(201,168,124,0.1);letter-spacing:0.03em;display:block;}
+    .mobile-menu a:last-child{border-bottom:none;}
+    .mobile-menu .mob-cta{color:var(--near-black)!important;background:var(--sand);border-radius:4px;padding:14px 24px!important;text-align:center;margin-top:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;}
+    .mobile-menu .mob-book{color:var(--teal-light)!important;border:1px solid var(--teal-light);border-radius:4px;padding:14px 24px!important;text-align:center;margin-top:4px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;}
+
+    /* HERO */
+    .hero h1{font-size:clamp(1.9rem,7vw,2.8rem);padding:24px 28px;}
+    .hero-logo{width:120px;}
+
+    /* CARDS */
+    .cards-grid{grid-template-columns:1fr;}
+    .speakers-grid{grid-template-columns:1fr;}
+    .offerings-grid{grid-template-columns:1fr;}
+    .biz-grid{grid-template-columns:1fr;}
+
+    /* MODEL */
+    .model-flow{flex-direction:column;gap:12px;}
+    .model-arrow{transform:rotate(90deg);}
+
+    /* REVIEWS */
+    .review-card{flex:0 0 100%;}
+
+    /* TABS */
+    .tabs-nav{overflow-x:auto;padding-bottom:4px;}
+    .tab-btn{white-space:nowrap;padding:12px 18px;font-size:0.82rem;}
+
+    /* BOOK SECTION */
+    .book-inner{grid-template-columns:1fr;gap:40px;}
+
+    /* INDIVIDUALS IMAGE WRAPPER */
+    #tab-individuals > div{padding:32px 20px!important;}
+    #tab-business > div{padding:32px 20px!important;}
+
+    /* FOOTER */
+    .footer-bottom{flex-direction:column;text-align:center;}
+
+    /* CTA */
+    .cta-section h2{padding:24px 28px!important;}
+
+    /* NAV BUTTONS */
+    .nav-cta,.nav-book{display:none;}
+  }
+
+  /* Show hamburger only on mobile */
+  .hamburger{display:none;}
+  @media(max-width:768px){
+    .hamburger{display:flex;}
   }
 </style>
 </head>
@@ -336,8 +392,22 @@
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('uk')">UK</button>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#forwho" onclick="closeMenu()" data-i18n="nav_about"></a>
+  <a href="#whoweare" onclick="closeMenu()" data-i18n="nav_team"></a>
+  <a href="#formats" onclick="switchTab('individuals',document.querySelectorAll('.tab-btn')[0]);closeMenu()" data-i18n="nav_individuals"></a>
+  <a href="#formats" onclick="switchTabBiz();closeMenu()" data-i18n="nav_business"></a>
+  <a href="#curriculum" onclick="closeMenu()" data-i18n="nav_curriculum"></a>
+  <a href="#formats" class="mob-cta" onclick="closeMenu()" data-i18n="nav_enroll"></a>
+  <a href="#bookcall" class="mob-book" onclick="closeMenu()" data-i18n="nav_book"></a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -913,6 +983,26 @@ function switchTabBiz(){
 function showModal(type){ document.getElementById(type+"-modal").style.display="flex"; document.body.style.overflow="hidden"; }
 function closeModal(){ document.querySelectorAll(".modal-overlay").forEach(m=>m.style.display="none"); document.body.style.overflow=""; }
 document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
+
+function toggleMenu(){
+  const menu = document.getElementById("mobileMenu");
+  const burger = document.getElementById("hamburger");
+  menu.classList.toggle("open");
+  burger.classList.toggle("open");
+}
+function closeMenu(){
+  document.getElementById("mobileMenu").classList.remove("open");
+  document.getElementById("hamburger").classList.remove("open");
+}
+// Close menu on outside click
+document.addEventListener("click", e=>{
+  const menu = document.getElementById("mobileMenu");
+  const burger = document.getElementById("hamburger");
+  if(!menu.contains(e.target) && !burger.contains(e.target)){
+    menu.classList.remove("open");
+    burger.classList.remove("open");
+  }
+});
 
 function animateTag(el){
   el.classList.remove("pop"); void el.offsetWidth; el.classList.add("pop");
