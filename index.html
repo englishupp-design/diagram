@@ -255,6 +255,37 @@
 
   /* BOOK A CALL */
   .book-section{background:var(--bg);padding:100px 5%;}
+
+  /* RESOURCES LIBRARY */
+  .resources-section{background:var(--bg);padding:100px 5%;}
+  .resources-tabs{display:flex;gap:8px;margin-bottom:48px;flex-wrap:wrap;}
+  .res-tab-btn{padding:10px 28px;font-size:0.88rem;font-weight:400;letter-spacing:0.04em;color:var(--teal-dark);background:var(--white);border:1px solid rgba(45,74,74,0.2);border-radius:100px;cursor:pointer;transition:all 0.2s;font-family:"DM Sans",sans-serif;}
+  .res-tab-btn.active{background:var(--teal-dark);color:var(--white);border-color:var(--teal-dark);}
+  .res-tab-btn:hover:not(.active){background:rgba(45,74,74,0.06);border-color:var(--teal-dark);}
+  .resources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
+  .resource-card{background:var(--white);border:1px solid rgba(45,74,74,0.1);border-radius:16px;overflow:hidden;transition:all 0.3s;position:relative;}
+  .resource-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(45,74,74,0.12);}
+  .resource-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal-dark),var(--sand));transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
+  .resource-card:hover::before{transform:scaleX(1);}
+  .resource-thumb{height:160px;background:linear-gradient(135deg,var(--teal-dark),var(--teal-mid));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+  .resource-thumb-icon{font-size:3rem;opacity:0.9;}
+  .resource-thumb-overlay{position:absolute;inset:0;background:rgba(26,31,31,0.3);}
+  .resource-badge{position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;}
+  .resource-badge--free{background:var(--teal-light);color:var(--near-black);}
+  .resource-badge--gated{background:rgba(201,168,124,0.9);color:var(--near-black);}
+  .resource-type-icon{position:absolute;top:12px;right:12px;width:32px;height:32px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+  .resource-body{padding:24px;}
+  .resource-type-label{font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:8px;}
+  .resource-title{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:400;color:var(--near-black);line-height:1.3;margin-bottom:10px;}
+  .resource-desc{font-size:0.88rem;color:var(--text-mid);line-height:1.7;font-weight:300;margin-bottom:20px;}
+  .resource-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+  .resource-cta{display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:600;color:var(--teal-dark);text-decoration:none;letter-spacing:0.04em;transition:gap 0.2s;}
+  .resource-cta:hover{gap:10px;}
+  .resource-cta::after{content:"→";}
+  .resource-cta--locked{color:var(--sand);cursor:pointer;background:none;border:none;font-family:"DM Sans",sans-serif;}
+  .resource-cta--locked::after{content:"🔒";}
+  .res-content{display:none;}
+  .res-content.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
   .book-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
   .book-text .section-label{color:var(--teal-mid);}
   .book-text h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--near-black);line-height:1.2;margin-bottom:20px;}
@@ -384,6 +415,7 @@
     <li><a href="#formats" onclick="switchTab('individuals',document.querySelectorAll('.tab-btn')[0])" data-i18n="nav_individuals"></a></li>
     <li><a href="#formats" onclick="switchTabBiz()" data-i18n="nav_business"></a></li>
     <li><a href="#curriculum" data-i18n="nav_curriculum"></a></li>
+    <li><a href="#resources" data-i18n="nav_resources"></a></li>
     <li><a href="#formats" class="nav-cta" data-i18n="nav_enroll"></a></li>
     <li style="margin-left:16px;"><a href="#bookcall" class="nav-book" data-i18n="nav_book"></a></li>
   </ul>
@@ -405,6 +437,7 @@
   <a href="#formats" onclick="switchTab('individuals',document.querySelectorAll('.tab-btn')[0]);closeMenu()" data-i18n="nav_individuals"></a>
   <a href="#formats" onclick="switchTabBiz();closeMenu()" data-i18n="nav_business"></a>
   <a href="#curriculum" onclick="closeMenu()" data-i18n="nav_curriculum"></a>
+  <a href="#resources" onclick="closeMenu()" data-i18n="nav_resources"></a>
   <a href="#formats" class="mob-cta" onclick="closeMenu()" data-i18n="nav_enroll"></a>
   <a href="#bookcall" class="mob-book" onclick="closeMenu()" data-i18n="nav_book"></a>
 </div>
@@ -680,6 +713,173 @@
   </div>
 </section>
 
+<!-- RESOURCES LIBRARY -->
+<section class="resources-section" id="resources">
+  <div class="section-inner">
+    <div class="section-label" data-i18n="res_label"></div>
+    <h2 class="section-title" data-i18n="res_h2"></h2>
+    <div class="divider"></div>
+    <p style="font-size:1rem;line-height:1.85;color:var(--text-mid);max-width:680px;font-weight:300;margin-bottom:40px;" data-i18n="res_intro"></p>
+
+    <!-- Filter tabs -->
+    <div class="resources-tabs">
+      <button class="res-tab-btn active" onclick="switchResTab('all',this)" data-i18n="res_tab_all"></button>
+      <button class="res-tab-btn" onclick="switchResTab('video',this)" data-i18n="res_tab_video"></button>
+      <button class="res-tab-btn" onclick="switchResTab('pdf',this)" data-i18n="res_tab_pdf"></button>
+    </div>
+
+    <!-- ALL -->
+    <div id="res-all" class="res-content active">
+
+      <!-- Video 1 — Free -->
+      <div class="resource-card reveal">
+        <div class="resource-thumb" style="background:linear-gradient(135deg,#1E3535,#3D6B6B);">
+          <div class="resource-thumb-overlay"></div>
+          <div class="resource-thumb-icon">🎬</div>
+          <span class="resource-badge resource-badge--free" data-i18n="res_free"></span>
+          <span class="resource-type-icon">▶</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_video"></div>
+          <div class="resource-title" data-i18n="res_v1_title"></div>
+          <div class="resource-desc" data-i18n="res_v1_desc"></div>
+          <div class="resource-footer">
+            <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="resource-cta" data-i18n="res_watch"></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video 2 — Gated -->
+      <div class="resource-card reveal">
+        <div class="resource-thumb" style="background:linear-gradient(135deg,#252B2B,#2D4A4A);">
+          <div class="resource-thumb-overlay"></div>
+          <div class="resource-thumb-icon">🎥</div>
+          <span class="resource-badge resource-badge--gated" data-i18n="res_gated"></span>
+          <span class="resource-type-icon">▶</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_video"></div>
+          <div class="resource-title" data-i18n="res_v2_title"></div>
+          <div class="resource-desc" data-i18n="res_v2_desc"></div>
+          <div class="resource-footer">
+            <button class="resource-cta resource-cta--locked" onclick="showModal('modules')" data-i18n="res_enroll_access"></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF 1 — Free -->
+      <div class="resource-card reveal">
+        <div class="resource-thumb" style="background:linear-gradient(135deg,#2D4A4A,#C9A87C);">
+          <div class="resource-thumb-overlay"></div>
+          <div class="resource-thumb-icon">📄</div>
+          <span class="resource-badge resource-badge--free" data-i18n="res_free"></span>
+          <span class="resource-type-icon">📥</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_pdf"></div>
+          <div class="resource-title" data-i18n="res_p1_title"></div>
+          <div class="resource-desc" data-i18n="res_p1_desc"></div>
+          <div class="resource-footer">
+            <a href="#bookcall" class="resource-cta" data-i18n="res_download"></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- PDF 2 — Gated -->
+      <div class="resource-card reveal">
+        <div class="resource-thumb" style="background:linear-gradient(135deg,#1A1F1F,#3D5A4A);">
+          <div class="resource-thumb-overlay"></div>
+          <div class="resource-thumb-icon">📚</div>
+          <span class="resource-badge resource-badge--gated" data-i18n="res_gated"></span>
+          <span class="resource-type-icon">📥</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_pdf"></div>
+          <div class="resource-title" data-i18n="res_p2_title"></div>
+          <div class="resource-desc" data-i18n="res_p2_desc"></div>
+          <div class="resource-footer">
+            <button class="resource-cta resource-cta--locked" onclick="showModal('modules')" data-i18n="res_enroll_access"></button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /res-all -->
+
+    <!-- VIDEO only -->
+    <div id="res-video" class="res-content">
+      <div class="resource-card reveal">
+        <div class="resource-thumb" style="background:linear-gradient(135deg,#1E3535,#3D6B6B);">
+          <div class="resource-thumb-overlay"></div>
+          <div class="resource-thumb-icon">🎬</div>
+          <span class="resource-badge resource-badge--free" data-i18n="res_free"></span>
+          <span class="resource-type-icon">▶</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_video"></div>
+          <div class="resource-title" data-i18n="res_v1_title"></div>
+          <div class="resource-desc" data-i18n="res_v1_desc"></div>
+          <div class="resource-footer">
+            <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="resource-cta" data-i18n="res_watch"></a>
+          </div>
+        </div>
+      </div>
+      <div class="resource-card reveal">
+        <div class="resource-thumb" style="background:linear-gradient(135deg,#252B2B,#2D4A4A);">
+          <div class="resource-thumb-overlay"></div>
+          <div class="resource-thumb-icon">🎥</div>
+          <span class="resource-badge resource-badge--gated" data-i18n="res_gated"></span>
+          <span class="resource-type-icon">▶</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_video"></div>
+          <div class="resource-title" data-i18n="res_v2_title"></div>
+          <div class="resource-desc" data-i18n="res_v2_desc"></div>
+          <div class="resource-footer">
+            <button class="resource-cta resource-cta--locked" onclick="showModal('modules')" data-i18n="res_enroll_access"></button>
+          </div>
+        </div>
+      </div>
+    </div><!-- /res-video -->
+
+    <!-- PDF only -->
+    <div id="res-pdf" class="res-content">
+      <div class="resource-card reveal">
+        <div class="resource-thumb" style="background:linear-gradient(135deg,#2D4A4A,#C9A87C);">
+          <div class="resource-thumb-overlay"></div>
+          <div class="resource-thumb-icon">📄</div>
+          <span class="resource-badge resource-badge--free" data-i18n="res_free"></span>
+          <span class="resource-type-icon">📥</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_pdf"></div>
+          <div class="resource-title" data-i18n="res_p1_title"></div>
+          <div class="resource-desc" data-i18n="res_p1_desc"></div>
+          <div class="resource-footer">
+            <a href="#bookcall" class="resource-cta" data-i18n="res_download"></a>
+          </div>
+        </div>
+      </div>
+      <div class="resource-card reveal">
+        <div class="resource-thumb" style="background:linear-gradient(135deg,#1A1F1F,#3D5A4A);">
+          <div class="resource-thumb-overlay"></div>
+          <div class="resource-thumb-icon">📚</div>
+          <span class="resource-badge resource-badge--gated" data-i18n="res_gated"></span>
+          <span class="resource-type-icon">📥</span>
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_pdf"></div>
+          <div class="resource-title" data-i18n="res_p2_title"></div>
+          <div class="resource-desc" data-i18n="res_p2_desc"></div>
+          <div class="resource-footer">
+            <button class="resource-cta resource-cta--locked" onclick="showModal('modules')" data-i18n="res_enroll_access"></button>
+          </div>
+        </div>
+      </div>
+    </div><!-- /res-pdf -->
+
+  </div>
+</section>
+
 <!-- BOOK A CALL -->
 <section class="book-section" id="bookcall">
   <div class="section-inner">
@@ -775,7 +975,7 @@
 <script>
 const i18n = {
   en: {
-    nav_about:"About the Project", nav_team:"Our Team", nav_individuals:"For Individuals", nav_business:"For Business", nav_curriculum:"Programme", nav_enroll:"Enroll", nav_book:"Book a Call",
+    nav_about:"About the Project", nav_team:"Our Team", nav_individuals:"For Individuals", nav_business:"For Business", nav_curriculum:"Programme", nav_resources:"Resources", nav_enroll:"Enroll", nav_book:"Book a Call",
     hero_brand:"MindLander", hero_sub_eyebrow:"Emotional Intelligence School for Leaders",
     hero_h1:"Emotional Intelligence — <em>Your Superpower</em>",
     forwho_label:"For Whom", forwho_h2:"Our project is dedicated to developing emotional intelligence skills.",
@@ -855,10 +1055,24 @@ const i18n = {
     book_form_email_label:"Email Address", book_form_email:"your@email.com",
     book_form_topic_label:"I'm interested in", book_form_topic_default:"Select a topic...", book_form_topic1:"For Individuals", book_form_topic2:"For Business", book_form_topic3:"Other",
     book_form_msg_label:"Anything you'd like us to know?", book_form_msg:"Tell us a bit about your situation...",
-    book_form_btn:"Book My Free Call", book_form_btn_url:"https://form.jotform.com/261156776294063"
+    book_form_btn:"Book My Free Call", book_form_btn_url:"https://form.jotform.com/261156776294063",
+    res_label:"Resources Library", res_h2:"Explore & Learn",
+    res_intro:"A curated collection of videos and guides to deepen your understanding of emotional intelligence — some freely available, others exclusive to course participants.",
+    res_tab_all:"All Resources", res_tab_video:"Videos & Webinars", res_tab_pdf:"PDF Guides",
+    res_free:"Free", res_gated:"Course Members",
+    res_type_video:"Video / Webinar", res_type_pdf:"PDF Guide",
+    res_watch:"Watch now", res_download:"Get the guide", res_enroll_access:"Enroll to access",
+    res_v1_title:"EQ as a Key Success Factor — Free Webinar",
+    res_v1_desc:"A one-hour introduction to emotional intelligence — what it is, why it matters in 2026, and how it applies to your work and relationships.",
+    res_v2_title:"Module Recordings — Full Course Sessions",
+    res_v2_desc:"All 9 recorded module sessions from the full course, including live Q&A replays and bonus practice videos. Exclusive to enrolled participants.",
+    res_p1_title:"EQ Self-Assessment Guide",
+    res_p1_desc:"A free downloadable guide to help you assess your current emotional intelligence across the five key domains. Includes reflection prompts.",
+    res_p2_title:"SCARF Model — Practical Workbook",
+    res_p2_desc:"A deep-dive workbook on the SCARF model with case studies, exercises and coaching templates. Available to full course participants."
   },
   uk: {
-    nav_about:"Про проєкт", nav_team:"Наша команда", nav_individuals:"Для приватних осіб", nav_business:"Для бізнесу", nav_curriculum:"Програма", nav_enroll:"Записатися", nav_book:"Забронювати дзвінок",
+    nav_about:"Про проєкт", nav_team:"Наша команда", nav_individuals:"Для приватних осіб", nav_business:"Для бізнесу", nav_curriculum:"Програма", nav_resources:"Ресурси", nav_enroll:"Записатися", nav_book:"Забронювати дзвінок",
     hero_brand:"MindLander", hero_sub_eyebrow:"Школа емоційного інтелекту для лідерів",
     hero_h1:"Емоційний Інтелект — <em>твоя Суперсила</em>",
     forwho_label:"Для кого", forwho_h2:"Наш проєкт присвячено розвитку навичок емоційного інтелекту.",
@@ -938,7 +1152,21 @@ const i18n = {
     book_form_email_label:"Електронна пошта", book_form_email:"ваша@пошта.com",
     book_form_topic_label:"Мене цікавить", book_form_topic_default:"Оберіть тему...", book_form_topic1:"Для приватних осіб", book_form_topic2:"Для бізнесу", book_form_topic3:"Інше",
     book_form_msg_label:"Що нам варто знати?", book_form_msg:"Розкажіть трохи про свою ситуацію...",
-    book_form_btn:"Забронювати безкоштовний дзвінок", book_form_btn_url:"https://form.jotform.com/261165731528054"
+    book_form_btn:"Забронювати безкоштовний дзвінок", book_form_btn_url:"https://form.jotform.com/261165731528054",
+    res_label:"Бібліотека ресурсів", res_h2:"Досліджуй та навчайся",
+    res_intro:"Добірка відео та посібників для глибшого розуміння емоційного інтелекту — частина матеріалів у вільному доступі, частина — ексклюзивно для учасників курсу.",
+    res_tab_all:"Всі ресурси", res_tab_video:"Відео та вебінари", res_tab_pdf:"PDF посібники",
+    res_free:"Безкоштовно", res_gated:"Для учасників курсу",
+    res_type_video:"Відео / Вебінар", res_type_pdf:"PDF посібник",
+    res_watch:"Переглянути", res_download:"Отримати посібник", res_enroll_access:"Записатися для доступу",
+    res_v1_title:"ЕІ як ключовий фактор успіху — безкоштовний вебінар",
+    res_v1_desc:"Годинний вступ до емоційного інтелекту — що це таке, чому це важливо у 2026 році та як це застосовується у роботі та стосунках.",
+    res_v2_title:"Записи модулів — сесії повного курсу",
+    res_v2_desc:"Усі 9 записаних модулів повного курсу, включаючи повтори живих Q&A та бонусні практичні відео. Ексклюзивно для зарахованих учасників.",
+    res_p1_title:"Посібник із самооцінки ЕІ",
+    res_p1_desc:"Безкоштовний посібник для оцінки вашого поточного рівня емоційного інтелекту за п\'ятьма ключовими напрямками. Включає запитання для рефлексії.",
+    res_p2_title:"Модель SCARF — практичний воркбук",
+    res_p2_desc:"Поглиблений воркбук з моделі SCARF з кейсами, вправами та коучинговими шаблонами. Доступний учасникам повного курсу."
   }
 };
 
@@ -969,6 +1197,13 @@ function setLang(lang) {
   if (activeTabBtn) activeTabBtn.classList.add("active");
   const activePill = document.querySelector(".reviews-dot.active");
   if (!activePill) reviewsGoTo(0);
+}
+
+function switchResTab(name, btn){
+  document.querySelectorAll(".res-content").forEach(t=>t.classList.remove("active"));
+  document.querySelectorAll(".res-tab-btn").forEach(b=>b.classList.remove("active"));
+  document.getElementById("res-"+name).classList.add("active");
+  if(btn) btn.classList.add("active");
 }
 
 function switchTab(name, btn) {
