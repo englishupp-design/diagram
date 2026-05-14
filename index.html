@@ -45,45 +45,9 @@
   .nav-book:hover{background:var(--teal-light)!important;color:var(--near-black)!important;transform:translateY(-1px);}
 
   /* HERO */
-  .hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:120px 5% 80px;
-    position:relative;
-    overflow:hidden;
-    /* Background image with fallback gradient */
-    background-image: url('https://raw.githubusercontent.com/englishupp-design/diagram/main/photo.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-  }
-  /* Dark overlay to ensure text readability over the photo */
-  .hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: linear-gradient(
-      160deg,
-      rgba(8,12,12,0.96) 0%,
-      rgba(15,25,25,0.93) 55%,
-      rgba(25,45,45,0.88) 100%
-    );
-    z-index:0;
-  }
-  /* Subtle radial accents on top of the overlay */
-  .hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 30%,rgba(91,184,178,0.1) 0%,transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 80%,rgba(201,168,124,0.08) 0%,transparent 70%);
-    z-index:1;
-  }
+  .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 5% 80px;position:relative;overflow:hidden;background-image:url('https://raw.githubusercontent.com/englishupp-design/diagram/main/photo.png');background-size:cover;background-position:center center;background-repeat:no-repeat;}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(8,12,12,0.96) 0%,rgba(15,25,25,0.93) 55%,rgba(25,45,45,0.88) 100%);z-index:0;}
+  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 70% 30%,rgba(91,184,178,0.1) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 20% 80%,rgba(201,168,124,0.08) 0%,transparent 70%);z-index:1;}
   .hero > *{position:relative;z-index:2;}
   .hero-logo{width:180px;height:auto;margin-bottom:24px;filter:drop-shadow(0 8px 32px rgba(0,0,0,0.6));}
   .hero-eyebrow{font-size:1rem;font-weight:500;letter-spacing:0.15em;text-transform:uppercase;color:var(--sand-light);margin-bottom:20px;opacity:1;text-shadow:0 2px 8px rgba(0,0,0,0.6);}
@@ -114,20 +78,8 @@
   @keyframes tagPop{0%{transform:scale(1);background:var(--teal-dark);}20%{transform:scale(1.18);background:var(--sand);color:var(--near-black);box-shadow:0 8px 28px rgba(201,168,124,0.5);}50%{transform:scale(0.95);}75%{transform:scale(1.06);}100%{transform:scale(1);background:var(--teal-dark);color:var(--white);box-shadow:none;}}
 
   /* QUOTES / EQ */
-  .quotes-section{
-    background-image: url('https://raw.githubusercontent.com/englishupp-design/diagram/main/photo%202.png');
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    position: relative;
-  }
-  .quotes-section::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background: rgba(5,10,10,0.82);
-    z-index:0;
-  }
+  .quotes-section{background-image:url('https://raw.githubusercontent.com/englishupp-design/diagram/main/photo%202.png');background-size:cover;background-position:center center;background-repeat:no-repeat;position:relative;}
+  .quotes-section::after{content:"";position:absolute;inset:0;background:rgba(5,10,10,0.82);z-index:0;}
   .quotes-section .section-inner{position:relative;z-index:1;}
   .quotes-section .section-label{color:var(--sand);position:relative;z-index:1;}
   .quotes-list{display:flex;flex-direction:column;max-width:840px;margin-top:48px;}
@@ -147,7 +99,7 @@
   .model-arrow{font-size:1.5rem;color:var(--sand);}
   .model-result{background:var(--sand);border:none;color:var(--near-black);font-weight:600;}
 
-  /* WHO WE ARE - speaker cards */
+  /* WHO WE ARE */
   .speakers-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;margin-top:48px;}
   .speaker-card{background:var(--white);border:1.5px solid var(--teal-dark);border-radius:20px;padding:40px 36px;display:flex;flex-direction:column;align-items:center;text-align:center;transition:transform 0.3s,box-shadow 0.3s;}
   .speaker-card:hover{transform:translateY(-8px);box-shadow:0 24px 56px rgba(45,74,74,0.12);}
@@ -164,7 +116,7 @@
   .bio-content p{font-size:0.88rem;color:var(--text-mid);line-height:1.8;font-weight:300;padding-top:16px;border-top:1px solid rgba(45,74,74,0.1);}
   .bio-link{display:inline-flex;align-items:center;gap:6px;color:var(--teal-dark);text-decoration:none;font-size:0.85rem;font-weight:600;margin-top:12px;transition:gap 0.2s;}
   .bio-link:hover{gap:10px;}
-  .bio-link::after{content:"→";}
+  .bio-link::after{content:"\2192";}
 
   /* REVIEWS */
   .reviews-slider-wrap{position:relative;}
@@ -210,13 +162,7 @@
   .offering-card:hover{background:rgba(91,184,178,0.15);border-color:rgba(91,184,178,0.5);transform:translateY(-4px);}
   .offering-card--featured{border-color:rgba(201,168,124,0.65);background:rgba(10,18,18,0.8);}
   .offering-card.pop{animation:offeringPop 0.5s cubic-bezier(0.36,0.07,0.19,0.97);}
-  @keyframes offeringPop{
-    0%  {transform:scale(1);}
-    20% {transform:scale(1.03);box-shadow:0 8px 32px rgba(201,168,124,0.45);border-color:rgba(201,168,124,0.9);}
-    50% {transform:scale(0.98);}
-    75% {transform:scale(1.015);}
-    100%{transform:scale(1);box-shadow:none;}
-  }
+  @keyframes offeringPop{0%{transform:scale(1);}20%{transform:scale(1.03);box-shadow:0 8px 32px rgba(201,168,124,0.45);border-color:rgba(201,168,124,0.9);}50%{transform:scale(0.98);}75%{transform:scale(1.015);}100%{transform:scale(1);box-shadow:none;}}
   .offering-tag{display:inline-block;font-size:0.7rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:5px 14px;border-radius:100px;background:rgba(91,184,178,0.3);color:var(--sand-light);width:fit-content;}
   .offering-tag--gold{background:rgba(201,168,124,0.25);color:var(--sand-light);}
   .offering-title{font-family:"Cormorant Garamond",serif;font-size:1.75rem;font-weight:400;color:#d9e0e3;line-height:1.3;text-shadow:0 2px 10px rgba(0,0,0,0.7);}
@@ -227,21 +173,11 @@
   .biz-card{background:rgba(10,18,18,0.75);border:1px solid rgba(201,168,124,0.3);border-radius:16px;padding:32px 28px;transition:all 0.3s;cursor:pointer;}
   .biz-card:hover{background:rgba(91,184,178,0.15);border-color:rgba(91,184,178,0.5);transform:translateY(-4px);}
   .biz-card.pop{animation:offeringPop 0.5s cubic-bezier(0.36,0.07,0.19,0.97);}
-  .biz-intro-box{font-size:1rem;line-height:1.85;color:rgba(237,224,206,0.9);max-width:700px;font-weight:400;margin-bottom:48px;text-shadow:0 1px 6px rgba(0,0,0,0.6);background:rgba(10,18,18,0.75);backdrop-filter:blur(12px);border:1px solid rgba(217,224,227,0.18);border-left:3px solid rgba(217,224,227,0.35);border-radius:12px;padding:22px 28px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;user-select:none;}
-  .biz-intro-box:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(45,74,74,0.3);}
-  .biz-intro-box.pop{animation:bizPop 0.5s cubic-bezier(0.36,0.07,0.19,0.97);}
-  @keyframes bizPop{
-    0%{transform:scale(1);background:rgba(10,18,18,0.75);border-color:rgba(217,224,227,0.18);}
-    20%{transform:scale(1.02);background:rgba(201,168,124,0.25);border-color:rgba(201,168,124,0.6);box-shadow:0 8px 28px rgba(201,168,124,0.4);}
-    50%{transform:scale(0.99);}
-    75%{transform:scale(1.01);}
-    100%{transform:scale(1);background:rgba(10,18,18,0.75);border-color:rgba(217,224,227,0.18);box-shadow:none;}
-  }
   .biz-icon{font-size:1.8rem;margin-bottom:16px;}
   .biz-card h3{font-family:"Cormorant Garamond",serif;font-size:1.35rem;color:#d9e0e3;margin-bottom:10px;text-shadow:0 1px 6px rgba(0,0,0,0.6);}
   .biz-card p{font-size:0.92rem;color:rgba(237,224,206,0.9);line-height:1.75;font-weight:400;text-shadow:0 1px 4px rgba(0,0,0,0.5);}
 
-  /* CURRICULUM ACCORDION */
+  /* CURRICULUM */
   .accordion-item{border:1px solid rgba(201,168,124,0.2);border-radius:12px;overflow:hidden;margin-bottom:10px;}
   .accordion-trigger{width:100%;display:flex;align-items:center;gap:16px;padding:20px 24px;background:rgba(255,255,255,0.04);cursor:pointer;border:none;text-align:left;transition:background 0.2s;font-family:"DM Sans",sans-serif;}
   .accordion-trigger:hover{background:rgba(255,255,255,0.07);}
@@ -262,42 +198,20 @@
   .res-tab-btn{padding:10px 28px;font-size:0.88rem;font-weight:400;letter-spacing:0.04em;color:var(--teal-dark);background:var(--white);border:1px solid rgba(45,74,74,0.2);border-radius:100px;cursor:pointer;transition:all 0.2s;font-family:"DM Sans",sans-serif;}
   .res-tab-btn.active{background:var(--teal-dark);color:var(--white);border-color:var(--teal-dark);}
   .res-tab-btn:hover:not(.active){background:rgba(45,74,74,0.06);border-color:var(--teal-dark);}
-  .resources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
-  .resource-card{background:var(--white);border:1px solid rgba(45,74,74,0.1);border-radius:16px;overflow:hidden;transition:all 0.3s;position:relative;}
+  .resource-card{background:var(--white);border:1px solid rgba(45,74,74,0.1);border-radius:16px;overflow:hidden;transition:all 0.3s;position:relative;max-width:400px;}
   .resource-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(45,74,74,0.12);}
   .resource-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal-dark),var(--sand));transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
   .resource-card:hover::before{transform:scaleX(1);}
-  .resource-thumb{height:160px;background:linear-gradient(135deg,var(--teal-dark),var(--teal-mid));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-  .resource-thumb-icon{font-size:3rem;opacity:0.9;}
-  .resource-thumb-overlay{position:absolute;inset:0;background:rgba(26,31,31,0.3);}
-  .resource-badge{position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;}
+  .resource-thumb{height:200px;position:relative;overflow:hidden;}
+  .resource-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+  .resource-badge{position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;z-index:2;}
   .resource-badge--free{background:var(--teal-light);color:var(--near-black);}
-  .resource-badge--gated{background:rgba(201,168,124,0.9);color:var(--near-black);}
-  .resource-type-icon{position:absolute;top:12px;right:12px;width:32px;height:32px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;}
   .resource-body{padding:24px;}
   .resource-type-label{font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:8px;}
-  .resource-title{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:400;color:var(--near-black);line-height:1.3;margin-bottom:10px;}
-  .resource-desc{font-size:0.88rem;color:var(--text-mid);line-height:1.7;font-weight:300;margin-bottom:20px;}
-  .resource-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
-  .resource-cta{display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;font-weight:600;color:var(--teal-dark);text-decoration:none;letter-spacing:0.04em;transition:gap 0.2s;}
-  .resource-cta:hover{gap:10px;}
-  .resource-cta::after{content:"→";}
-  .resource-cta--locked{color:var(--sand);cursor:pointer;background:none;border:none;font-family:"DM Sans",sans-serif;}
-  .resource-cta--locked::after{content:"🔒";}
-  .res-content{display:none;}
-  .res-content.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;}
-  .book-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
-  .book-text .section-label{color:var(--teal-mid);}
-  .book-text h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--near-black);line-height:1.2;margin-bottom:20px;}
-  .book-text p{font-size:1rem;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:36px;}
-  .book-form{background:var(--white);border:1px solid rgba(45,74,74,0.12);border-radius:20px;padding:40px 36px;display:flex;flex-direction:column;gap:16px;box-shadow:0 12px 40px rgba(45,74,74,0.08);}
-  .book-form input,.book-form select,.book-form textarea{width:100%;padding:13px 16px;border:1px solid rgba(45,74,74,0.18);border-radius:8px;font-family:"DM Sans",sans-serif;font-size:0.9rem;color:var(--text-dark);background:var(--bg);outline:none;transition:border-color 0.2s;}
-  .book-form input:focus,.book-form select:focus,.book-form textarea:focus{border-color:var(--teal-mid);}
-  .book-form textarea{resize:vertical;min-height:100px;}
-  .book-form select{appearance:none;cursor:pointer;}
-  .book-form-label{font-size:0.78rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:-8px;}
-  .book-form .btn-primary{width:100%;text-align:center;margin-top:8px;}
-  @media(max-width:768px){.book-inner{grid-template-columns:1fr;gap:40px;}}
+  .resource-title{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:400;color:var(--near-black);line-height:1.3;margin-bottom:20px;}
+  .resource-footer{display:flex;align-items:center;gap:12px;}
+
+  /* BTNS */
   .btn-primary{display:inline-block;background:var(--sand);color:var(--near-black);text-decoration:none;font-size:0.88rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:16px 44px;border-radius:4px;transition:all 0.25s;border:none;cursor:pointer;}
   .btn-primary:hover{background:var(--sand-light);transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,0,0,0.2);}
   .btn-outline{display:inline-block;background:transparent;border:1px solid rgba(201,168,124,0.5);color:var(--sand-light);text-decoration:none;font-size:0.88rem;font-weight:400;letter-spacing:0.06em;text-transform:uppercase;padding:14px 36px;border-radius:4px;transition:all 0.25s;}
@@ -336,14 +250,14 @@
   .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.55s ease,transform 0.55s ease;}
   .reveal.visible{opacity:1;transform:translateY(0);}
 
+  .hamburger{display:none;}
   @media(max-width:768px){
     .footer-grid{grid-template-columns:1fr;gap:32px;}
     .nav-links{display:none;}
+    .nav-cta,.nav-book{display:none;}
     .quote-num{display:none;}
     section{padding:70px 5%;}
     .hero{padding:100px 5% 60px;}
-
-    /* HAMBURGER */
     .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;z-index:101;}
     .hamburger span{display:block;width:24px;height:2px;background:var(--sand-light);border-radius:2px;transition:all 0.3s;}
     .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
@@ -355,49 +269,17 @@
     .mobile-menu a:last-child{border-bottom:none;}
     .mobile-menu .mob-cta{color:var(--near-black)!important;background:var(--sand);border-radius:4px;padding:14px 24px!important;text-align:center;margin-top:12px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;}
     .mobile-menu .mob-book{color:var(--teal-light)!important;border:1px solid var(--teal-light);border-radius:4px;padding:14px 24px!important;text-align:center;margin-top:4px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;}
-
-    /* HERO */
     .hero h1{font-size:clamp(1.9rem,7vw,2.8rem);padding:24px 28px;}
     .hero-logo{width:120px;}
-
-    /* CARDS */
-    .cards-grid{grid-template-columns:1fr;}
-    .speakers-grid{grid-template-columns:1fr;}
-    .offerings-grid{grid-template-columns:1fr;}
-    .biz-grid{grid-template-columns:1fr;}
-
-    /* MODEL */
+    .cards-grid,.speakers-grid,.offerings-grid,.biz-grid{grid-template-columns:1fr;}
     .model-flow{flex-direction:column;gap:12px;}
     .model-arrow{transform:rotate(90deg);}
-
-    /* REVIEWS */
     .review-card{flex:0 0 100%;}
-
-    /* TABS */
     .tabs-nav{overflow-x:auto;padding-bottom:4px;}
     .tab-btn{white-space:nowrap;padding:12px 18px;font-size:0.82rem;}
-
-    /* BOOK SECTION */
-    .book-inner{grid-template-columns:1fr;gap:40px;}
-
-    /* INDIVIDUALS IMAGE WRAPPER */
-    #tab-individuals > div{padding:32px 20px!important;}
-    #tab-business > div{padding:32px 20px!important;}
-
-    /* FOOTER */
+    #tab-individuals > div,#tab-business > div{padding:32px 20px!important;}
     .footer-bottom{flex-direction:column;text-align:center;}
-
-    /* CTA */
     .cta-section h2{padding:24px 28px!important;}
-
-    /* NAV BUTTONS */
-    .nav-cta,.nav-book{display:none;}
-  }
-
-  /* Show hamburger only on mobile */
-  .hamburger{display:none;}
-  @media(max-width:768px){
-    .hamburger{display:flex;}
   }
 </style>
 </head>
@@ -441,11 +323,10 @@
   <a href="#formats" class="mob-cta" onclick="closeMenu()" data-i18n="nav_enroll"></a>
   <a href="#bookcall" class="mob-book" onclick="closeMenu()" data-i18n="nav_book"></a>
 </div>
-
 <!-- HERO -->
 <section class="hero" id="home">
   <img src="https://raw.githubusercontent.com/englishupp-design/eq-course/main/logo%20(2).png" alt="MindLander" class="hero-logo">
-  <div class="hero-eyebrow"><span style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);letter-spacing:0.08em;text-transform:none;" data-i18n="hero_brand"></span> <span style="opacity:0.5;font-size:1rem;">·</span> <span style="font-size:1rem;" data-i18n="hero_sub_eyebrow"></span></div>
+  <div class="hero-eyebrow"><span style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--white);letter-spacing:0.08em;text-transform:none;" data-i18n="hero_brand"></span> <span style="opacity:0.5;font-size:1rem;">&middot;</span> <span style="font-size:1rem;" data-i18n="hero_sub_eyebrow"></span></div>
   <h1 data-i18n="hero_h1"></h1>
 </section>
 
@@ -498,14 +379,14 @@
   </div>
 </section>
 
-<!-- MODEL / APPROACH -->
+<!-- MODEL -->
 <section style="background:var(--charcoal);padding:100px 5%;text-align:center;">
   <div class="section-inner">
     <div class="section-label" style="color:var(--sand);" data-i18n="approach_label"></div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3rem);font-weight:400;color:var(--white);line-height:1.2;margin-bottom:0;" data-i18n="approach_h2"></h2>
     <div class="model-flow">
       <div class="model-box" data-i18n="approach_box1"></div>
-      <div class="model-arrow">→</div>
+      <div class="model-arrow">&rarr;</div>
       <div class="model-box" data-i18n="approach_box2"></div>
       <div class="model-arrow">=</div>
       <div class="model-box model-result" data-i18n="approach_box3"></div>
@@ -519,8 +400,6 @@
     <div class="section-label" data-i18n="who_label"></div>
     <h2 class="section-title" data-i18n="who_h2"></h2>
     <div class="speakers-grid">
-
-      <!-- Valeriia -->
       <div class="speaker-card reveal">
         <img src="https://i.ibb.co/tTjZTxtv/image.jpg" alt="Valeriia Bakanova" class="speaker-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="speaker-photo-placeholder" style="display:none;">V</div>
@@ -531,17 +410,9 @@
           <span class="speaker-tag" data-i18n="who1_tag2"></span>
           <span class="speaker-tag" data-i18n="who1_tag3"></span>
         </div>
-        <button class="bio-toggle">
-          <span class="bio-toggle-text" data-i18n="bio_read"></span>
-          <svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
-        <div class="bio-content">
-          <p data-i18n="who1_bio"></p>
-          <a href="https://valeriianeurocoach.com" target="_blank" class="bio-link" data-i18n="who1_link"></a>
-        </div>
+        <button class="bio-toggle"><span class="bio-toggle-text" data-i18n="bio_read"></span><svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
+        <div class="bio-content"><p data-i18n="who1_bio"></p><a href="https://valeriianeurocoach.com" target="_blank" class="bio-link" data-i18n="who1_link"></a></div>
       </div>
-
-      <!-- Natalia -->
       <div class="speaker-card reveal">
         <img src="https://i.ibb.co/qYYQjbp5/image.jpg" alt="Natalia Shubnikova" class="speaker-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="speaker-photo-placeholder" style="display:none;">N</div>
@@ -552,14 +423,9 @@
           <span class="speaker-tag" data-i18n="who2_tag2"></span>
           <span class="speaker-tag" data-i18n="who2_tag3"></span>
         </div>
-        <button class="bio-toggle">
-          <span class="bio-toggle-text" data-i18n="bio_read"></span>
-          <svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
+        <button class="bio-toggle"><span class="bio-toggle-text" data-i18n="bio_read"></span><svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         <div class="bio-content"><p data-i18n="who2_bio"></p></div>
       </div>
-
-      <!-- Oleg -->
       <div class="speaker-card reveal">
         <img src="https://raw.githubusercontent.com/englishupp-design/diagram/main/image5.jpg" alt="Oleg Poruchenko" class="speaker-photo" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
         <div class="speaker-photo-placeholder" style="display:none;">O</div>
@@ -571,17 +437,12 @@
           <span class="speaker-tag" data-i18n="who3_tag3"></span>
           <span class="speaker-tag" data-i18n="who3_tag4"></span>
         </div>
-        <button class="bio-toggle">
-          <span class="bio-toggle-text" data-i18n="bio_read"></span>
-          <svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </button>
+        <button class="bio-toggle"><span class="bio-toggle-text" data-i18n="bio_read"></span><svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         <div class="bio-content"><p data-i18n="who3_bio"></p></div>
       </div>
-
     </div>
   </div>
 </section>
-
 <!-- REVIEWS -->
 <section style="background:var(--bg);padding:100px 5%;" id="reviews">
   <div class="section-inner">
@@ -590,48 +451,13 @@
     <div class="reviews-slider-wrap">
       <div class="reviews-track-outer">
         <div class="reviews-track" id="reviewsTrack">
-          <div class="review-card reveal">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="review-text-wrap"><p class="review-text" data-i18n="t1_text"></p><div class="review-fade"></div></div>
-            <button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-            <div class="review-footer"><div class="review-name" data-i18n="t1_name"></div><div class="review-meta" data-i18n="t1_role"></div></div>
-          </div>
-          <div class="review-card reveal">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="review-text-wrap"><p class="review-text" data-i18n="t2_text"></p><div class="review-fade"></div></div>
-            <button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-            <div class="review-footer"><div class="review-name" data-i18n="t2_name"></div><div class="review-meta" data-i18n="t2_role"></div></div>
-          </div>
-          <div class="review-card reveal">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="review-text-wrap"><p class="review-text" data-i18n="t3_text"></p><div class="review-fade"></div></div>
-            <button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-            <div class="review-footer"><div class="review-name" data-i18n="t3_name"></div><div class="review-meta" data-i18n="t3_role"></div></div>
-          </div>
-          <div class="review-card reveal">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="review-text-wrap"><p class="review-text" data-i18n="t4_text"></p><div class="review-fade"></div></div>
-            <button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-            <div class="review-footer"><div class="review-name" data-i18n="t4_name"></div><div class="review-meta" data-i18n="t4_role"></div></div>
-          </div>
-          <div class="review-card reveal">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="review-text-wrap"><p class="review-text" data-i18n="t5_text"></p><div class="review-fade"></div></div>
-            <button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-            <div class="review-footer"><div class="review-name" data-i18n="t5_name"></div><div class="review-meta" data-i18n="t5_role"></div></div>
-          </div>
-          <div class="review-card reveal">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="review-text-wrap"><p class="review-text" data-i18n="t6_text"></p><div class="review-fade"></div></div>
-            <button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-            <div class="review-footer"><div class="review-name" data-i18n="t6_name"></div><div class="review-meta" data-i18n="t6_role"></div></div>
-          </div>
-          <div class="review-card reveal">
-            <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <div class="review-text-wrap"><p class="review-text" data-i18n="t7_text"></p><div class="review-fade"></div></div>
-            <button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-            <div class="review-footer"><div class="review-name" data-i18n="t7_name"></div><div class="review-meta" data-i18n="t7_role"></div></div>
-          </div>
+          <div class="review-card reveal"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="review-text-wrap"><p class="review-text" data-i18n="t1_text"></p><div class="review-fade"></div></div><button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="review-footer"><div class="review-name" data-i18n="t1_name"></div><div class="review-meta" data-i18n="t1_role"></div></div></div>
+          <div class="review-card reveal"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="review-text-wrap"><p class="review-text" data-i18n="t2_text"></p><div class="review-fade"></div></div><button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="review-footer"><div class="review-name" data-i18n="t2_name"></div><div class="review-meta" data-i18n="t2_role"></div></div></div>
+          <div class="review-card reveal"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="review-text-wrap"><p class="review-text" data-i18n="t3_text"></p><div class="review-fade"></div></div><button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="review-footer"><div class="review-name" data-i18n="t3_name"></div><div class="review-meta" data-i18n="t3_role"></div></div></div>
+          <div class="review-card reveal"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="review-text-wrap"><p class="review-text" data-i18n="t4_text"></p><div class="review-fade"></div></div><button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="review-footer"><div class="review-name" data-i18n="t4_name"></div><div class="review-meta" data-i18n="t4_role"></div></div></div>
+          <div class="review-card reveal"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="review-text-wrap"><p class="review-text" data-i18n="t5_text"></p><div class="review-fade"></div></div><button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="review-footer"><div class="review-name" data-i18n="t5_name"></div><div class="review-meta" data-i18n="t5_role"></div></div></div>
+          <div class="review-card reveal"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="review-text-wrap"><p class="review-text" data-i18n="t6_text"></p><div class="review-fade"></div></div><button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="review-footer"><div class="review-name" data-i18n="t6_name"></div><div class="review-meta" data-i18n="t6_role"></div></div></div>
+          <div class="review-card reveal"><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="review-text-wrap"><p class="review-text" data-i18n="t7_text"></p><div class="review-fade"></div></div><button class="review-toggle" onclick="toggleReview(this)"><span data-i18n="read_more"></span><svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><div class="review-footer"><div class="review-name" data-i18n="t7_name"></div><div class="review-meta" data-i18n="t7_role"></div></div></div>
         </div>
       </div>
       <div class="reviews-controls">
@@ -657,36 +483,36 @@
         <div style="position:absolute;inset:0;background:rgba(5,10,10,0.65);z-index:0;border-radius:20px;"></div>
         <div style="position:relative;z-index:1;">
           <div class="offerings-grid">
-        <div class="offering-card" onclick="animateTag(this)">
-          <div class="offering-tag" data-i18n="fmt_webinar_label"></div>
-          <h3 class="offering-title" data-i18n="fmt_webinar_h3"></h3>
-          <p class="offering-desc" data-i18n="fmt_webinar_p"></p>
-          <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="btn-primary" data-i18n="fmt_webinar_link"></a>
+            <div class="offering-card" onclick="animateTag(this)">
+              <div class="offering-tag" data-i18n="fmt_webinar_label"></div>
+              <h3 class="offering-title" data-i18n="fmt_webinar_h3"></h3>
+              <p class="offering-desc" data-i18n="fmt_webinar_p"></p>
+              <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="btn-primary" onclick="event.stopPropagation()" data-i18n="fmt_webinar_link"></a>
+            </div>
+            <div class="offering-card offering-card--featured" onclick="animateTag(this)">
+              <div class="offering-tag offering-tag--gold" data-i18n="fmt_course_label"></div>
+              <h3 class="offering-title" data-i18n="fmt_course_h3"></h3>
+              <p class="offering-desc" data-i18n="fmt_course_p"></p>
+              <button class="btn-primary" onclick="event.stopPropagation();showModal('modules')" data-i18n="fmt_course_link"></button>
+            </div>
+          </div>
         </div>
-        <div class="offering-card offering-card--featured" onclick="animateTag(this)">
-          <div class="offering-tag offering-tag--gold" data-i18n="fmt_course_label"></div>
-          <h3 class="offering-title" data-i18n="fmt_course_h3"></h3>
-          <p class="offering-desc" data-i18n="fmt_course_p"></p>
-          <button class="btn-primary" onclick="showModal('modules')" data-i18n="fmt_course_link"></button>
-        </div>
-        </div><!-- /offerings-grid -->
-        </div><!-- /z-index inner -->
-      </div><!-- /image wrapper -->
-    </div><!-- /tab-individuals -->
+      </div>
+    </div>
     <div id="tab-business" class="tab-content">
       <div style="position:relative;border-radius:20px;overflow:hidden;background-image:url('https://raw.githubusercontent.com/englishupp-design/diagram/main/image%204.png');background-size:cover;background-position:center;padding:48px 40px;">
         <div style="position:absolute;inset:0;background:rgba(5,10,10,0.65);z-index:0;border-radius:20px;"></div>
         <div style="position:relative;z-index:1;">
-      <p style="font-size:1rem;line-height:1.85;color:rgba(237,224,206,0.9);max-width:700px;font-weight:400;margin-bottom:48px;text-shadow:0 1px 6px rgba(0,0,0,0.6);background:rgba(10,18,18,0.75);backdrop-filter:blur(12px);border:1px solid rgba(217,224,227,0.18);border-left:3px solid rgba(217,224,227,0.35);border-radius:12px;padding:22px 28px;" data-i18n="biz_intro"></p>
-      <div class="biz-grid">
-        <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#128218;</div><h3 data-i18n="biz1_h4"></h3><p data-i18n="biz1_p"></p></div>
-        <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#127908;</div><h3 data-i18n="biz2_h4"></h3><p data-i18n="biz2_p"></p></div>
-        <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#9889;</div><h3 data-i18n="biz3_h4"></h3><p data-i18n="biz3_p"></p></div>
+          <p style="font-size:1rem;line-height:1.85;color:rgba(237,224,206,0.9);max-width:700px;font-weight:400;margin-bottom:48px;text-shadow:0 1px 6px rgba(0,0,0,0.6);background:rgba(10,18,18,0.75);backdrop-filter:blur(12px);border:1px solid rgba(217,224,227,0.18);border-left:3px solid rgba(217,224,227,0.35);border-radius:12px;padding:22px 28px;" data-i18n="biz_intro"></p>
+          <div class="biz-grid">
+            <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#128218;</div><h3 data-i18n="biz1_h4"></h3><p data-i18n="biz1_p"></p></div>
+            <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#127908;</div><h3 data-i18n="biz2_h4"></h3><p data-i18n="biz2_p"></p></div>
+            <div class="biz-card reveal" onclick="animateTag(this)"><div class="biz-icon">&#9889;</div><h3 data-i18n="biz3_h4"></h3><p data-i18n="biz3_p"></p></div>
+          </div>
+          <a href="" target="_blank" class="btn-outline" style="margin-top:40px;display:inline-block;" data-i18n="biz_cta" data-i18n-href="biz_cta_url"></a>
+        </div>
       </div>
-      <a href="" target="_blank" class="btn-outline" style="margin-top:40px;display:inline-block;" data-i18n="biz_cta" data-i18n-href="biz_cta_url"></a>
-        </div><!-- /z-index inner -->
-      </div><!-- /image wrapper -->
-    </div><!-- /tab-business -->
+    </div>
   </div>
 </section>
 
@@ -719,164 +545,18 @@
     <div class="section-label" data-i18n="res_label"></div>
     <h2 class="section-title" data-i18n="res_h2"></h2>
     <div class="divider"></div>
-    <p style="font-size:1rem;line-height:1.85;color:var(--text-mid);max-width:680px;font-weight:300;margin-bottom:40px;" data-i18n="res_intro"></p>
-
-    <!-- Filter tabs -->
-    <div class="resources-tabs">
-      <button class="res-tab-btn active" onclick="switchResTab('all',this)" data-i18n="res_tab_all"></button>
-      <button class="res-tab-btn" onclick="switchResTab('video',this)" data-i18n="res_tab_video"></button>
-      <button class="res-tab-btn" onclick="switchResTab('pdf',this)" data-i18n="res_tab_pdf"></button>
+    <div class="resource-card reveal">
+      <div class="resource-thumb">
+        <img src="https://raw.githubusercontent.com/englishupp-design/diagram/main/image6.png" alt="Overcome your Amygdala">
+      </div>
+      <div class="resource-body">
+        <div class="resource-type-label" data-i18n="res_type_video"></div>
+        <div class="resource-title" data-i18n="res_v1_title"></div>
+        <div class="resource-footer">
+          <a href="https://secure.wayforpay.com/payment/amygdala-podcast" target="_blank" rel="nofollow" class="btn-primary" style="font-size:0.82rem;padding:12px 28px;" data-i18n="res_buy"></a>
+        </div>
+      </div>
     </div>
-
-    <!-- ALL -->
-    <div id="res-all" class="res-content active">
-
-      <!-- Video 1 — Free -->
-      <div class="resource-card reveal">
-        <div class="resource-thumb" style="background:linear-gradient(135deg,#1E3535,#3D6B6B);">
-          <div class="resource-thumb-overlay"></div>
-          <div class="resource-thumb-icon">🎬</div>
-          <span class="resource-badge resource-badge--free" data-i18n="res_free"></span>
-          <span class="resource-type-icon">▶</span>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type-label" data-i18n="res_type_video"></div>
-          <div class="resource-title" data-i18n="res_v1_title"></div>
-          <div class="resource-desc" data-i18n="res_v1_desc"></div>
-          <div class="resource-footer">
-            <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="resource-cta" data-i18n="res_watch"></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Video 2 — Gated -->
-      <div class="resource-card reveal">
-        <div class="resource-thumb" style="background:linear-gradient(135deg,#252B2B,#2D4A4A);">
-          <div class="resource-thumb-overlay"></div>
-          <div class="resource-thumb-icon">🎥</div>
-          <span class="resource-badge resource-badge--gated" data-i18n="res_gated"></span>
-          <span class="resource-type-icon">▶</span>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type-label" data-i18n="res_type_video"></div>
-          <div class="resource-title" data-i18n="res_v2_title"></div>
-          <div class="resource-desc" data-i18n="res_v2_desc"></div>
-          <div class="resource-footer">
-            <button class="resource-cta resource-cta--locked" onclick="showModal('modules')" data-i18n="res_enroll_access"></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- PDF 1 — Free -->
-      <div class="resource-card reveal">
-        <div class="resource-thumb" style="background:linear-gradient(135deg,#2D4A4A,#C9A87C);">
-          <div class="resource-thumb-overlay"></div>
-          <div class="resource-thumb-icon">📄</div>
-          <span class="resource-badge resource-badge--free" data-i18n="res_free"></span>
-          <span class="resource-type-icon">📥</span>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type-label" data-i18n="res_type_pdf"></div>
-          <div class="resource-title" data-i18n="res_p1_title"></div>
-          <div class="resource-desc" data-i18n="res_p1_desc"></div>
-          <div class="resource-footer">
-            <a href="#bookcall" class="resource-cta" data-i18n="res_download"></a>
-          </div>
-        </div>
-      </div>
-
-      <!-- PDF 2 — Gated -->
-      <div class="resource-card reveal">
-        <div class="resource-thumb" style="background:linear-gradient(135deg,#1A1F1F,#3D5A4A);">
-          <div class="resource-thumb-overlay"></div>
-          <div class="resource-thumb-icon">📚</div>
-          <span class="resource-badge resource-badge--gated" data-i18n="res_gated"></span>
-          <span class="resource-type-icon">📥</span>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type-label" data-i18n="res_type_pdf"></div>
-          <div class="resource-title" data-i18n="res_p2_title"></div>
-          <div class="resource-desc" data-i18n="res_p2_desc"></div>
-          <div class="resource-footer">
-            <button class="resource-cta resource-cta--locked" onclick="showModal('modules')" data-i18n="res_enroll_access"></button>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- /res-all -->
-
-    <!-- VIDEO only -->
-    <div id="res-video" class="res-content">
-      <div class="resource-card reveal">
-        <div class="resource-thumb" style="background:linear-gradient(135deg,#1E3535,#3D6B6B);">
-          <div class="resource-thumb-overlay"></div>
-          <div class="resource-thumb-icon">🎬</div>
-          <span class="resource-badge resource-badge--free" data-i18n="res_free"></span>
-          <span class="resource-type-icon">▶</span>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type-label" data-i18n="res_type_video"></div>
-          <div class="resource-title" data-i18n="res_v1_title"></div>
-          <div class="resource-desc" data-i18n="res_v1_desc"></div>
-          <div class="resource-footer">
-            <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="resource-cta" data-i18n="res_watch"></a>
-          </div>
-        </div>
-      </div>
-      <div class="resource-card reveal">
-        <div class="resource-thumb" style="background:linear-gradient(135deg,#252B2B,#2D4A4A);">
-          <div class="resource-thumb-overlay"></div>
-          <div class="resource-thumb-icon">🎥</div>
-          <span class="resource-badge resource-badge--gated" data-i18n="res_gated"></span>
-          <span class="resource-type-icon">▶</span>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type-label" data-i18n="res_type_video"></div>
-          <div class="resource-title" data-i18n="res_v2_title"></div>
-          <div class="resource-desc" data-i18n="res_v2_desc"></div>
-          <div class="resource-footer">
-            <button class="resource-cta resource-cta--locked" onclick="showModal('modules')" data-i18n="res_enroll_access"></button>
-          </div>
-        </div>
-      </div>
-    </div><!-- /res-video -->
-
-    <!-- PDF only -->
-    <div id="res-pdf" class="res-content">
-      <div class="resource-card reveal">
-        <div class="resource-thumb" style="background:linear-gradient(135deg,#2D4A4A,#C9A87C);">
-          <div class="resource-thumb-overlay"></div>
-          <div class="resource-thumb-icon">📄</div>
-          <span class="resource-badge resource-badge--free" data-i18n="res_free"></span>
-          <span class="resource-type-icon">📥</span>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type-label" data-i18n="res_type_pdf"></div>
-          <div class="resource-title" data-i18n="res_p1_title"></div>
-          <div class="resource-desc" data-i18n="res_p1_desc"></div>
-          <div class="resource-footer">
-            <a href="#bookcall" class="resource-cta" data-i18n="res_download"></a>
-          </div>
-        </div>
-      </div>
-      <div class="resource-card reveal">
-        <div class="resource-thumb" style="background:linear-gradient(135deg,#1A1F1F,#3D5A4A);">
-          <div class="resource-thumb-overlay"></div>
-          <div class="resource-thumb-icon">📚</div>
-          <span class="resource-badge resource-badge--gated" data-i18n="res_gated"></span>
-          <span class="resource-type-icon">📥</span>
-        </div>
-        <div class="resource-body">
-          <div class="resource-type-label" data-i18n="res_type_pdf"></div>
-          <div class="resource-title" data-i18n="res_p2_title"></div>
-          <div class="resource-desc" data-i18n="res_p2_desc"></div>
-          <div class="resource-footer">
-            <button class="resource-cta resource-cta--locked" onclick="showModal('modules')" data-i18n="res_enroll_access"></button>
-          </div>
-        </div>
-      </div>
-    </div><!-- /res-pdf -->
-
   </div>
 </section>
 
@@ -917,7 +597,7 @@
       <h4 data-i18n="footer_docs_h4"></h4>
       <a href="#" onclick="showModal('privacy');return false;" data-i18n="footer_privacy"></a>
       <a href="#" onclick="showModal('cookies');return false;" data-i18n="footer_cookies"></a>
-      <a href="" target="_blank" data-i18n="footer_offer" data-i18n-href="footer_offer_url" id="offer-link"></a>
+      <a href="" target="_blank" data-i18n="footer_offer" data-i18n-href="footer_offer_url"></a>
     </div>
     <div class="footer-col">
       <h4 data-i18n="footer_contact_h4"></h4>
@@ -925,7 +605,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&#169; 2026 <span data-i18n="footer_rights"></span></p>
+    <p>&copy; 2026 <span data-i18n="footer_rights"></span></p>
   </div>
 </footer>
 
@@ -971,72 +651,71 @@
     <div style="margin-top:28px;text-align:center;"><a href="" target="_blank" class="btn-primary" onclick="closeModal()" data-i18n="curr_cta" data-i18n-href="curr_cta_url"></a></div>
   </div>
 </div>
-
 <script>
 const i18n = {
   en: {
     nav_about:"About the Project", nav_team:"Our Team", nav_individuals:"For Individuals", nav_business:"For Business", nav_curriculum:"Programme", nav_resources:"Resources", nav_enroll:"Enroll", nav_book:"Book a Call",
     hero_brand:"MindLander", hero_sub_eyebrow:"Emotional Intelligence School for Leaders",
-    hero_h1:"Emotional Intelligence — <em>Your Superpower</em>",
+    hero_h1:"Emotional Intelligence \u2014 <em>Your Superpower</em>",
     forwho_label:"For Whom", forwho_h2:"Our project is dedicated to developing emotional intelligence skills.",
     forwho_question:"Who will benefit most?",
-    forwho_card1:"<strong>Educators</strong> who want to stay ahead of AI competition — because no machine can replace the power of genuine human connection.",
-    forwho_card2:"<strong>Language school owners</strong> and tutoring services — if you want your school to stand out and become the one people talk about: for its quality, understanding, and approach.",
-    forwho_card3:"<strong>Professionals and service providers</strong> who work with people and want to be in a league of their own — not just because you\'re skilled, but because you truly understand what your clients need right now.",
+    forwho_card1:"<strong>Educators</strong> who want to stay ahead of AI competition \u2014 because no machine can replace the power of genuine human connection.",
+    forwho_card2:"<strong>Language school owners</strong> and tutoring services \u2014 if you want your school to stand out and become the one people talk about: for its quality, understanding, and approach.",
+    forwho_card3:"<strong>Professionals and service providers</strong> who work with people and want to be in a league of their own \u2014 not just because you\u2019re skilled, but because you truly understand what your clients need right now.",
     why_label:"Relevant Now", why_h2:"Why does Emotional Intelligence matter right now?",
-    why_lead:"In a world where automation is replacing tasks, human connection has become the ultimate competitive advantage. EQ is the educational trend of 2026 — a scientifically proven force that impacts learning outcomes, mental wellbeing, and burnout prevention.",
+    why_lead:"In a world where automation is replacing tasks, human connection has become the ultimate competitive advantage. EQ is the educational trend of 2026 \u2014 a scientifically proven force that impacts learning outcomes, mental wellbeing, and burnout prevention.",
     tag1:"Trend 2026", tag2:"Scientifically Proven", tag3:"Teaching", tag4:"Leadership", tag5:"Client Service", tag6:"Conflict Management",
-    eq_label:"What is EQ", eq_h2:"Emotional Intelligence is…",
-    eq1:"the ability to understand and manage emotions — <em>your own and others\'</em>",
+    eq_label:"What is EQ", eq_h2:"Emotional Intelligence is\u2026",
+    eq1:"the ability to understand and manage emotions \u2014 <em>your own and others\u2019</em>",
     eq2:"understanding the <em>language of feelings</em> and translating it into action",
     eq3:"the skill of <em>reading people</em> without words",
     eq4:"knowing how to navigate situations and find the <em>right resolution</em> to conflict",
-    eq5:"knowing when it\'s time to leave a party &#128516;",
-    eq_question:"What\'s your definition of EQ?",
+    eq5:"knowing when it\u2019s time to leave a party &#128516;",
+    eq_question:"What\u2019s your definition of EQ?",
     approach_label:"Our Approach", approach_h2:"This programme is essential for everyone working in the model:",
     approach_box1:"Provider", approach_box2:"Client", approach_box3:"Successful, long-term partnership",
     who_label:"Who We Are", who_h2:"Meet the team behind the course",
     who1_name:"Valeriia Bakanova", who1_title:"Professional Neurolanguage Coach&#174; &amp; Licensed Teacher Trainer&#174;",
-    who1_bio:"Valeriia began teaching English over 20 years ago, growing from a private tutor into the founder of her own language school. Her path led her to neuroscience and coaching — today she is a certified Neurolanguage Coach&#174; and Licensed Trainer&#174; at ELC Ltd., helping educators transform their practice through brain science and emotional intelligence.",
+    who1_bio:"Valeriia began teaching English over 20 years ago, growing from a private tutor into the founder of her own language school. Her path led her to neuroscience and coaching \u2014 today she is a certified Neurolanguage Coach&#174; and Licensed Trainer&#174; at ELC Ltd., helping educators transform their practice through brain science and emotional intelligence.",
     who1_tag1:"20+ years experience", who1_tag2:"ICF &amp; CCE Accredited", who1_tag3:"Founder, English-Up",
     who1_link:"Learn more about Valeriia",
     who2_name:"Natalia Shubnikova", who2_title:"Professional Life &amp; Business Strategic Coach",
     who2_bio:"Natalia built a successful career in the tech industry, rising from specialist to senior executive and co-founder. Managing teams and processes, she became convinced that real effectiveness is impossible without understanding human nature, motivation, and emotion. Today she is a certified Life &amp; Business Strategic Coach helping professionals build conscious, profitable career paths.",
     who2_tag1:"Former IT Top-Manager", who2_tag2:"ICF Certified Coach", who2_tag3:"Business Strategy Expert",
     who3_name:"Oleg Poruchenko", who3_title:"Neurologist &middot; Psychologist &middot; Neuropsychologist &middot; Brain Injury Rehabilitation Practician",
-    who3_bio:"Oleg brings deep clinical expertise in neuropsychology and brain rehabilitation to the course. His work at a Brain Injury Rehab Centre gives him a rare, science-grounded perspective on how the brain learns, recovers, and adapts — knowledge that directly informs the neuroscience foundation of this programme.",
+    who3_bio:"Oleg brings deep clinical expertise in neuropsychology and brain rehabilitation to the course. His work at a Brain Injury Rehab Centre gives him a rare, science-grounded perspective on how the brain learns, recovers, and adapts \u2014 knowledge that directly informs the neuroscience foundation of this programme.",
     who3_tag1:"Clinical Neuropsychologist", who3_tag2:"Brain Injury Rehab Specialist", who3_tag3:"Neurologist", who3_tag4:"Psychologist",
     bio_read:"Read their story",
     testi_label:"Testimonials", testi_h2:"What participants say",
     read_more:"Read more ",
-    t1_text:"Taking this course was a strategically important decision for my business. The knowledge went far beyond basic management skills — it fundamentally changed how we communicate, collaborate, and build relationships with partners and colleagues. Every module brought a unique blend of clarity, support, and motivation.", t1_name:"Alexander", t1_role:"Information business owner",
-    t2_text:"The module on emotional intelligence — especially about the importance of rest and learning not to take students\' behavior personally — was a true lifesaver. I now feel far more confident, balanced, and resilient, even when things get difficult at school.", t2_name:"Ekaterina", t2_role:"Secondary school English teacher",
-    t3_text:"After completing the course, my small team and I felt like we\'d grown wings. Within just two months of training, we learned how to confidently present my brand. I wholeheartedly recommend this course to any entrepreneur who needs fast, focused results.", t3_name:"Yulia", t3_role:"Owner of a cosmetics clinic and natural skincare brand",
-    t4_text:"This course was a genuine revelation and gave powerful momentum to my private practice. I now know how not to take clients\' reactions personally and how to maintain inner calm even in the most challenging situations.", t4_name:"Irina", t4_role:"Corporate English trainer",
+    t1_text:"Taking this course was a strategically important decision for my business. The knowledge went far beyond basic management skills \u2014 it fundamentally changed how we communicate, collaborate, and build relationships with partners and colleagues. Every module brought a unique blend of clarity, support, and motivation.", t1_name:"Alexander", t1_role:"Information business owner",
+    t2_text:"The module on emotional intelligence \u2014 especially about the importance of rest and learning not to take students\u2019 behavior personally \u2014 was a true lifesaver. I now feel far more confident, balanced, and resilient, even when things get difficult at school.", t2_name:"Ekaterina", t2_role:"Secondary school English teacher",
+    t3_text:"After completing the course, my small team and I felt like we\u2019d grown wings. Within just two months of training, we learned how to confidently present my brand. I wholeheartedly recommend this course to any entrepreneur who needs fast, focused results.", t3_name:"Yulia", t3_role:"Owner of a cosmetics clinic and natural skincare brand",
+    t4_text:"This course was a genuine revelation and gave powerful momentum to my private practice. I now know how not to take clients\u2019 reactions personally and how to maintain inner calm even in the most challenging situations.", t4_name:"Irina", t4_role:"Corporate English trainer",
     t5_text:"This training became my anchor in overcoming impostor syndrome and helped me untangle a web of limiting beliefs. The course gave me a structured vision of my goals and now I know exactly what my next steps are.", t5_name:"Natalia", t5_role:"Independent entrepreneur",
-    t6_text:"From the very first modules, real productive changes began to show up in my work. The program didn\'t just give me knowledge — it gave me working tools for understanding what\'s really behind people\'s behavior.", t6_name:"Tatyana", t6_role:"Business owner",
+    t6_text:"From the very first modules, real productive changes began to show up in my work. The program didn\u2019t just give me knowledge \u2014 it gave me working tools for understanding what\u2019s really behind people\u2019s behavior.", t6_name:"Tatyana", t6_role:"Business owner",
     t7_text:"What was especially valuable was realizing how directly my emotions affect my decision-making. Through deep practices and a structured approach, I arrived at answers to questions that used to cause only anxiety. This is an entirely new level of self-understanding!", t7_name:"Yulia", t7_role:"Language school owner",
     formats_label:"Formats", formats_h2:"Choose Your Path",
     tab_individuals:"For Individuals", tab_business:"For Business",
     fmt_webinar_label:"Webinar", fmt_webinar_h3:"Emotional Intelligence as a Key Success Factor",
-    fmt_webinar_p:"A one-time online webinar — the perfect entry point to explore the world of EQ, ask the speakers your questions, and discover how it works in real life.",
+    fmt_webinar_p:"A one-time online webinar \u2014 the perfect entry point to explore the world of EQ, ask the speakers your questions, and discover how it works in real life.",
     fmt_webinar_link:"Learn more about the webinar",
-    fmt_course_label:"Full Course", fmt_course_h3:"Emotional Intelligence — the Key Factor in Your Success",
+    fmt_course_label:"Full Course", fmt_course_h3:"Emotional Intelligence \u2014 the Key Factor in Your Success",
     fmt_course_p:"A comprehensive 9-module course with practical assignments, live sessions, and a community of like-minded people. Hybrid format: recorded lessons + weekly live meetings.",
     fmt_course_link:"Learn more about the course",
-    biz_intro:"We offer fully customized training solutions for businesses in any industry. We tailor the program to your team\'s specific needs and goals.",
+    biz_intro:"We offer fully customized training solutions for businesses in any industry. We tailor the program to your team\u2019s specific needs and goals.",
     biz1_h4:"Full Corporate Course", biz1_p:"A complete training program adapted to the specific needs of your business and team.",
     biz2_h4:"Thematic Webinars", biz2_p:"One-time webinars focused on key aspects of EQ, tailored to your specific request.",
     biz3_h4:"Workshops", biz3_p:"Intensive, hands-on workshops for practicing skills in real-world team scenarios.",
     biz_cta:"Discuss a Partnership", biz_cta_url:"https://form.jotform.com/261165961809061",
     curr_label:"Course Programme", curr_h2:"9 Modules of Transformational Practice",
     m1_title:"The Origins of EI and Why It Matters", m1_body:"How people came to recognize the importance of EI. The history of the term from ancient philosophers to the present day, the evolution of EQ as a concept, key research, and the introduction of SEL programs in educational institutions. How EQ influences different areas of life.",
-    m2_title:"The Benefits of EI in Language Teaching", m2_body:"Richard Boyatzis\'s model of emotional intelligence. Practical scenarios: how to maintain a student\'s attention, work with \'withdrawn\' learners, and manage emotional exhaustion. The connection between EI and student motivation, memory, and identity. The role of empathy, emotional resonance, and reflection as tools for educators.",
+    m2_title:"The Benefits of EI in Language Teaching", m2_body:"Richard Boyatzis\u2019s model of emotional intelligence. Practical scenarios: how to maintain a student\u2019s attention, work with \u2018withdrawn\u2019 learners, and manage emotional exhaustion. The connection between EI and student motivation, memory, and identity. The role of empathy, emotional resonance, and reflection as tools for educators.",
     m3_title:"Threats to the Brain and Creating a Safe Learning Environment", m3_body:"Brain states that positively and negatively impact learning. Words, formats, and actions perceived as threats: pressure, criticism, comparisons, leading questions. How to work with a student whose brain is in a threat state. Coaching practices for communicating with parents and decision-makers.",
-    m4_title:"Neuroscience: The Brain, the Amygdala, and Learning", m4_body:"The \'triune brain\' and the role of each part. The amygdala and its processing of fear and stress — real-life case studies. The prefrontal cortex, working memory, and neuroplasticity. Cortisol and its dangers. How positive and negative emotions affect neural pathway formation and a student\'s progress.",
-    m5_title:"The Ideal State for Learning", m5_body:"What an ideal learning environment looks like and how to create it. Dopamine vs. cortisol — motivation and demotivation. Positive and negative emotional attractors. The \'flow\' state and brainwave patterns. The brain\'s two modes — emotional and rational — and how to work with both.",
-    m6_title:"Emotional Triggers and the SCARF Model", m6_body:"What a trigger is and how it connects to past experience. Common triggers for educators, techniques for immediate self-regulation, and long-term strategies. The SCARF model — educator behavior through the lens of social factors. How to give feedback and coaching practices for successful teaching.",
-    m7_title:"Student Triggers and Trauma: Recognize and Respond", m7_body:"The difference between triggers and trauma in a learning context. Real-life case studies: how trauma continues to live in the body and affect the learning process. Recognition techniques and approaches — coaching, simulations, and exercises.",
+    m4_title:"Neuroscience: The Brain, the Amygdala, and Learning", m4_body:"The \u2018triune brain\u2019 and the role of each part. The amygdala and its processing of fear and stress \u2014 real-life case studies. The prefrontal cortex, working memory, and neuroplasticity. Cortisol and its dangers. How positive and negative emotions affect neural pathway formation and a student\u2019s progress.",
+    m5_title:"The Ideal State for Learning", m5_body:"What an ideal learning environment looks like and how to create it. Dopamine vs. cortisol \u2014 motivation and demotivation. Positive and negative emotional attractors. The \u2018flow\u2019 state and brainwave patterns. The brain\u2019s two modes \u2014 emotional and rational \u2014 and how to work with both.",
+    m6_title:"Emotional Triggers and the SCARF Model", m6_body:"What a trigger is and how it connects to past experience. Common triggers for educators, techniques for immediate self-regulation, and long-term strategies. The SCARF model \u2014 educator behavior through the lens of social factors. How to give feedback and coaching practices for successful teaching.",
+    m7_title:"Student Triggers and Trauma: Recognize and Respond", m7_body:"The difference between triggers and trauma in a learning context. Real-life case studies: how trauma continues to live in the body and affect the learning process. Recognition techniques and approaches \u2014 coaching, simulations, and exercises.",
     m8_title:"Burnout: Recognizing It and Finding Balance", m8_body:"The stages and symptoms of professional burnout. Emotional exhaustion vs. emotional resilience. Techniques for restoring emotional resources and burnout prevention through emotional hygiene.",
     mb_title:"Bonus: The Financial Side of Your Practice", mb_body:"Practical aspects of running a teaching practice: drafting contracts, navigating payment challenges, setting your rates, exploring different collaboration models, and structuring package offerings.",
     curr_includes:"The course includes: demo practices, brainstorming sessions, and group work",
@@ -1044,129 +723,103 @@ const i18n = {
     cta_h2:"Emotional Intelligence: a buzzword or the ultimate success factor?",
     cta_btn:"Choose Your Format", cta_btn_url:"https://form.jotform.com/261162310591044",
     footer_tagline:"Emotional Intelligence for Educators and Business",
-    footer_docs_h4:"Documents", footer_privacy:"Privacy Policy", footer_cookies:"Cookie Policy", footer_offer:"Public Offer", footer_offer_url:"https://drive.google.com/file/d/1gtV3JhDZ9T6feftbH71XdbqQlazNs5vr/view?usp=drive_link",
+    footer_docs_h4:"Documents", footer_privacy:"Privacy Policy", footer_cookies:"Cookie Policy",
+    footer_offer:"Public Offer", footer_offer_url:"https://drive.google.com/file/d/1gtV3JhDZ9T6feftbH71XdbqQlazNs5vr/view?usp=drive_link",
     footer_contact_h4:"Contact", footer_contact_text:"<a href='mailto:mindlander.eq@gmail.com' style='color:rgba(237,224,206,0.45);text-decoration:none;' onmouseover=\"this.style.color='#DFC9A8'\" onmouseout=\"this.style.color='rgba(237,224,206,0.45)'\">mindlander.eq@gmail.com</a>",
     footer_rights:"All Rights Reserved",
     privacy_h3:"Privacy Policy", privacy_h4_1:"1. Introduction", privacy_p1:"This Policy describes how we collect, use, and protect your personal data.", privacy_h4_2:"2. Data We Collect", privacy_p2:"We collect information provided during registration: your name, email, and data necessary for participation in the course.", privacy_h4_3:"3. Use of Data", privacy_p3:"Data is used to provide access to the course, send materials, and communicate with participants.",
     cookies_h3:"Cookie Policy", cookies_h4_1:"1. What are cookies?", cookies_p1:"Small text files saved on your device when you visit our website.", cookies_h4_2:"2. How do we use cookies?", cookies_p2:"To remember your preferences, analyse how the site is used, and improve the overall user experience.",
-    book_label:"Book a Call", book_h2:"Let's Talk", book_p:"Not sure which format is right for you? Book a free 30-minute call with our team — we'll listen to your situation and help you find the best path forward.",
+    book_label:"Book a Call", book_h2:"Let\u2019s Talk", book_p:"Not sure which format is right for you? Book a free 30-minute call with our team \u2014 we\u2019ll listen to your situation and help you find the best path forward.",
     book_tag1:"Free Consultation", book_tag2:"30 Minutes", book_tag3:"No Obligation",
-    book_form_name_label:"Your Name", book_form_name:"e.g. Anna Smith",
-    book_form_email_label:"Email Address", book_form_email:"your@email.com",
-    book_form_topic_label:"I'm interested in", book_form_topic_default:"Select a topic...", book_form_topic1:"For Individuals", book_form_topic2:"For Business", book_form_topic3:"Other",
-    book_form_msg_label:"Anything you'd like us to know?", book_form_msg:"Tell us a bit about your situation...",
     book_form_btn:"Book My Free Call", book_form_btn_url:"https://form.jotform.com/261156776294063",
     res_label:"Resources Library", res_h2:"Explore & Learn",
-    res_intro:"A curated collection of videos and guides to deepen your understanding of emotional intelligence — some freely available, others exclusive to course participants.",
-    res_tab_all:"All Resources", res_tab_video:"Videos & Webinars", res_tab_pdf:"PDF Guides",
-    res_free:"Free", res_gated:"Course Members",
-    res_type_video:"Video / Webinar", res_type_pdf:"PDF Guide",
-    res_watch:"Watch now", res_download:"Get the guide", res_enroll_access:"Enroll to access",
-    res_v1_title:"EQ as a Key Success Factor — Free Webinar",
-    res_v1_desc:"A one-hour introduction to emotional intelligence — what it is, why it matters in 2026, and how it applies to your work and relationships.",
-    res_v2_title:"Module Recordings — Full Course Sessions",
-    res_v2_desc:"All 9 recorded module sessions from the full course, including live Q&A replays and bonus practice videos. Exclusive to enrolled participants.",
-    res_p1_title:"EQ Self-Assessment Guide",
-    res_p1_desc:"A free downloadable guide to help you assess your current emotional intelligence across the five key domains. Includes reflection prompts.",
-    res_p2_title:"SCARF Model — Practical Workbook",
-    res_p2_desc:"A deep-dive workbook on the SCARF model with case studies, exercises and coaching templates. Available to full course participants."
+    res_type_video:"Video",
+    res_v1_title:"Overcome your Amygdala",
+    res_buy:"Buy now"
   },
   uk: {
-    nav_about:"Про проєкт", nav_team:"Наша команда", nav_individuals:"Для приватних осіб", nav_business:"Для бізнесу", nav_curriculum:"Програма", nav_resources:"Ресурси", nav_enroll:"Записатися", nav_book:"Забронювати дзвінок",
-    hero_brand:"MindLander", hero_sub_eyebrow:"Школа емоційного інтелекту для лідерів",
-    hero_h1:"Емоційний Інтелект — <em>твоя Суперсила</em>",
-    forwho_label:"Для кого", forwho_h2:"Наш проєкт присвячено розвитку навичок емоційного інтелекту.",
-    forwho_question:"Кому цей проєкт допоможе найбільше?",
-    forwho_card1:"<strong>Викладачі</strong>, які хочуть не боятися конкуренції зі штучним інтелектом — адже жодна машина не зможе замінити справжніх людських якостей.",
-    forwho_card2:"<strong>Власники мовних шкіл</strong> і репетиторських сервісів — якщо ви хочете, щоб ваша школа вирізнялася серед усіх інших і про неї ходили легенди: якість, розуміння, підхід.",
-    forwho_card3:"<strong>Люди та сервіси</strong>, що працюють з людьми і прагнуть бути поза конкуренцією — не лише тому, що ви професіонали, а тому що точно знаєте, що потрібно вашим клієнтам саме зараз.",
-    why_label:"Актуально зараз", why_h2:"Чому емоційний інтелект такий важливий саме зараз?",
-    why_lead:"У світі, де автоматизація замінює задачі, людські зв\'язки стають головною конкурентною перевагою. EQ — освітній тренд 2026 року. Це науково доведений факт, що впливає на успішність, ментальне здоров\'я та відсутність вигорання.",
-    tag1:"Тренд 2026", tag2:"Науково доведено", tag3:"Викладання", tag4:"Лідерство", tag5:"Клієнтський сервіс", tag6:"Управління конфліктами",
-    eq_label:"Що таке ЕІ", eq_h2:"Емоційний інтелект — це…",
-    eq1:"здатність розуміти емоції та керувати ними — <em>своїми й чужими</em>",
-    eq2:"розуміти <em>мову почуттів</em> і перетворювати її на дії",
-    eq3:"вміння <em>читати людей</em> без слів",
-    eq4:"вміння краще розуміти ситуації та знаходити <em>правильні рішення</em> конфліктів",
-    eq5:"коли знаєш, коли вже час іти додому &#128516;",
-    eq_question:"А яке твоє визначення ЕІ?",
-    approach_label:"Наш підхід", approach_h2:"Наш проєкт необхідний усім, хто працює у моделі:",
-    approach_box1:"Виконавець", approach_box2:"Клієнт", approach_box3:"Успішна та довгострокова співпраця",
-    who_label:"Хто ми", who_h2:"Команда курсу",
-    who1_name:"Валерія Баканова", who1_title:"Professional Neurolanguage Coach&#174; та Licensed Teacher Trainer&#174;",
-    who1_bio:"Валерія почала викладати англійську мову понад 20 років тому і пройшла шлях від приватного репетитора до засновниці власної мовної школи. Її шлях привів до нейронауки та коучингу — сьогодні вона сертифікований Neurolanguage Coach&#174; та Licensed Trainer&#174; в ELC Ltd., яка допомагає викладачам трансформувати свою практику через науку про мозок та емоційний інтелект.",
-    who1_tag1:"20+ років досвіду", who1_tag2:"Акредитація ICF &amp; CCE", who1_tag3:"Засновниця English-Up",
-    who1_link:"Дізнатися більше про Валерію",
-    who2_name:"Наталія Шубнікова", who2_title:"Professional Life &amp; Business Strategic Coach",
-    who2_bio:"Наталія збудувала успішну кар\'єру в IT-бізнесі, пройшовши шлях від спеціаліста до топ-менеджера та співзасновника компанії. Керуючи командами та процесами, вона переконалась: справжня ефективність неможлива без розуміння людської природи, мотивації та емоцій. Сьогодні вона сертифікований Life &amp; Business Strategic Coach, яка допомагає будувати усвідомлений і прибутковий професійний шлях.",
-    who2_tag1:"Колишній IT топ-менеджер", who2_tag2:"Сертифікований ICF коуч", who2_tag3:"Експерт з бізнес-стратегії",
-    who3_name:"Олег Порученко", who3_title:"Невролог &middot; Психолог &middot; Нейропсихолог &middot; Практик реабілітації після ЧМТ",
-    who3_bio:"Олег привносить глибоку клінічну експертизу з нейропсихології та реабілітації мозку. Його практика в Центрі реабілітації після ЧМТ дає унікальний, науково обґрунтований погляд на те, як мозок навчається, відновлюється та адаптується — знання, які безпосередньо формують нейронаукову основу цієї програми.",
-    who3_tag1:"Клінічний нейропсихолог", who3_tag2:"Спеціаліст з реабілітації мозку", who3_tag3:"Невролог", who3_tag4:"Психолог",
-    bio_read:"Читати історію",
-    testi_label:"Відгуки", testi_h2:"Що кажуть учасники",
-    read_more:"Читати далі ",
-    t1_text:"Проходження цього курсу стало для мого проєкту стратегічно важливим рішенням. Ми не лише прокачали розуміння бізнес-процесів, а й кардинально змінили те, як спілкуємось, співпрацюємо та будуємо стосунки з партнерами і колегами. Кожен блок програми приносив унікальне поєднання ясності, підтримки та мотивації.", t1_name:"Олександр", t1_role:"Власник інформаційного бізнесу",
-    t2_text:"Блок про емоційний інтелект — особливо про важливість відпочинку і про те, як не сприймати поведінку учнів особисто — став для мене справжнім порятунком. Тепер я почуваюся значно впевненіше, збалансованіше та стійкіше, навіть коли в школі стає складно.", t2_name:"Катерина", t2_role:"Вчителька англійської в середній школі",
-    t3_text:"Після курсу в мене і моєї команди немов виросли крила. Вже за два місяці навчання ми навчились впевнено представляти бренд. Щиро рекомендую цей курс усім підприємцям, яким потрібні швидкі, сфокусовані результати.", t3_name:"Юлія", t3_role:"Власниця косметичної клініки та бренду натуральної косметики",
-    t4_text:"Цей курс став для мене справжнім відкриттям і дав потужний імпульс моїй практиці. Тепер я знаю, як не сприймати реакції клієнтів особисто та зберігати внутрішній спокій навіть у найскладніших ситуаціях.", t4_name:"Ірина", t4_role:"Корпоративна викладачка",
-    t5_text:"Навчання стало для мене точкою опори в подоланні синдрому самозванця і допомогло розплутати клубок обмежувальних переконань. Завдяки курсу я отримала структуроване бачення своїх цілей і тепер точно знаю свої наступні кроки.", t5_name:"Наталія", t5_role:"Приватна підприємниця",
-    t6_text:"Вже після перших модулів у моїй роботі почались реальні зміни. Програма дала мені не просто знання, а робочі інструменти для розуміння того, що насправді стоїть за поведінкою людей.", t6_name:"Тетяна", t6_role:"Власниця бізнесу",
-    t7_text:"Особливо цінним було усвідомити, як мої емоції безпосередньо впливають на прийняття рішень. Завдяки глибоким практикам я сама дійшла до відповідей на запитання, які раніше викликали лише тривогу. Це абсолютно новий рівень розуміння себе!", t7_name:"Юлія", t7_role:"Власниця мовної школи",
-    formats_label:"Формати", formats_h2:"Оберіть свій шлях",
-    tab_individuals:"Для приватних осіб", tab_business:"Для бізнесу",
-    fmt_webinar_label:"Вебінар", fmt_webinar_h3:"Емоційний Інтелект як ключовий фактор успіху",
-    fmt_webinar_p:"Одноразовий онлайн-вебінар — ідеальна точка входу, щоб познайомитись із темою EQ, поставити запитання спікерам і зрозуміти, як це працює на практиці.",
-    fmt_webinar_link:"Дізнатися більше про вебінар",
-    fmt_course_label:"Повний курс", fmt_course_h3:"Емоційний Інтелект — ключовий фактор вашого успіху",
-    fmt_course_p:"Повноцінний курс із 9 модулів з практичними завданнями, живими сесіями та спільнотою однодумців. Гібридний формат: уроки в записі + щотижневі зустрічі.",
-    fmt_course_link:"Дізнатися більше про курс",
-    biz_intro:"Ми адаптуємо нашу програму під будь-яку сферу та під конкретний запит вашої команди.",
-    biz1_h4:"Повний корпоративний курс", biz1_p:"Комплексна програма навчання, адаптована під специфіку вашого бізнесу та команди.",
-    biz2_h4:"Тематичні вебінари", biz2_p:"Одноразові вебінари з ключових аспектів EQ з фокусом на ваш конкретний запит.",
-    biz3_h4:"Воркшопи", biz3_p:"Інтенсивні практичні воркшопи для відпрацювання навичок у реальних ситуаціях команди.",
-    biz_cta:"Обговорити співпрацю", biz_cta_url:"https://form.jotform.com/261165916881061",
-    curr_label:"Програма курсу", curr_h2:"9 модулів трансформаційної практики",
-    m1_title:"Виникнення ЕІ та його важливість", m1_body:"Як люди дійшли до важливості ЕІ та його вивчення. Історія терміна від давніх філософів до наших днів, еволюція поняття EQ, ключові дослідження та впровадження програм SEL в освітніх закладах. Вплив EQ на різні сфери життя людини.",
-    m2_title:"Переваги ЕІ у викладанні іноземної мови", m2_body:"Модель ЕІ Річарда Бояціса. Практичні сценарії: як утримати увагу учня, працювати із «закритими» студентами, справлятися з емоційним виснаженням. Зв\'язок ЕІ з мотивацією, пам\'яттю та ідентичністю учня. Роль емпатії, емоційного резонансу та рефлексії як інструментів викладача.",
-    m3_title:"Загрози для мозку та безпечне середовище навчання", m3_body:"Стани мозку, що позитивно й негативно впливають на навчання. Слова, формати й дії, що сприймаються як загрози: тиск, критика, порівняння, запитання-пастки. Як працювати з учнем, мозок якого перебуває в стані загрози. Коучингові практики для комунікації з батьками та особами, що приймають рішення.",
-    m4_title:"Нейрофізіологія: мозок, амигдала та навчання", m4_body:"«Триєдиний мозок» і роль кожної його частини. Амигдала та обробка страху й стресу — розбір реальних ситуацій. Префронтальна кора, робоча пам\'ять і нейропластичність. Кортизол та його небезпека. Як позитивні та негативні емоції впливають на формування нейронних зв\'язків і прогрес учня.",
-    m5_title:"Ідеальний стан для навчання", m5_body:"Що таке ідеальне навчальне середовище і як його створити. Дофамін vs. кортизол — мотивація та демотивація. Позитивні та негативні емоційні атрактори. Стан «потоку» (Flow) і хвилі головного мозку. Два стани мозку — емоційний і раціональний — і як з ними працювати.",
-    m6_title:"Емоційні тригери та модель SCARF", m6_body:"Що таке тригер і його зв\'язок із минулим досвідом. Типові тригери викладача, техніки миттєвої саморегуляції та довгострокові стратегії роботи з ними. Модель SCARF — поведінка викладача з точки зору соціальних факторів. Як давати зворотний зв\'язок і коучингові практики для успішного викладання.",
-    m7_title:"Тригери та травми студента: розпізнати й допомогти", m7_body:"Різниця між тригерами та травмами в навчанні. Розбір реальних ситуацій: як травма продовжує жити в тілі й впливати на навчальний процес. Техніки розпізнавання та впливу на ситуацію — коучинг, симуляції, вправи.",
-    m8_title:"Вигорання: помітити й зберегти баланс", m8_body:"Стадії та симптоми професійного вигорання. Емоційне виснаження vs. емоційна стійкість. Техніки відновлення емоційного ресурсу та профілактика через емоційну гігієну.",
-    mb_title:"Бонус: Матеріальна складова практики", mb_body:"Практичні аспекти ведення викладацької практики: укладання договору, складнощі з оплатою, визначення вартості послуг, варіанти співпраці та формати пакетних пропозицій.",
-    curr_includes:"Курс включає: демо-практики, мозкові штурми та групову роботу",
-    curr_cta:"Записатися на курс", curr_cta_url:"https://form.jotform.com/261162453104042",
-    cta_h2:"Емоційний інтелект: модний термін чи головний фактор успіху?",
-    cta_btn:"Обрати формат", cta_btn_url:"https://form.jotform.com/261162453104042",
-    footer_tagline:"Емоційний інтелект для викладачів і бізнесу",
-    footer_docs_h4:"Документи", footer_privacy:"Політика конфіденційності", footer_cookies:"Політика cookies", footer_offer:"Публічна оферта", footer_offer_url:"https://drive.google.com/file/d/1LF1tPbMa3csdf0LWGTeNCTm0ItRGkZ3M/view?usp=drive_link",
-    footer_contact_h4:"Контакти", footer_contact_text:"<a href='mailto:mindlander.eq@gmail.com' style='color:rgba(237,224,206,0.45);text-decoration:none;' onmouseover=\"this.style.color='#DFC9A8'\" onmouseout=\"this.style.color='rgba(237,224,206,0.45)'\">mindlander.eq@gmail.com</a>",
-    footer_rights:"Усі права захищені",
-    privacy_h3:"Політика конфіденційності", privacy_h4_1:"1. Вступ", privacy_p1:"Ця Політика описує, як ми збираємо, використовуємо та захищаємо ваші особисті дані.", privacy_h4_2:"2. Дані, що збираються", privacy_p2:"Ми збираємо інформацію, надану під час реєстрації: ім\'я, email та дані, необхідні для навчання.", privacy_h4_3:"3. Використання даних", privacy_p3:"Дані використовуються для надання доступу до курсу, надсилання матеріалів та комунікації.",
-    cookies_h3:"Політика cookies", cookies_h4_1:"1. Що таке cookie?", cookies_p1:"Невеликі текстові файли, що зберігаються на пристрої під час відвідування сайту.", cookies_h4_2:"2. Як ми використовуємо cookies?", cookies_p2:"Для запам\'ятовування вподобань, аналізу використання сайту та покращення користувацького досвіду.",
-    book_label:"Забронювати дзвінок", book_h2:"Поговоримо", book_p:"Не впевнені, який формат підходить саме вам? Забронюйте безкоштовний 30-хвилинний дзвінок з нашою командою — ми вислухаємо вашу ситуацію і допоможемо знайти найкращий шлях.",
-    book_tag1:"Безкоштовна консультація", book_tag2:"30 хвилин", book_tag3:"Без зобов\'язань",
-    book_form_name_label:"Ваше ім\'я", book_form_name:"напр. Анна Коваль",
-    book_form_email_label:"Електронна пошта", book_form_email:"ваша@пошта.com",
-    book_form_topic_label:"Мене цікавить", book_form_topic_default:"Оберіть тему...", book_form_topic1:"Для приватних осіб", book_form_topic2:"Для бізнесу", book_form_topic3:"Інше",
-    book_form_msg_label:"Що нам варто знати?", book_form_msg:"Розкажіть трохи про свою ситуацію...",
-    book_form_btn:"Забронювати безкоштовний дзвінок", book_form_btn_url:"https://form.jotform.com/261165731528054",
-    res_label:"Бібліотека ресурсів", res_h2:"Досліджуй та навчайся",
-    res_intro:"Добірка відео та посібників для глибшого розуміння емоційного інтелекту — частина матеріалів у вільному доступі, частина — ексклюзивно для учасників курсу.",
-    res_tab_all:"Всі ресурси", res_tab_video:"Відео та вебінари", res_tab_pdf:"PDF посібники",
-    res_free:"Безкоштовно", res_gated:"Для учасників курсу",
-    res_type_video:"Відео / Вебінар", res_type_pdf:"PDF посібник",
-    res_watch:"Переглянути", res_download:"Отримати посібник", res_enroll_access:"Записатися для доступу",
-    res_v1_title:"ЕІ як ключовий фактор успіху — безкоштовний вебінар",
-    res_v1_desc:"Годинний вступ до емоційного інтелекту — що це таке, чому це важливо у 2026 році та як це застосовується у роботі та стосунках.",
-    res_v2_title:"Записи модулів — сесії повного курсу",
-    res_v2_desc:"Усі 9 записаних модулів повного курсу, включаючи повтори живих Q&A та бонусні практичні відео. Ексклюзивно для зарахованих учасників.",
-    res_p1_title:"Посібник із самооцінки ЕІ",
-    res_p1_desc:"Безкоштовний посібник для оцінки вашого поточного рівня емоційного інтелекту за п\'ятьма ключовими напрямками. Включає запитання для рефлексії.",
-    res_p2_title:"Модель SCARF — практичний воркбук",
-    res_p2_desc:"Поглиблений воркбук з моделі SCARF з кейсами, вправами та коучинговими шаблонами. Доступний учасникам повного курсу."
+    nav_about:"\u041f\u0440\u043e \u043f\u0440\u043e\u0454\u043a\u0442", nav_team:"\u041d\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430", nav_individuals:"\u0414\u043b\u044f \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0438\u0445 \u043e\u0441\u0456\u0431", nav_business:"\u0414\u043b\u044f \u0431\u0456\u0437\u043d\u0435\u0441\u0443", nav_curriculum:"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430", nav_resources:"\u0420\u0435\u0441\u0443\u0440\u0441\u0438", nav_enroll:"\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u0438\u0441\u044f", nav_book:"\u0417\u0430\u0431\u0440\u043e\u043d\u044e\u0432\u0430\u0442\u0438 \u0434\u0437\u0432\u0456\u043d\u043e\u043a",
+    hero_brand:"MindLander", hero_sub_eyebrow:"\u0428\u043a\u043e\u043b\u0430 \u0435\u043c\u043e\u0446\u0456\u0439\u043d\u043e\u0433\u043e \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442\u0443 \u0434\u043b\u044f \u043b\u0456\u0434\u0435\u0440\u0456\u0432",
+    hero_h1:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0406\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u2014 <em>\u0442\u0432\u043e\u044f \u0421\u0443\u043f\u0435\u0440\u0441\u0438\u043b\u0430</em>",
+    forwho_label:"\u0414\u043b\u044f \u043a\u043e\u0433\u043e", forwho_h2:"\u041d\u0430\u0448 \u043f\u0440\u043e\u0454\u043a\u0442 \u043f\u0440\u0438\u0441\u0432\u044f\u0447\u0435\u043d\u043e \u0440\u043e\u0437\u0432\u0438\u0442\u043a\u0443 \u043d\u0430\u0432\u0438\u0447\u043e\u043a \u0435\u043c\u043e\u0446\u0456\u0439\u043d\u043e\u0433\u043e \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442\u0443.",
+    forwho_question:"\u041a\u043e\u043c\u0443 \u0446\u0435\u0439 \u043f\u0440\u043e\u0454\u043a\u0442 \u0434\u043e\u043f\u043e\u043c\u043e\u0436\u0435 \u043d\u0430\u0439\u0431\u0456\u043b\u044c\u0448\u0435?",
+    forwho_card1:"<strong>\u0412\u0438\u043a\u043b\u0430\u0434\u0430\u0447\u0456</strong>, \u044f\u043a\u0456 \u0445\u043e\u0447\u0443\u0442\u044c \u043d\u0435 \u0431\u043e\u044f\u0442\u0438\u0441\u044f \u043a\u043e\u043d\u043a\u0443\u0440\u0435\u043d\u0446\u0456\u0457 \u0437\u0456 \u0448\u0442\u0443\u0447\u043d\u0438\u043c \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442\u043e\u043c.",
+    forwho_card2:"<strong>\u0412\u043b\u0430\u0441\u043d\u0438\u043a\u0438 \u043c\u043e\u0432\u043d\u0438\u0445 \u0448\u043a\u0456\u043b</strong> \u0456 \u0440\u0435\u043f\u0435\u0442\u0438\u0442\u043e\u0440\u0441\u044c\u043a\u0438\u0445 \u0441\u0435\u0440\u0432\u0456\u0441\u0456\u0432.",
+    forwho_card3:"<strong>\u041b\u044e\u0434\u0438 \u0442\u0430 \u0441\u0435\u0440\u0432\u0456\u0441\u0438</strong>, \u0449\u043e \u043f\u0440\u0430\u0446\u044e\u044e\u0442\u044c \u0437 \u043b\u044e\u0434\u044c\u043c\u0438.",
+    why_label:"\u0410\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u043e \u0437\u0430\u0440\u0430\u0437", why_h2:"\u0427\u043e\u043c\u0443 \u0435\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u0442\u0430\u043a\u0438\u0439 \u0432\u0430\u0436\u043b\u0438\u0432\u0438\u0439 \u0441\u0430\u043c\u0435 \u0437\u0430\u0440\u0430\u0437?",
+    why_lead:"EQ \u2014 \u043e\u0441\u0432\u0456\u0442\u043d\u0456\u0439 \u0442\u0440\u0435\u043d\u0434 2026 \u0440\u043e\u043a\u0443.",
+    tag1:"\u0422\u0440\u0435\u043d\u0434 2026", tag2:"\u041d\u0430\u0443\u043a\u043e\u0432\u043e \u0434\u043e\u0432\u0435\u0434\u0435\u043d\u043e", tag3:"\u0412\u0438\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u044f", tag4:"\u041b\u0456\u0434\u0435\u0440\u0441\u0442\u0432\u043e", tag5:"\u041a\u043b\u0456\u0454\u043d\u0442\u0441\u044c\u043a\u0438\u0439 \u0441\u0435\u0440\u0432\u0456\u0441", tag6:"\u0423\u043f\u0440\u0430\u0432\u043b\u0456\u043d\u043d\u044f \u043a\u043e\u043d\u0444\u043b\u0456\u043a\u0442\u0430\u043c\u0438",
+    eq_label:"\u0429\u043e \u0442\u0430\u043a\u0435 \u0415\u0406", eq_h2:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u2014 \u0446\u0435\u2026",
+    eq1:"\u0437\u0434\u0430\u0442\u043d\u0456\u0441\u0442\u044c \u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 \u0435\u043c\u043e\u0446\u0456\u0457 \u2014 <em>\u0441\u0432\u043e\u0457\u043c\u0438 \u0439 \u0447\u0443\u0436\u0438\u043c\u0438</em>",
+    eq2:"\u0440\u043e\u0437\u0443\u043c\u0456\u0442\u0438 <em>\u043c\u043e\u0432\u0443 \u043f\u043e\u0447\u0443\u0442\u0442\u0456\u0432</em>",
+    eq3:"\u0432\u043c\u0456\u043d\u043d\u044f <em>\u0447\u0438\u0442\u0430\u0442\u0438 \u043b\u044e\u0434\u0435\u0439</em> \u0431\u0435\u0437 \u0441\u043b\u0456\u0432",
+    eq4:"\u0432\u043c\u0456\u043d\u043d\u044f \u0437\u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0438 <em>\u043f\u0440\u0430\u0432\u0438\u043b\u044c\u043d\u0456 \u0440\u0456\u0448\u0435\u043d\u043d\u044f</em> \u043a\u043e\u043d\u0444\u043b\u0456\u043a\u0442\u0456\u0432",
+    eq5:"\u043a\u043e\u043b\u0438 \u0437\u043d\u0430\u0454\u0448, \u043a\u043e\u043b\u0438 \u0432\u0436\u0435 \u0447\u0430\u0441 \u0456\u0442\u0438 \u0434\u043e\u0434\u043e\u043c\u0443 &#128516;",
+    eq_question:"\u0410 \u044f\u043a\u0435 \u0442\u0432\u043e\u0454 \u0432\u0438\u0437\u043d\u0430\u0447\u0435\u043d\u043d\u044f \u0415\u0406?",
+    approach_label:"\u041d\u0430\u0448 \u043f\u0456\u0434\u0445\u0456\u0434", approach_h2:"\u041d\u0430\u0448 \u043f\u0440\u043e\u0454\u043a\u0442 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0443\u0441\u0456\u043c, \u0445\u0442\u043e \u043f\u0440\u0430\u0446\u044e\u0454 \u0443 \u043c\u043e\u0434\u0435\u043b\u0456:",
+    approach_box1:"\u0412\u0438\u043a\u043e\u043d\u0430\u0432\u0435\u0446\u044c", approach_box2:"\u041a\u043b\u0456\u0454\u043d\u0442", approach_box3:"\u0423\u0441\u043f\u0456\u0448\u043d\u0430 \u0442\u0430 \u0434\u043e\u0432\u0433\u043e\u0441\u0442\u0440\u043e\u043a\u043e\u0432\u0430 \u0441\u043f\u0456\u0432\u043f\u0440\u0430\u0446\u044f",
+    who_label:"\u0425\u0442\u043e \u043c\u0438", who_h2:"\u041a\u043e\u043c\u0430\u043d\u0434\u0430 \u043a\u0443\u0440\u0441\u0443",
+    who1_name:"\u0412\u0430\u043b\u0435\u0440\u0456\u044f \u0411\u0430\u043a\u0430\u043d\u043e\u0432\u0430", who1_title:"Professional Neurolanguage Coach&#174; \u0442\u0430 Licensed Teacher Trainer&#174;",
+    who1_bio:"\u0412\u0430\u043b\u0435\u0440\u0456\u044f \u043f\u043e\u0447\u0430\u043b\u0430 \u0432\u0438\u043a\u043b\u0430\u0434\u0430\u0442\u0438 \u0430\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u0443 \u043c\u043e\u0432\u0443 \u043f\u043e\u043d\u0430\u0434 20 \u0440\u043e\u043a\u0456\u0432 \u0442\u043e\u043c\u0443.",
+    who1_tag1:"20+ \u0440\u043e\u043a\u0456\u0432 \u0434\u043e\u0441\u0432\u0456\u0434\u0443", who1_tag2:"\u0410\u043a\u0440\u0435\u0434\u0438\u0442\u0430\u0446\u0456\u044f ICF &amp; CCE", who1_tag3:"\u0417\u0430\u0441\u043d\u043e\u0432\u043d\u0438\u0446\u044f English-Up",
+    who1_link:"\u0414\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e \u0412\u0430\u043b\u0435\u0440\u0456\u044e",
+    who2_name:"\u041d\u0430\u0442\u0430\u043b\u0456\u044f \u0428\u0443\u0431\u043d\u0456\u043a\u043e\u0432\u0430", who2_title:"Professional Life &amp; Business Strategic Coach",
+    who2_bio:"\u041d\u0430\u0442\u0430\u043b\u0456\u044f \u0437\u0431\u0443\u0434\u0443\u0432\u0430\u043b\u0430 \u0443\u0441\u043f\u0456\u0448\u043d\u0443 \u043a\u0430\u0440\u02bc\u0454\u0440\u0443 \u0432 IT-\u0431\u0456\u0437\u043d\u0435\u0441\u0456.",
+    who2_tag1:"\u041a\u043e\u043b\u0438\u0448\u043d\u0456\u0439 IT \u0442\u043e\u043f-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440", who2_tag2:"\u0421\u0435\u0440\u0442\u0438\u0444\u0456\u043a\u043e\u0432\u0430\u043d\u0438\u0439 ICF \u043a\u043e\u0443\u0447", who2_tag3:"\u0415\u043a\u0441\u043f\u0435\u0440\u0442 \u0437 \u0431\u0456\u0437\u043d\u0435\u0441-\u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0456\u0457",
+    who3_name:"\u041e\u043b\u0435\u0433 \u041f\u043e\u0440\u0443\u0447\u0435\u043d\u043a\u043e", who3_title:"\u041d\u0435\u0432\u0440\u043e\u043b\u043e\u0433 &middot; \u041f\u0441\u0438\u0445\u043e\u043b\u043e\u0433 &middot; \u041d\u0435\u0439\u0440\u043e\u043f\u0441\u0438\u0445\u043e\u043b\u043e\u0433 &middot; \u041f\u0440\u0430\u043a\u0442\u0438\u043a \u0440\u0435\u0430\u0431\u0456\u043b\u0456\u0442\u0430\u0446\u0456\u0457 \u043f\u0456\u0441\u043b\u044f \u0427\u041c\u0422",
+    who3_bio:"\u041e\u043b\u0435\u0433 \u043f\u0440\u0438\u0432\u043d\u043e\u0441\u0438\u0442\u044c \u0433\u043b\u0438\u0431\u043e\u043a\u0443 \u043a\u043b\u0456\u043d\u0456\u0447\u043d\u0443 \u0435\u043a\u0441\u043f\u0435\u0440\u0442\u0438\u0437\u0443.",
+    who3_tag1:"\u041a\u043b\u0456\u043d\u0456\u0447\u043d\u0438\u0439 \u043d\u0435\u0439\u0440\u043e\u043f\u0441\u0438\u0445\u043e\u043b\u043e\u0433", who3_tag2:"\u0421\u043f\u0435\u0446\u0456\u0430\u043b\u0456\u0441\u0442 \u0437 \u0440\u0435\u0430\u0431\u0456\u043b\u0456\u0442\u0430\u0446\u0456\u0457 \u043c\u043e\u0437\u043a\u0443", who3_tag3:"\u041d\u0435\u0432\u0440\u043e\u043b\u043e\u0433", who3_tag4:"\u041f\u0441\u0438\u0445\u043e\u043b\u043e\u0433",
+    bio_read:"\u0427\u0438\u0442\u0430\u0442\u0438 \u0456\u0441\u0442\u043e\u0440\u0456\u044e",
+    testi_label:"\u0412\u0456\u0434\u0433\u0443\u043a\u0438", testi_h2:"\u0429\u043e \u043a\u0430\u0436\u0443\u0442\u044c \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0438",
+    read_more:"\u0427\u0438\u0442\u0430\u0442\u0438 \u0434\u0430\u043b\u0456 ",
+    t1_text:"\u041f\u0440\u043e\u0445\u043e\u0434\u0436\u0435\u043d\u043d\u044f \u0446\u044c\u043e\u0433\u043e \u043a\u0443\u0440\u0441\u0443 \u0441\u0442\u0430\u043b\u043e \u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0456\u0447\u043d\u0438\u043c \u0440\u0456\u0448\u0435\u043d\u043d\u044f\u043c.", t1_name:"\u041e\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440", t1_role:"\u0412\u043b\u0430\u0441\u043d\u0438\u043a \u0456\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0439\u043d\u043e\u0433\u043e \u0431\u0456\u0437\u043d\u0435\u0441\u0443",
+    t2_text:"\u0411\u043b\u043e\u043a \u043f\u0440\u043e \u0435\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u0441\u0442\u0430\u0432 \u043f\u043e\u0440\u044f\u0442\u0443\u043d\u043a\u043e\u043c.", t2_name:"\u041a\u0430\u0442\u0435\u0440\u0438\u043d\u0430", t2_role:"\u0412\u0447\u0438\u0442\u0435\u043b\u044c\u043a\u0430 \u0430\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u043e\u0457",
+    t3_text:"\u041f\u0456\u0441\u043b\u044f \u043a\u0443\u0440\u0441\u0443 \u043d\u0456\u0431\u0438 \u0432\u0438\u0440\u043e\u0441\u043b\u0438 \u043a\u0440\u0438\u043b\u0430.", t3_name:"\u042e\u043b\u0456\u044f", t3_role:"\u0412\u043b\u0430\u0441\u043d\u0438\u0446\u044f \u043a\u043e\u0441\u043c\u0435\u0442\u0438\u0447\u043d\u043e\u0457 \u043a\u043b\u0456\u043d\u0456\u043a\u0438",
+    t4_text:"\u0426\u0435\u0439 \u043a\u0443\u0440\u0441 \u0434\u0430\u0432 \u043f\u043e\u0442\u0443\u0436\u043d\u0438\u0439 \u0456\u043c\u043f\u0443\u043b\u044c\u0441 \u043c\u043e\u0454\u0457 \u043f\u0440\u0430\u043a\u0442\u0438\u0446\u0456.", t4_name:"\u0406\u0440\u0438\u043d\u0430", t4_role:"\u041a\u043e\u0440\u043f\u043e\u0440\u0430\u0442\u0438\u0432\u043d\u0430 \u0432\u0438\u043a\u043b\u0430\u0434\u0430\u0447\u043a\u0430",
+    t5_text:"\u041d\u0430\u0432\u0447\u0430\u043d\u043d\u044f \u0434\u043e\u043f\u043e\u043c\u043e\u0433\u043b\u043e \u043f\u043e\u0434\u043e\u043b\u0430\u0442\u0438 \u0441\u0438\u043d\u0434\u0440\u043e\u043c \u0441\u0430\u043c\u043e\u0437\u0432\u0430\u043d\u0446\u044f.", t5_name:"\u041d\u0430\u0442\u0430\u043b\u0456\u044f", t5_role:"\u041f\u0440\u0438\u0432\u0430\u0442\u043d\u0430 \u043f\u0456\u0434\u043f\u0440\u0438\u0454\u043c\u043d\u0438\u0446\u044f",
+    t6_text:"\u0423\u0436\u0435 \u043f\u0456\u0441\u043b\u044f \u043f\u0435\u0440\u0448\u0438\u0445 \u043c\u043e\u0434\u0443\u043b\u0456\u0432 \u043f\u043e\u0447\u0430\u043b\u0438\u0441\u044c \u0440\u0435\u0430\u043b\u044c\u043d\u0456 \u0437\u043c\u0456\u043d\u0438.", t6_name:"\u0422\u0435\u0442\u044f\u043d\u0430", t6_role:"\u0412\u043b\u0430\u0441\u043d\u0438\u0446\u044f \u0431\u0456\u0437\u043d\u0435\u0441\u0443",
+    t7_text:"\u0426\u0435 \u0430\u0431\u0441\u043e\u043b\u044e\u0442\u043d\u043e \u043d\u043e\u0432\u0438\u0439 \u0440\u0456\u0432\u0435\u043d\u044c \u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f \u0441\u0435\u0431\u0435!", t7_name:"\u042e\u043b\u0456\u044f", t7_role:"\u0412\u043b\u0430\u0441\u043d\u0438\u0446\u044f \u043c\u043e\u0432\u043d\u043e\u0457 \u0448\u043a\u043e\u043b\u0438",
+    formats_label:"\u0424\u043e\u0440\u043c\u0430\u0442\u0438", formats_h2:"\u041e\u0431\u0435\u0440\u0456\u0442\u044c \u0441\u0432\u0456\u0439 \u0448\u043b\u044f\u0445",
+    tab_individuals:"\u0414\u043b\u044f \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0438\u0445 \u043e\u0441\u0456\u0431", tab_business:"\u0414\u043b\u044f \u0431\u0456\u0437\u043d\u0435\u0441\u0443",
+    fmt_webinar_label:"\u0412\u0435\u0431\u0456\u043d\u0430\u0440", fmt_webinar_h3:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0406\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u044f\u043a \u043a\u043b\u044e\u0447\u043e\u0432\u0438\u0439 \u0444\u0430\u043a\u0442\u043e\u0440 \u0443\u0441\u043f\u0456\u0445\u0443",
+    fmt_webinar_p:"\u041e\u0434\u043d\u043e\u0440\u0430\u0437\u043e\u0432\u0438\u0439 \u043e\u043d\u043b\u0430\u0439\u043d-\u0432\u0435\u0431\u0456\u043d\u0430\u0440.",
+    fmt_webinar_link:"\u0414\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e \u0432\u0435\u0431\u0456\u043d\u0430\u0440",
+    fmt_course_label:"\u041f\u043e\u0432\u043d\u0438\u0439 \u043a\u0443\u0440\u0441", fmt_course_h3:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0406\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u2014 \u043a\u043b\u044e\u0447\u043e\u0432\u0438\u0439 \u0444\u0430\u043a\u0442\u043e\u0440 \u0432\u0430\u0448\u043e\u0433\u043e \u0443\u0441\u043f\u0456\u0445\u0443",
+    fmt_course_p:"\u041f\u043e\u0432\u043d\u043e\u0446\u0456\u043d\u043d\u0438\u0439 \u043a\u0443\u0440\u0441 \u0456\u0437 9 \u043c\u043e\u0434\u0443\u043b\u0456\u0432.",
+    fmt_course_link:"\u0414\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e \u043a\u0443\u0440\u0441",
+    biz_intro:"\u041c\u0438 \u0430\u0434\u0430\u043f\u0442\u0443\u0454\u043c\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0443 \u043f\u0456\u0434 \u0431\u0443\u0434\u044c-\u044f\u043a\u0443 \u0441\u0444\u0435\u0440\u0443.",
+    biz1_h4:"\u041f\u043e\u0432\u043d\u0438\u0439 \u043a\u043e\u0440\u043f\u043e\u0440\u0430\u0442\u0438\u0432\u043d\u0438\u0439 \u043a\u0443\u0440\u0441", biz1_p:"\u041a\u043e\u043c\u043f\u043b\u0435\u043a\u0441\u043d\u0430 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0430.",
+    biz2_h4:"\u0422\u0435\u043c\u0430\u0442\u0438\u0447\u043d\u0456 \u0432\u0435\u0431\u0456\u043d\u0430\u0440\u0438", biz2_p:"\u041e\u0434\u043d\u043e\u0440\u0430\u0437\u043e\u0432\u0456 \u0432\u0435\u0431\u0456\u043d\u0430\u0440\u0438.",
+    biz3_h4:"\u0412\u043e\u0440\u043a\u0448\u043e\u043f\u0438", biz3_p:"\u0406\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u0456 \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u043d\u0456 \u0432\u043e\u0440\u043a\u0448\u043e\u043f\u0438.",
+    biz_cta:"\u041e\u0431\u0433\u043e\u0432\u043e\u0440\u0438\u0442\u0438 \u0441\u043f\u0456\u0432\u043f\u0440\u0430\u0446\u044e", biz_cta_url:"https://form.jotform.com/261165916881061",
+    curr_label:"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430 \u043a\u0443\u0440\u0441\u0443", curr_h2:"9 \u043c\u043e\u0434\u0443\u043b\u0456\u0432 \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438",
+    m1_title:"\u0412\u0438\u043d\u0438\u043a\u043d\u0435\u043d\u043d\u044f \u0415\u0406", m1_body:"\u0406\u0441\u0442\u043e\u0440\u0456\u044f \u0442\u0435\u0440\u043c\u0456\u043d\u0430 EQ.",
+    m2_title:"\u041f\u0435\u0440\u0435\u0432\u0430\u0433\u0438 \u0415\u0406 \u0443 \u0432\u0438\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u0456", m2_body:"\u041c\u043e\u0434\u0435\u043b\u044c \u0415\u0406 \u0420\u0456\u0447\u0430\u0440\u0434\u0430 \u0411\u043e\u044f\u0446\u0456\u0441\u0430.",
+    m3_title:"\u0417\u0430\u0433\u0440\u043e\u0437\u0438 \u0434\u043b\u044f \u043c\u043e\u0437\u043a\u0443", m3_body:"\u0421\u0442\u0430\u043d\u0438 \u043c\u043e\u0437\u043a\u0443, \u0449\u043e \u0432\u043f\u043b\u0438\u0432\u0430\u044e\u0442\u044c \u043d\u0430 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f.",
+    m4_title:"\u041d\u0435\u0439\u0440\u043e\u0444\u0456\u0437\u0456\u043e\u043b\u043e\u0433\u0456\u044f: \u043c\u043e\u0437\u043e\u043a \u0442\u0430 \u0430\u043c\u0438\u0433\u0434\u0430\u043b\u0430", m4_body:"\u0410\u043c\u0438\u0433\u0434\u0430\u043b\u0430 \u0442\u0430 \u043e\u0431\u0440\u043e\u0431\u043a\u0430 \u0441\u0442\u0440\u0430\u0445\u0443.",
+    m5_title:"\u0406\u0434\u0435\u0430\u043b\u044c\u043d\u0438\u0439 \u0441\u0442\u0430\u043d \u0434\u043b\u044f \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f", m5_body:"\u0414\u043e\u0444\u0430\u043c\u0456\u043d vs. \u043a\u043e\u0440\u0442\u0438\u0437\u043e\u043b.",
+    m6_title:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0456 \u0442\u0440\u0438\u0433\u0435\u0440\u0438 \u0442\u0430 SCARF", m6_body:"\u041c\u043e\u0434\u0435\u043b\u044c SCARF.",
+    m7_title:"\u0422\u0440\u0438\u0433\u0435\u0440\u0438 \u0442\u0430 \u0442\u0440\u0430\u0432\u043c\u0438 \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430", m7_body:"\u0420\u043e\u0437\u0431\u0456\u0440 \u0440\u0435\u0430\u043b\u044c\u043d\u0438\u0445 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u0439.",
+    m8_title:"\u0412\u0438\u0433\u043e\u0440\u0430\u043d\u043d\u044f", m8_body:"\u0421\u0442\u0430\u0434\u0456\u0457 \u0432\u0438\u0433\u043e\u0440\u0430\u043d\u043d\u044f.",
+    mb_title:"\u0411\u043e\u043d\u0443\u0441: \u041c\u0430\u0442\u0435\u0440\u0456\u0430\u043b\u044c\u043d\u0430 \u0441\u043a\u043b\u0430\u0434\u043e\u0432\u0430", mb_body:"\u041f\u0440\u0430\u043a\u0442\u0438\u0447\u043d\u0456 \u0430\u0441\u043f\u0435\u043a\u0442\u0438.",
+    curr_includes:"\u041a\u0443\u0440\u0441 \u0432\u043a\u043b\u044e\u0447\u0430\u0454: \u0434\u0435\u043c\u043e-\u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438, \u043c\u043e\u0437\u043a\u043e\u0432\u0456 \u0448\u0442\u0443\u0440\u043c\u0438 \u0442\u0430 \u0433\u0440\u0443\u043f\u043e\u0432\u0443 \u0440\u043e\u0431\u043e\u0442\u0443",
+    curr_cta:"\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u0438\u0441\u044f \u043d\u0430 \u043a\u0443\u0440\u0441", curr_cta_url:"https://form.jotform.com/261162453104042",
+    cta_h2:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442: \u043c\u043e\u0434\u043d\u0438\u0439 \u0442\u0435\u0440\u043c\u0456\u043d \u0447\u0438 \u0433\u043e\u043b\u043e\u0432\u043d\u0438\u0439 \u0444\u0430\u043a\u0442\u043e\u0440 \u0443\u0441\u043f\u0456\u0445\u0443?",
+    cta_btn:"\u041e\u0431\u0440\u0430\u0442\u0438 \u0444\u043e\u0440\u043c\u0430\u0442", cta_btn_url:"https://form.jotform.com/261162453104042",
+    footer_tagline:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u0434\u043b\u044f \u0432\u0438\u043a\u043b\u0430\u0434\u0430\u0447\u0456\u0432 \u0456 \u0431\u0456\u0437\u043d\u0435\u0441\u0443",
+    footer_docs_h4:"\u0414\u043e\u043a\u0443\u043c\u0435\u043d\u0442\u0438", footer_privacy:"\u041f\u043e\u043b\u0456\u0442\u0438\u043a\u0430 \u043a\u043e\u043d\u0444\u0456\u0434\u0435\u043d\u0446\u0456\u0439\u043d\u043e\u0441\u0442\u0456", footer_cookies:"\u041f\u043e\u043b\u0456\u0442\u0438\u043a\u0430 cookies",
+    footer_offer:"\u041f\u0443\u0431\u043b\u0456\u0447\u043d\u0430 \u043e\u0444\u0435\u0440\u0442\u0430", footer_offer_url:"https://drive.google.com/file/d/1LF1tPbMa3csdf0LWGTeNCTm0ItRGkZ3M/view?usp=drive_link",
+    footer_contact_h4:"\u041a\u043e\u043d\u0442\u0430\u043a\u0442\u0438", footer_contact_text:"<a href='mailto:mindlander.eq@gmail.com' style='color:rgba(237,224,206,0.45);text-decoration:none;' onmouseover=\"this.style.color='#DFC9A8'\" onmouseout=\"this.style.color='rgba(237,224,206,0.45)'\">mindlander.eq@gmail.com</a>",
+    footer_rights:"\u0423\u0441\u0456 \u043f\u0440\u0430\u0432\u0430 \u0437\u0430\u0445\u0438\u0449\u0435\u043d\u0456",
+    privacy_h3:"\u041f\u043e\u043b\u0456\u0442\u0438\u043a\u0430 \u043a\u043e\u043d\u0444\u0456\u0434\u0435\u043d\u0446\u0456\u0439\u043d\u043e\u0441\u0442\u0456", privacy_h4_1:"1. \u0412\u0441\u0442\u0443\u043f", privacy_p1:"\u041e\u043f\u0438\u0441 \u0437\u0431\u043e\u0440\u0443 \u0434\u0430\u043d\u0438\u0445.", privacy_h4_2:"2. \u0414\u0430\u043d\u0456", privacy_p2:"\u0406\u043c\u02bc\u044f, email.", privacy_h4_3:"3. \u0412\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043d\u044f", privacy_p3:"\u0414\u043e\u0441\u0442\u0443\u043f \u0434\u043e \u043a\u0443\u0440\u0441\u0443.",
+    cookies_h3:"\u041f\u043e\u043b\u0456\u0442\u0438\u043a\u0430 cookies", cookies_h4_1:"1. \u0429\u043e \u0442\u0430\u043a\u0435 cookie?", cookies_p1:"\u041c\u0430\u043b\u0435\u043d\u044c\u043a\u0456 \u0444\u0430\u0439\u043b\u0438.", cookies_h4_2:"2. \u042f\u043a \u043c\u0438 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u043e\u0432\u0443\u0454\u043c\u043e?", cookies_p2:"\u0414\u043b\u044f \u043f\u043e\u043b\u0456\u043f\u0448\u0435\u043d\u043d\u044f \u0434\u043e\u0441\u0432\u0456\u0434\u0443.",
+    book_label:"\u0417\u0430\u0431\u0440\u043e\u043d\u044e\u0432\u0430\u0442\u0438 \u0434\u0437\u0432\u0456\u043d\u043e\u043a", book_h2:"\u041f\u043e\u0433\u043e\u0432\u043e\u0440\u0438\u043c\u043e", book_p:"\u0417\u0430\u0431\u0440\u043e\u043d\u044e\u0439\u0442\u0435 \u0434\u0437\u0432\u0456\u043d\u043e\u043a \u0437 \u043d\u0430\u0448\u043e\u044e \u043a\u043e\u043c\u0430\u043d\u0434\u043e\u044e.",
+    book_tag1:"\u0411\u0435\u0437\u043a\u043e\u0448\u0442\u043e\u0432\u043d\u0430 \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0456\u044f", book_tag2:"30 \u0445\u0432\u0438\u043b\u0438\u043d", book_tag3:"\u0411\u0435\u0437 \u0437\u043e\u0431\u043e\u0432\u02bc\u044f\u0437\u0430\u043d\u044c",
+    book_form_btn:"\u0417\u0430\u0431\u0440\u043e\u043d\u044e\u0432\u0430\u0442\u0438 \u0434\u0437\u0432\u0456\u043d\u043e\u043a", book_form_btn_url:"https://form.jotform.com/261165731528054",
+    res_label:"\u0411\u0456\u0431\u043b\u0456\u043e\u0442\u0435\u043a\u0430 \u0440\u0435\u0441\u0443\u0440\u0441\u0456\u0432", res_h2:"\u0414\u043e\u0441\u043b\u0456\u0434\u0436\u0443\u0439 \u0442\u0430 \u043d\u0430\u0432\u0447\u0430\u0439\u0441\u044f",
+    res_type_video:"\u0412\u0456\u0434\u0435\u043e",
+    res_v1_title:"Overcome your Amygdala",
+    res_buy:"\u041f\u0440\u0438\u0434\u0431\u0430\u043d\u0438"
   }
 };
 
@@ -1188,22 +841,8 @@ function setLang(lang) {
     const urlKey = el.getAttribute("data-i18n-href");
     if (i18n[lang][urlKey] !== undefined) el.setAttribute("href", i18n[lang][urlKey]);
   });
-  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
-    const key = el.getAttribute("data-i18n-placeholder");
-    if (i18n[lang][key] !== undefined) el.placeholder = i18n[lang][key];
-  });
-  document.title = lang==="uk" ? "MindLander — Емоційний Інтелект" : "MindLander — Emotional Intelligence";
-  const activeTabBtn = document.querySelector(".tab-btn.active");
-  if (activeTabBtn) activeTabBtn.classList.add("active");
-  const activePill = document.querySelector(".reviews-dot.active");
-  if (!activePill) reviewsGoTo(0);
-}
-
-function switchResTab(name, btn){
-  document.querySelectorAll(".res-content").forEach(t=>t.classList.remove("active"));
-  document.querySelectorAll(".res-tab-btn").forEach(b=>b.classList.remove("active"));
-  document.getElementById("res-"+name).classList.add("active");
-  if(btn) btn.classList.add("active");
+  document.title = lang==="uk" ? "MindLander \u2014 \u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0406\u043d\u0442\u0435\u043b\u0435\u043a\u0442" : "MindLander \u2014 Emotional Intelligence";
+  if (!document.querySelector(".reviews-dot.active")) reviewsGoTo(0);
 }
 
 function switchTab(name, btn) {
@@ -1212,25 +851,20 @@ function switchTab(name, btn) {
   document.getElementById("tab-"+name).classList.add("active");
   if(btn) btn.classList.add("active");
 }
-function switchTabBiz(){
-  switchTab("business", document.querySelectorAll(".tab-btn")[1]);
-}
+function switchTabBiz(){ switchTab("business", document.querySelectorAll(".tab-btn")[1]); }
 
 function showModal(type){ document.getElementById(type+"-modal").style.display="flex"; document.body.style.overflow="hidden"; }
 function closeModal(){ document.querySelectorAll(".modal-overlay").forEach(m=>m.style.display="none"); document.body.style.overflow=""; }
 document.addEventListener("keydown", e=>{ if(e.key==="Escape") closeModal(); });
 
 function toggleMenu(){
-  const menu = document.getElementById("mobileMenu");
-  const burger = document.getElementById("hamburger");
-  menu.classList.toggle("open");
-  burger.classList.toggle("open");
+  document.getElementById("mobileMenu").classList.toggle("open");
+  document.getElementById("hamburger").classList.toggle("open");
 }
 function closeMenu(){
   document.getElementById("mobileMenu").classList.remove("open");
   document.getElementById("hamburger").classList.remove("open");
 }
-// Close menu on outside click
 document.addEventListener("click", e=>{
   const menu = document.getElementById("mobileMenu");
   const burger = document.getElementById("hamburger");
@@ -1245,10 +879,6 @@ function animateTag(el){
   el.addEventListener("animationend",()=>el.classList.remove("pop"),{once:true});
 }
 
-document.querySelectorAll(".offering-card .btn-primary").forEach(btn=>{
-  btn.addEventListener("click", e=>e.stopPropagation());
-});
-
 document.querySelectorAll(".bio-toggle").forEach(btn => {
   btn.addEventListener("click", () => {
     const bio = btn.closest(".speaker-card").querySelector(".bio-content");
@@ -1256,7 +886,7 @@ document.querySelectorAll(".bio-toggle").forEach(btn => {
     const label = btn.querySelector(".bio-toggle-text");
     const isOpen = bio.style.maxHeight && bio.style.maxHeight !== "0px";
     if(isOpen){ bio.style.maxHeight="0px"; bio.style.opacity="0"; arrow.style.transform="rotate(0deg)"; label.innerHTML=i18n[currentLang]["bio_read"]||"Read their story"; }
-    else { bio.style.maxHeight=bio.scrollHeight+"px"; bio.style.opacity="1"; arrow.style.transform="rotate(180deg)"; label.innerHTML=currentLang==="uk"?"Згорнути":"Collapse"; }
+    else { bio.style.maxHeight=bio.scrollHeight+"px"; bio.style.opacity="1"; arrow.style.transform="rotate(180deg)"; label.innerHTML=currentLang==="uk"?"\u0417\u0433\u043e\u0440\u043d\u0443\u0442\u0438":"Collapse"; }
   });
 });
 
@@ -1286,7 +916,7 @@ function toggleReview(btn){
   const isExpanded = text.classList.contains("expanded");
   text.classList.toggle("expanded"); fade.classList.toggle("hidden"); btn.classList.toggle("expanded");
   const span = btn.querySelector("span[data-i18n]");
-  if(span) span.innerHTML = isExpanded ? (i18n[currentLang]["read_more"]||"Read more ") : (currentLang==="uk"?"Згорнути ":"Collapse ");
+  if(span) span.innerHTML = isExpanded ? (i18n[currentLang]["read_more"]||"Read more ") : (currentLang==="uk"?"\u0417\u0433\u043e\u0440\u043d\u0443\u0442\u0438 ":"Collapse ");
 }
 
 (function(){
