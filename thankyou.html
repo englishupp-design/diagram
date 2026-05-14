@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MindLander — Thank You</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #EDE0CE;
+    --teal-dark: #2D4A4A;
+    --deep-teal: #1E3535;
+    --sand: #C9A87C;
+    --sand-light: #DFC9A8;
+    --teal-light: #5BB8B2;
+    --near-black: #1A1F1F;
+    --text-mid: #3D5A4A;
+    --white: #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: "DM Sans", sans-serif;
+    background: var(--deep-teal);
+    color: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Background subtle radial */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 20%, rgba(91,184,178,0.12) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(201,168,124,0.08) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    background: rgba(10,18,18,0.65);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(201,168,124,0.25);
+    border-radius: 24px;
+    padding: 56px 48px;
+    max-width: 640px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.4);
+  }
+
+  /* Checkmark */
+  .check-circle {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal-light), var(--teal-dark));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 32px;
+    font-size: 2rem;
+    box-shadow: 0 8px 32px rgba(91,184,178,0.3);
+  }
+
+  .label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--sand-light);
+  }
+
+  .subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(237,224,206,0.75);
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-watch {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--sand);
+    color: var(--near-black);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 18px 48px;
+    border-radius: 4px;
+    transition: all 0.25s;
+    margin-bottom: 24px;
+  }
+  .btn-watch:hover {
+    background: var(--sand-light);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(201,168,124,0.35);
+  }
+  .btn-watch svg {
+    flex-shrink: 0;
+  }
+
+  .note {
+    font-size: 0.82rem;
+    color: rgba(237,224,206,0.4);
+    line-height: 1.6;
+  }
+
+  .divider {
+    width: 48px;
+    height: 2px;
+    background: var(--sand);
+    margin: 32px auto;
+    opacity: 0.5;
+  }
+
+  .back-link {
+    color: rgba(237,224,206,0.45);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: var(--sand-light); }
+
+  @media(max-width:600px) {
+    .card { padding: 40px 24px; }
+    .btn-watch { padding: 16px 32px; width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="check-circle">&#10003;</div>
+  <div class="label">Payment Successful</div>
+  <h1>Thank you for your<br><em>purchase!</em></h1>
+  <p class="subtitle">Your video is ready to watch. Click the button below to access "Train your Amygdala" — enjoy the journey into your brain!</p>
+
+  <a href="https://drive.google.com/file/d/1HpCnw4jmveXMk0Ll1A7CIhIDe1DI-1uv/view?usp=sharing" target="_blank" class="btn-watch">
+    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 8l6 4-6 4V8z"/></svg>
+    Watch the Video
+  </a>
+
+  <p class="note">The link will open in a new tab.<br>Save this page or the link for future access.</p>
+
+  <div class="divider"></div>
+  <a href="https://mindlander.pro" class="back-link">&larr; Back to MindLander</a>
+</div>
+
+</body>
+</html>
