@@ -188,6 +188,10 @@
   .accordion-content{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s ease;padding:0 24px;background:rgba(255,255,255,0.02);}
   .accordion-content.open{max-height:300px;padding-top:16px;padding-bottom:20px;}
   .accordion-content p{color:rgba(237,224,206,0.65);font-size:0.9rem;line-height:1.7;font-weight:300;}
+  .accordion-content ul{color:rgba(237,224,206,0.65);font-size:0.9rem;line-height:1.9;font-weight:300;padding-left:18px;}
+  .accordion-content li{margin-bottom:4px;}
+  .modal-acc-content ul{font-size:0.88rem;color:var(--text-mid);line-height:1.9;font-weight:300;padding-left:18px;}
+  .modal-acc-content li{margin-bottom:4px;}
 
   /* BOOK A CALL */
   .book-section{background:var(--bg);padding:100px 5%;}
@@ -198,18 +202,20 @@
   .res-tab-btn{padding:10px 28px;font-size:0.88rem;font-weight:400;letter-spacing:0.04em;color:var(--teal-dark);background:var(--white);border:1px solid rgba(45,74,74,0.2);border-radius:100px;cursor:pointer;transition:all 0.2s;font-family:"DM Sans",sans-serif;}
   .res-tab-btn.active{background:var(--teal-dark);color:var(--white);border-color:var(--teal-dark);}
   .res-tab-btn:hover:not(.active){background:rgba(45,74,74,0.06);border-color:var(--teal-dark);}
-  .resource-card{background:var(--white);border:1px solid rgba(45,74,74,0.1);border-radius:16px;overflow:hidden;transition:all 0.3s;position:relative;max-width:400px;}
+  .resource-card{background:var(--white);border:1px solid rgba(45,74,74,0.1);border-radius:16px;overflow:hidden;transition:all 0.3s;position:relative;max-width:400px;cursor:pointer;display:flex;flex-direction:column;}
   .resource-card:hover{transform:translateY(-4px);box-shadow:0 20px 48px rgba(45,74,74,0.12);}
   .resource-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal-dark),var(--sand));transform:scaleX(0);transform-origin:left;transition:transform 0.3s;}
   .resource-card:hover::before{transform:scaleX(1);}
+  .resource-card.pop{animation:resourcePop 0.45s cubic-bezier(0.36,0.07,0.19,0.97);}
+  @keyframes resourcePop{0%{transform:scale(1) translateY(-4px);}30%{transform:scale(0.97) translateY(-4px);box-shadow:0 8px 24px rgba(45,74,74,0.18);}60%{transform:scale(1.015) translateY(-4px);}100%{transform:scale(1) translateY(-4px);}}
   .resource-thumb{height:200px;position:relative;overflow:hidden;}
   .resource-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
   .resource-badge{position:absolute;top:12px;left:12px;padding:4px 12px;border-radius:100px;font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;z-index:2;}
   .resource-badge--free{background:var(--teal-light);color:var(--near-black);}
-  .resource-body{padding:24px;}
+  .resource-body{padding:24px;flex:1;display:flex;flex-direction:column;}
   .resource-type-label{font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:8px;}
   .resource-title{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:400;color:var(--near-black);line-height:1.3;margin-bottom:20px;}
-  .resource-footer{display:flex;align-items:center;gap:12px;}
+  .resource-footer{display:flex;align-items:center;gap:12px;margin-top:auto;}
 
   /* BTNS */
   .btn-primary{display:inline-block;background:var(--sand);color:var(--near-black);text-decoration:none;font-size:0.88rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;padding:16px 44px;border-radius:4px;transition:all 0.25s;border:none;cursor:pointer;}
@@ -402,6 +408,7 @@
           <span class="speaker-tag" data-i18n="who1_tag1"></span>
           <span class="speaker-tag" data-i18n="who1_tag2"></span>
           <span class="speaker-tag" data-i18n="who1_tag3"></span>
+          <span class="speaker-tag">ICF Certified</span>
         </div>
         <button class="bio-toggle"><span class="bio-toggle-text" data-i18n="bio_read"></span><svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         <div class="bio-content"><p data-i18n="who1_bio"></p><a href="https://valeriianeurocoach.com" target="_blank" class="bio-link" data-i18n="who1_link"></a></div>
@@ -428,7 +435,6 @@
           <span class="speaker-tag" data-i18n="who3_tag1"></span>
           <span class="speaker-tag" data-i18n="who3_tag2"></span>
           <span class="speaker-tag" data-i18n="who3_tag3"></span>
-          <span class="speaker-tag" data-i18n="who3_tag4"></span>
         </div>
         <button class="bio-toggle"><span class="bio-toggle-text" data-i18n="bio_read"></span><svg class="bio-arrow" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         <div class="bio-content"><p data-i18n="who3_bio"></p></div>
@@ -479,7 +485,7 @@
               <div class="offering-tag" data-i18n="fmt_webinar_label"></div>
               <h3 class="offering-title" data-i18n="fmt_webinar_h3"></h3>
               <p class="offering-desc" data-i18n="fmt_webinar_p"></p>
-              <a href="https://englishupp-design.github.io/webinar/" target="_blank" class="btn-primary" onclick="event.stopPropagation()" data-i18n="fmt_webinar_link"></a>
+              <a href="https://mindlander.pro/webinar.html" target="_blank" class="btn-primary" onclick="event.stopPropagation()" data-i18n="fmt_webinar_link"></a>
             </div>
             <div class="offering-card offering-card--featured" onclick="animateTag(this)">
               <div class="offering-tag offering-tag--gold" data-i18n="fmt_course_label"></div>
@@ -535,15 +541,29 @@
     <div class="section-label" data-i18n="res_label"></div>
     <h2 class="section-title" data-i18n="res_h2"></h2>
     <div class="divider"></div>
-    <div class="resource-card reveal">
-      <div class="resource-thumb">
-        <img src="https://raw.githubusercontent.com/englishupp-design/diagram/main/image6.png" alt="Overcome your Amygdala">
+    <div class="resources-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:12px;">
+      <div class="resource-card reveal" onclick="animateTag(this)">
+        <div class="resource-thumb">
+          <img src="https://raw.githubusercontent.com/englishupp-design/diagram/main/image6.png" alt="Overcome your Amygdala">
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_video"></div>
+          <div class="resource-title" data-i18n="res_v1_title"></div>
+          <div class="resource-footer">
+            <a href="https://secure.wayforpay.com/payment/amygdala-podcast" target="_blank" rel="nofollow" class="btn-primary" style="font-size:0.82rem;padding:12px 28px;" onclick="event.stopPropagation()" data-i18n="res_buy"></a>
+          </div>
+        </div>
       </div>
-      <div class="resource-body">
-        <div class="resource-type-label" data-i18n="res_type_video"></div>
-        <div class="resource-title" data-i18n="res_v1_title"></div>
-        <div class="resource-footer">
-          <a href="https://secure.wayforpay.com/payment/amygdala-podcast" target="_blank" rel="nofollow" class="btn-primary" style="font-size:0.82rem;padding:12px 28px;" data-i18n="res_buy"></a>
+      <div class="resource-card reveal" onclick="animateTag(this)">
+        <div class="resource-thumb">
+          <img src="https://raw.githubusercontent.com/englishupp-design/diagram/main/photo7.png" alt="Serendipity">
+        </div>
+        <div class="resource-body">
+          <div class="resource-type-label" data-i18n="res_type_video"></div>
+          <div class="resource-title" data-i18n="res_v2_title"></div>
+          <div class="resource-footer">
+            <a href="https://secure.wayforpay.com/payment/serendipity" target="_blank" rel="nofollow" class="btn-primary" style="font-size:0.82rem;padding:12px 28px;" onclick="event.stopPropagation()" data-i18n="res_buy"></a>
+          </div>
         </div>
       </div>
     </div>
@@ -659,16 +679,16 @@ const i18n = {
     approach_label:"Our Approach", approach_h2:"This programme is essential for everyone working in the model:",
     approach_box1:"Provider", approach_box2:"Client", approach_box3:"Successful, long-term partnership",
     who_label:"Who We Are", who_h2:"Meet the team behind the course",
-    who1_name:"Valeriia Bakanova", who1_title:"Professional Neurolanguage Coach&#174; &amp; Licensed Teacher Trainer&#174;",
-    who1_bio:"Valeriia began teaching English over 20 years ago, growing from a private tutor into the founder of her own language school. Her path led her to neuroscience and coaching \u2014 today she is a certified Neurolanguage Coach&#174; and Licensed Trainer&#174; at ELC Ltd., helping educators transform their practice through brain science and emotional intelligence.",
-    who1_tag1:"20+ years experience", who1_tag2:"ICF &amp; CCE Accredited", who1_tag3:"Founder, English-Up",
+    who1_name:"Valeriia Bakanova", who1_title:"Co-founder, MindLander",
+    who1_bio:"Valeriia built a successful business in education as the owner of her own language school, English Up. Running a business and leading teams, she became convinced that sustainable success is impossible without emotional intelligence at its core. Today she is a brain-based life coach, neuro coach, and EQ trainer — helping entrepreneurs, leaders, and teams build and grow their businesses and services with emotional intelligence and neuroscience as their foundation.",
+    who1_tag1:"Neuro Coach", who1_tag2:"Brain-Based Life Coach", who1_tag3:"EQ Trainer",
     who1_link:"Learn more about Valeriia",
-    who2_name:"Natalia Shubnikova", who2_title:"Professional Life &amp; Business Strategic Coach",
+    who2_name:"Natalia Shubnikova", who2_title:"Co-founder, MindLander",
     who2_bio:"Natalia built a successful career in the tech industry, rising from specialist to senior executive and co-founder. Managing teams and processes, she became convinced that real effectiveness is impossible without understanding human nature, motivation, and emotion. Today she is a certified Life &amp; Business Strategic Coach helping professionals build conscious, profitable career paths.",
-    who2_tag1:"Former IT Top-Manager", who2_tag2:"ICF Certified Coach", who2_tag3:"Business Strategy Expert",
-    who3_name:"Oleg Poruchenko", who3_title:"Neurologist &middot; Psychologist &middot; Neuropsychologist &middot; Brain Injury Rehabilitation Practician",
+    who2_tag1:"Life &amp; Business Strategic Coach", who2_tag2:"Business Strategy Expert", who2_tag3:"EQ Trainer &middot; ICF Certified",
+    who3_name:"Oleg Poruchenko", who3_title:"Leading Expert",
     who3_bio:"Oleg brings deep clinical expertise in neuropsychology and brain rehabilitation to the course. His work at a Brain Injury Rehab Centre gives him a rare, science-grounded perspective on how the brain learns, recovers, and adapts \u2014 knowledge that directly informs the neuroscience foundation of this programme.",
-    who3_tag1:"Clinical Neuropsychologist", who3_tag2:"Brain Injury Rehab Specialist", who3_tag3:"Neurologist", who3_tag4:"Psychologist",
+    who3_tag1:"Neurologist &middot; Neuropsychologist", who3_tag2:"Psychologist", who3_tag3:"Brain Rehab Specialist", who3_tag4:"",
     bio_read:"Read their story",
     testi_label:"Testimonials", testi_h2:"What participants say",
     read_more:"Read more ",
@@ -693,15 +713,15 @@ const i18n = {
     biz3_h4:"Workshops", biz3_p:"Intensive, hands-on workshops for practicing skills in real-world team scenarios.",
     biz_cta:"Discuss a Partnership", biz_cta_url:"https://form.jotform.com/261165961809061",
     curr_label:"Course Programme", curr_h2:"9 Modules of Transformational Practice",
-    m1_title:"The Origins of EI and Why It Matters", m1_body:"How people came to recognize the importance of EI. The history of the term from ancient philosophers to the present day, the evolution of EQ as a concept, key research, and the introduction of SEL programs in educational institutions. How EQ influences different areas of life.",
-    m2_title:"The Benefits of EI in Language Teaching", m2_body:"Richard Boyatzis\u2019s model of emotional intelligence. Practical scenarios: how to maintain a student\u2019s attention, work with \u2018withdrawn\u2019 learners, and manage emotional exhaustion. The connection between EI and student motivation, memory, and identity. The role of empathy, emotional resonance, and reflection as tools for educators.",
-    m3_title:"Threats to the Brain and Creating a Safe Learning Environment", m3_body:"Brain states that positively and negatively impact learning. Words, formats, and actions perceived as threats: pressure, criticism, comparisons, leading questions. How to work with a student whose brain is in a threat state. Coaching practices for communicating with parents and decision-makers.",
-    m4_title:"Neuroscience: The Brain, the Amygdala, and Learning", m4_body:"The \u2018triune brain\u2019 and the role of each part. The amygdala and its processing of fear and stress \u2014 real-life case studies. The prefrontal cortex, working memory, and neuroplasticity. Cortisol and its dangers. How positive and negative emotions affect neural pathway formation and a student\u2019s progress.",
-    m5_title:"The Ideal State for Learning", m5_body:"What an ideal learning environment looks like and how to create it. Dopamine vs. cortisol \u2014 motivation and demotivation. Positive and negative emotional attractors. The \u2018flow\u2019 state and brainwave patterns. The brain\u2019s two modes \u2014 emotional and rational \u2014 and how to work with both.",
-    m6_title:"Emotional Triggers and the SCARF Model", m6_body:"What a trigger is and how it connects to past experience. Common triggers for educators, techniques for immediate self-regulation, and long-term strategies. The SCARF model \u2014 educator behavior through the lens of social factors. How to give feedback and coaching practices for successful teaching.",
-    m7_title:"Student Triggers and Trauma: Recognize and Respond", m7_body:"The difference between triggers and trauma in a learning context. Real-life case studies: how trauma continues to live in the body and affect the learning process. Recognition techniques and approaches \u2014 coaching, simulations, and exercises.",
-    m8_title:"Burnout: Recognizing It and Finding Balance", m8_body:"The stages and symptoms of professional burnout. Emotional exhaustion vs. emotional resilience. Techniques for restoring emotional resources and burnout prevention through emotional hygiene.",
-    mb_title:"Bonus: The Financial Side of Your Practice", mb_body:"Practical aspects of running a teaching practice: drafting contracts, navigating payment challenges, setting your rates, exploring different collaboration models, and structuring package offerings.",
+    m1_title:"The Science Behind Emotional Intelligence", m1_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Why EQ outperforms IQ in leadership, sales, and team performance</li><li>The research that changed how top companies hire and promote</li><li>How EQ became the #1 predictor of professional success</li><li>The history of emotional intelligence — from ancient philosophy to modern neuroscience</li><li>How EQ affects every area of your life: career, relationships, decisions</li></ul>",
+    m2_title:"EQ in Action: Working with People at a New Level", m2_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Richard Boyatzis’s EQ model — how to apply it in real interactions</li><li>Real scenarios: the client who goes cold, the team that loses momentum, the deal that stalls</li><li>How to reduce conflict, increase engagement, and build loyalty</li><li>The link between emotional intelligence and genuine leadership</li><li>Why people who feel understood — buy, stay, and refer others</li></ul>",
+    m3_title:"What Triggers People — and How to Work With It", m3_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Words, formats, and behaviors the brain reads as threat — without anyone realizing it</li><li>How pressure, criticism, and comparison shut people down</li><li>How to recognize when someone has emotionally checked out — and bring them back</li><li>Coaching-based techniques for navigating resistant clients and stakeholders</li><li>Communication scripts for high-stakes conversations</li></ul>",
+    m4_title:"The Brain Behind Every Decision", m4_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>How the amygdala drives fear, shutdown, and irrational reactions</li><li>What cortisol does to trust, performance, and decision-making</li><li>The prefrontal cortex: why logic fails under pressure</li><li>How to create brain conditions where people say yes, stay open, and think clearly</li><li>Neuroscience that turns good communicators into exceptional ones</li></ul>",
+    m5_title:"The State That Makes Everything Possible", m5_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Dopamine vs. cortisol — the chemistry behind motivation and resistance</li><li>What a flow state is and how to trigger it in yourself and others</li><li>Emotional vs. rational brain modes — and how to work with both</li><li>How to design meetings, conversations, and environments that bring out the best in people</li><li>The invisible conditions that make people trust, engage, and perform</li></ul>",
+    m6_title:"Managing Yourself First", m6_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>How to identify your personal emotional triggers and where they come from</li><li>Real-time self-regulation techniques you can use under pressure — immediately</li><li>The SCARF model: understanding social dynamics that drive behavior at work</li><li>How to give feedback that builds trust instead of triggering defensiveness</li><li>Coaching practices that make you a more effective, respected, and influential professional</li></ul>",
+    m7_title:"Reading People Deeply", m7_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>The difference between a trigger and an emotional wound — and why it changes everything</li><li>Why some client or colleague reactions have nothing to do with you</li><li>How past experience lives in the body and shapes present behavior</li><li>Real-case analysis: recognizing emotional patterns before they derail relationships</li><li>Coaching simulations to practice precise, confident responses in difficult moments</li></ul>",
+    m8_title:"Staying Resilient in a High-Demand World", m8_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>The stages of burnout — how to spot them before they become a crisis</li><li>Emotional exhaustion vs. emotional resilience: what’s the real difference</li><li>Practical techniques to restore your energy fast — without burning out trying</li><li>Building a personal emotional hygiene practice that actually holds under pressure</li><li>How to protect your performance, relationships, and presence — every day, not just on good days</li></ul>",
+    mb_title:"Bonus — The Business Side of Working with People", mb_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>How to set your pricing with confidence — and communicate your value without apology</li><li>Structuring agreements that protect you and create clarity for clients</li><li>Handling difficult payment situations without damaging the relationship</li><li>Designing service packages that signal quality and attract the right clients</li><li>Why the way you handle business conversations is also an expression of your EQ</li></ul>",
     curr_includes:"The course includes: demo practices, brainstorming sessions, and group work",
     curr_cta:"Enroll in the Course", curr_cta_url:"https://form.jotform.com/261162310591044",
     cta_h2:"Emotional Intelligence: a buzzword or the ultimate success factor?",
@@ -719,6 +739,7 @@ const i18n = {
     res_label:"Resources Library", res_h2:"Explore & Learn",
     res_type_video:"Video",
     res_v1_title:"Overcome your Amygdala",
+    res_v2_title:"Serendipity. Coincidences Aren’t Coincidences: How to Make Friends with Luck",
     res_buy:"Buy now"
   },
   uk: {
@@ -743,16 +764,16 @@ const i18n = {
     approach_label:"\u041d\u0430\u0448 \u043f\u0456\u0434\u0445\u0456\u0434", approach_h2:"\u041d\u0430\u0448 \u043f\u0440\u043e\u0454\u043a\u0442 \u043d\u0435\u043e\u0431\u0445\u0456\u0434\u043d\u0438\u0439 \u0443\u0441\u0456\u043c, \u0445\u0442\u043e \u043f\u0440\u0430\u0446\u044e\u0454 \u0443 \u043c\u043e\u0434\u0435\u043b\u0456:",
     approach_box1:"\u0412\u0438\u043a\u043e\u043d\u0430\u0432\u0435\u0446\u044c", approach_box2:"\u041a\u043b\u0456\u0454\u043d\u0442", approach_box3:"\u0423\u0441\u043f\u0456\u0448\u043d\u0430 \u0442\u0430 \u0434\u043e\u0432\u0433\u043e\u0441\u0442\u0440\u043e\u043a\u043e\u0432\u0430 \u0441\u043f\u0456\u0432\u043f\u0440\u0430\u0446\u044f",
     who_label:"\u0425\u0442\u043e \u043c\u0438", who_h2:"\u041a\u043e\u043c\u0430\u043d\u0434\u0430 \u043a\u0443\u0440\u0441\u0443",
-    who1_name:"\u0412\u0430\u043b\u0435\u0440\u0456\u044f \u0411\u0430\u043a\u0430\u043d\u043e\u0432\u0430", who1_title:"Professional Neurolanguage Coach&#174; \u0442\u0430 Licensed Teacher Trainer&#174;",
-    who1_bio:"\u0412\u0430\u043b\u0435\u0440\u0456\u044f \u043f\u043e\u0447\u0430\u043b\u0430 \u0432\u0438\u043a\u043b\u0430\u0434\u0430\u0442\u0438 \u0430\u043d\u0433\u043b\u0456\u0439\u0441\u044c\u043a\u0443 \u043c\u043e\u0432\u0443 \u043f\u043e\u043d\u0430\u0434 20 \u0440\u043e\u043a\u0456\u0432 \u0442\u043e\u043c\u0443.",
-    who1_tag1:"20+ \u0440\u043e\u043a\u0456\u0432 \u0434\u043e\u0441\u0432\u0456\u0434\u0443", who1_tag2:"\u0410\u043a\u0440\u0435\u0434\u0438\u0442\u0430\u0446\u0456\u044f ICF &amp; CCE", who1_tag3:"\u0417\u0430\u0441\u043d\u043e\u0432\u043d\u0438\u0446\u044f English-Up",
+    who1_name:"\u0412\u0430\u043b\u0435\u0440\u0456\u044f \u0411\u0430\u043a\u0430\u043d\u043e\u0432\u0430", who1_title:"Созасновниця MindLander",
+    who1_bio:"Валерія побудувала успішний бізнес в сфері освіти як власниця власної мовної школи English Up. Ведучи бізнес і команди, вона переконалась: стійкий успіх неможливий без емоційного інтелекту в основі. Сьогодні вона — лайф-коуч, нейро-коуч та тренер EQ, яка допомагає підприємцям, лідерам та командам будувати і розвивати бізнес і сервіси з емоційним інтелектом і нейронаукою як фундаментом.",
+    who1_tag1:"Neuro Coach", who1_tag2:"Brain-Based Life Coach", who1_tag3:"Тренер EQ",
     who1_link:"\u0414\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e \u0412\u0430\u043b\u0435\u0440\u0456\u044e",
-    who2_name:"\u041d\u0430\u0442\u0430\u043b\u0456\u044f \u0428\u0443\u0431\u043d\u0456\u043a\u043e\u0432\u0430", who2_title:"Professional Life &amp; Business Strategic Coach",
+    who2_name:"\u041d\u0430\u0442\u0430\u043b\u0456\u044f \u0428\u0443\u0431\u043d\u0456\u043a\u043e\u0432\u0430", who2_title:"Созасновниця MindLander",
     who2_bio:"\u041d\u0430\u0442\u0430\u043b\u0456\u044f \u0437\u0431\u0443\u0434\u0443\u0432\u0430\u043b\u0430 \u0443\u0441\u043f\u0456\u0448\u043d\u0443 \u043a\u0430\u0440\u02bc\u0454\u0440\u0443 \u0432 IT-\u0431\u0456\u0437\u043d\u0435\u0441\u0456.",
-    who2_tag1:"\u041a\u043e\u043b\u0438\u0448\u043d\u0456\u0439 IT \u0442\u043e\u043f-\u043c\u0435\u043d\u0435\u0434\u0436\u0435\u0440", who2_tag2:"\u0421\u0435\u0440\u0442\u0438\u0444\u0456\u043a\u043e\u0432\u0430\u043d\u0438\u0439 ICF \u043a\u043e\u0443\u0447", who2_tag3:"\u0415\u043a\u0441\u043f\u0435\u0440\u0442 \u0437 \u0431\u0456\u0437\u043d\u0435\u0441-\u0441\u0442\u0440\u0430\u0442\u0435\u0433\u0456\u0457",
-    who3_name:"\u041e\u043b\u0435\u0433 \u041f\u043e\u0440\u0443\u0447\u0435\u043d\u043a\u043e", who3_title:"\u041d\u0435\u0432\u0440\u043e\u043b\u043e\u0433 &middot; \u041f\u0441\u0438\u0445\u043e\u043b\u043e\u0433 &middot; \u041d\u0435\u0439\u0440\u043e\u043f\u0441\u0438\u0445\u043e\u043b\u043e\u0433 &middot; \u041f\u0440\u0430\u043a\u0442\u0438\u043a \u0440\u0435\u0430\u0431\u0456\u043b\u0456\u0442\u0430\u0446\u0456\u0457 \u043f\u0456\u0441\u043b\u044f \u0427\u041c\u0422",
+    who2_tag1:"Life &amp; Business Strategic Coach", who2_tag2:"Експерт з бізнес-стратегії", who2_tag3:"Тренер EQ &middot; ICF сертифікація",
+    who3_name:"\u041e\u043b\u0435\u0433 \u041f\u043e\u0440\u0443\u0447\u0435\u043d\u043a\u043e", who3_title:"Провідний експерт",
     who3_bio:"\u041e\u043b\u0435\u0433 \u043f\u0440\u0438\u0432\u043d\u043e\u0441\u0438\u0442\u044c \u0433\u043b\u0438\u0431\u043e\u043a\u0443 \u043a\u043b\u0456\u043d\u0456\u0447\u043d\u0443 \u0435\u043a\u0441\u043f\u0435\u0440\u0442\u0438\u0437\u0443.",
-    who3_tag1:"\u041a\u043b\u0456\u043d\u0456\u0447\u043d\u0438\u0439 \u043d\u0435\u0439\u0440\u043e\u043f\u0441\u0438\u0445\u043e\u043b\u043e\u0433", who3_tag2:"\u0421\u043f\u0435\u0446\u0456\u0430\u043b\u0456\u0441\u0442 \u0437 \u0440\u0435\u0430\u0431\u0456\u043b\u0456\u0442\u0430\u0446\u0456\u0457 \u043c\u043e\u0437\u043a\u0443", who3_tag3:"\u041d\u0435\u0432\u0440\u043e\u043b\u043e\u0433", who3_tag4:"\u041f\u0441\u0438\u0445\u043e\u043b\u043e\u0433",
+    who3_tag1:"Невролог &middot; Нейропсихолог", who3_tag2:"Психолог", who3_tag3:"Реабілітація мозку", who3_tag4:"",
     bio_read:"\u0427\u0438\u0442\u0430\u0442\u0438 \u0456\u0441\u0442\u043e\u0440\u0456\u044e",
     testi_label:"\u0412\u0456\u0434\u0433\u0443\u043a\u0438", testi_h2:"\u0429\u043e \u043a\u0430\u0436\u0443\u0442\u044c \u0443\u0447\u0430\u0441\u043d\u0438\u043a\u0438",
     read_more:"\u0427\u0438\u0442\u0430\u0442\u0438 \u0434\u0430\u043b\u0456 ",
@@ -777,15 +798,15 @@ const i18n = {
     biz3_h4:"\u0412\u043e\u0440\u043a\u0448\u043e\u043f\u0438", biz3_p:"\u0406\u043d\u0442\u0435\u043d\u0441\u0438\u0432\u043d\u0456 \u043f\u0440\u0430\u043a\u0442\u0438\u0447\u043d\u0456 \u0432\u043e\u0440\u043a\u0448\u043e\u043f\u0438.",
     biz_cta:"\u041e\u0431\u0433\u043e\u0432\u043e\u0440\u0438\u0442\u0438 \u0441\u043f\u0456\u0432\u043f\u0440\u0430\u0446\u044e", biz_cta_url:"https://form.jotform.com/261165916881061",
     curr_label:"\u041f\u0440\u043e\u0433\u0440\u0430\u043c\u0430 \u043a\u0443\u0440\u0441\u0443", curr_h2:"9 \u043c\u043e\u0434\u0443\u043b\u0456\u0432 \u0442\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u0439\u043d\u043e\u0457 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438",
-    m1_title:"\u0412\u0438\u043d\u0438\u043a\u043d\u0435\u043d\u043d\u044f \u0415\u0406", m1_body:"\u0406\u0441\u0442\u043e\u0440\u0456\u044f \u0442\u0435\u0440\u043c\u0456\u043d\u0430 EQ.",
-    m2_title:"\u041f\u0435\u0440\u0435\u0432\u0430\u0433\u0438 \u0415\u0406 \u0443 \u0432\u0438\u043a\u043b\u0430\u0434\u0430\u043d\u043d\u0456", m2_body:"\u041c\u043e\u0434\u0435\u043b\u044c \u0415\u0406 \u0420\u0456\u0447\u0430\u0440\u0434\u0430 \u0411\u043e\u044f\u0446\u0456\u0441\u0430.",
-    m3_title:"\u0417\u0430\u0433\u0440\u043e\u0437\u0438 \u0434\u043b\u044f \u043c\u043e\u0437\u043a\u0443", m3_body:"\u0421\u0442\u0430\u043d\u0438 \u043c\u043e\u0437\u043a\u0443, \u0449\u043e \u0432\u043f\u043b\u0438\u0432\u0430\u044e\u0442\u044c \u043d\u0430 \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f.",
-    m4_title:"\u041d\u0435\u0439\u0440\u043e\u0444\u0456\u0437\u0456\u043e\u043b\u043e\u0433\u0456\u044f: \u043c\u043e\u0437\u043e\u043a \u0442\u0430 \u0430\u043c\u0438\u0433\u0434\u0430\u043b\u0430", m4_body:"\u0410\u043c\u0438\u0433\u0434\u0430\u043b\u0430 \u0442\u0430 \u043e\u0431\u0440\u043e\u0431\u043a\u0430 \u0441\u0442\u0440\u0430\u0445\u0443.",
-    m5_title:"\u0406\u0434\u0435\u0430\u043b\u044c\u043d\u0438\u0439 \u0441\u0442\u0430\u043d \u0434\u043b\u044f \u043d\u0430\u0432\u0447\u0430\u043d\u043d\u044f", m5_body:"\u0414\u043e\u0444\u0430\u043c\u0456\u043d vs. \u043a\u043e\u0440\u0442\u0438\u0437\u043e\u043b.",
-    m6_title:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0456 \u0442\u0440\u0438\u0433\u0435\u0440\u0438 \u0442\u0430 SCARF", m6_body:"\u041c\u043e\u0434\u0435\u043b\u044c SCARF.",
-    m7_title:"\u0422\u0440\u0438\u0433\u0435\u0440\u0438 \u0442\u0430 \u0442\u0440\u0430\u0432\u043c\u0438 \u0441\u0442\u0443\u0434\u0435\u043d\u0442\u0430", m7_body:"\u0420\u043e\u0437\u0431\u0456\u0440 \u0440\u0435\u0430\u043b\u044c\u043d\u0438\u0445 \u0441\u0438\u0442\u0443\u0430\u0446\u0456\u0439.",
-    m8_title:"\u0412\u0438\u0433\u043e\u0440\u0430\u043d\u043d\u044f", m8_body:"\u0421\u0442\u0430\u0434\u0456\u0457 \u0432\u0438\u0433\u043e\u0440\u0430\u043d\u043d\u044f.",
-    mb_title:"\u0411\u043e\u043d\u0443\u0441: \u041c\u0430\u0442\u0435\u0440\u0456\u0430\u043b\u044c\u043d\u0430 \u0441\u043a\u043b\u0430\u0434\u043e\u0432\u0430", mb_body:"\u041f\u0440\u0430\u043a\u0442\u0438\u0447\u043d\u0456 \u0430\u0441\u043f\u0435\u043a\u0442\u0438.",
+    m1_title:"Наука за емоційним інтелектом", m1_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Чому EQ перевершує IQ у лідерстві, продажах та роботі в команді</li><li>Дослідження, що змінили підхід найкращих компаній до найму та просування</li><li>Як EQ став головним предиктором професійного успіху</li><li>Історія емоційного інтелекту — від античних філософів до сучасної нейронауки</li><li>Як EQ впливає на кожну сферу вашого життя: карʼєру, стосунки, рішення</li></ul>",
+    m2_title:"EQ у дії: робота з людьми на новому рівні", m2_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Модель EQ Річарда Бояциса — як застосовувати у реальних взаємодіях</li><li>Реальні сценарії: клієнт, що «закривається», команда без мотивації, угода, що зависла</li><li>Як зменшити конфлікти, підвищити залученість і сформувати лояльність</li><li>Зв’язок між емоційним інтелектом і справжнім лідерством</li><li>Чому люди, які відчувають себе почутими — купують, залишаються і рекомендують</li></ul>",
+    m3_title:"Що тригерить людей — і як з цим працювати", m3_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Слова, формати та поведінка, які мозок сприймає як загрозу — непомітно для всіх</li><li>Як тиск, критика та порівняння «вимикають» людину</li><li>Як розпізнати, коли людина емоційно відключилась — і повернути її до діалогу</li><li>Коучингові техніки для роботи з клієнтами та стейкхолдерами, що чинять опір</li><li>Готові сценарії для складних розмов</li></ul>",
+    m4_title:"Мозок за кожним рішенням", m4_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Як амигдала керує страхом, «відключенням» і нераціональними реакціями</li><li>Що кортизол робить з довірою, продуктивністю та прийняттям рішень</li><li>Префронтальна кора: чому логіка відмовляє під тиском</li><li>Як створити умови, за яких люди кажуть «так», залишаються відкритими і мислять ясно</li><li>Нейронаука, що перетворює хороших комунікаторів на виняткових</li></ul>",
+    m5_title:"Стан, що робить усе можливим", m5_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Дофамін проти кортизолу — хімія мотивації та опору</li><li>Що таке стан «потоку» і як його запускати — у себі та в інших</li><li>Емоційний і раціональний режими мозку — і як працювати з обома</li><li>Як організовувати наради, розмови та середовище, що розкривають людей</li><li>Невидимі умови, що змушують людей довіряти, залучатись і діяти</li></ul>",
+    m6_title:"Спочатку керуй собою", m6_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Як визначити свої особисті емоційні тригери та зрозуміти їхнє походження</li><li>Техніки саморегуляції в реальному часі, що працюють під тиском — одразу</li><li>Модель SCARF: соціальна динаміка, що керує поведінкою людей на роботі</li><li>Як давати зворотний зв’язок, що будує довіру, а не захисну реакцію</li><li>Коучингові практики, що роблять вас ефективнішим, авторитетнішим і впливовішим</li></ul>",
+    m7_title:"Глибоке розуміння людей", m7_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Різниця між тригером і емоційною травмою — і чому це змінює все</li><li>Чому деякі реакції клієнтів або колег не мають до вас жодного стосунку</li><li>Як минулий досвід живе в тілі й формує поведінку в теперішньому</li><li>Аналіз реальних кейсів: розпізнавання емоційних патернів до того, як вони руйнують стосунки</li><li>Коучингові симуляції для відпрацювання точних відповідей у складних ситуаціях</li></ul>",
+    m8_title:"Залишатись стійким у світі високих вимог", m8_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Стадії вигорання — як розпізнати їх до того, як вони стануть кризою</li><li>Емоційне виснаження проти емоційної стійкості: в чому справжня різниця</li><li>Практичні техніки швидкого відновлення енергії — без зайвих зусиль</li><li>Формування особистої практики емоційної гігієни, що реально витримує тиск</li><li>Як захистити свою продуктивність, стосунки та присутність — щодня, а не лише в хороші</li></ul>",
+    mb_title:"Бонус — Бізнесова сторона роботи з людьми", mb_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Як впевнено встановлювати вартість послуг — і транслювати свою цінність без виправдань</li><li>Структурування угод, що захищають вас і дають клієнтам чіткість</li><li>Як справлятись зі складними ситуаціями щодо оплати, не руйнуючи стосунків</li><li>Формування пакетів послуг, що сигналізують якість і приваблюють потрібних клієнтів</li><li>Чому те, як ви ведете бізнесові розмови — це теж прояв вашого EQ</li></ul>",
     curr_includes:"\u041a\u0443\u0440\u0441 \u0432\u043a\u043b\u044e\u0447\u0430\u0454: \u0434\u0435\u043c\u043e-\u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0438, \u043c\u043e\u0437\u043a\u043e\u0432\u0456 \u0448\u0442\u0443\u0440\u043c\u0438 \u0442\u0430 \u0433\u0440\u0443\u043f\u043e\u0432\u0443 \u0440\u043e\u0431\u043e\u0442\u0443",
     curr_cta:"\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u0438\u0441\u044f \u043d\u0430 \u043a\u0443\u0440\u0441", curr_cta_url:"https://form.jotform.com/261162453104042",
     cta_h2:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0456\u043d\u0442\u0435\u043b\u0435\u043a\u0442: \u043c\u043e\u0434\u043d\u0438\u0439 \u0442\u0435\u0440\u043c\u0456\u043d \u0447\u0438 \u0433\u043e\u043b\u043e\u0432\u043d\u0438\u0439 \u0444\u0430\u043a\u0442\u043e\u0440 \u0443\u0441\u043f\u0456\u0445\u0443?",
@@ -803,6 +824,7 @@ const i18n = {
     res_label:"\u0411\u0456\u0431\u043b\u0456\u043e\u0442\u0435\u043a\u0430 \u0440\u0435\u0441\u0443\u0440\u0441\u0456\u0432", res_h2:"\u0414\u043e\u0441\u043b\u0456\u0434\u0436\u0443\u0439 \u0442\u0430 \u043d\u0430\u0432\u0447\u0430\u0439\u0441\u044f",
     res_type_video:"\u0412\u0456\u0434\u0435\u043e",
     res_v1_title:"Overcome your Amygdala",
+    res_v2_title:"Серендипність. Випадковості не випадкові: як задружитися з удачею",
     res_buy:"\u041f\u0440\u0438\u0434\u0431\u0430\u043d\u0438"
   }
 };
