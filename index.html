@@ -301,7 +301,6 @@
     <li><a href="#whoweare" data-i18n="nav_team"></a></li>
     <li><a href="#formats" onclick="switchTab('individuals',document.querySelectorAll('.tab-btn')[0])" data-i18n="nav_individuals"></a></li>
     <li><a href="#formats" onclick="switchTabBiz()" data-i18n="nav_business"></a></li>
-    <li><a href="#curriculum" data-i18n="nav_curriculum"></a></li>
     <li><a href="#resources" data-i18n="nav_resources"></a></li>
     <li><a href="#formats" class="nav-cta" data-i18n="nav_enroll"></a></li>
     <li style="margin-left:16px;"><a href="#bookcall" class="nav-book" data-i18n="nav_book"></a></li>
@@ -322,7 +321,6 @@
   <a href="#whoweare" onclick="closeMenu()" data-i18n="nav_team"></a>
   <a href="#formats" onclick="switchTab('individuals',document.querySelectorAll('.tab-btn')[0]);closeMenu()" data-i18n="nav_individuals"></a>
   <a href="#formats" onclick="switchTabBiz();closeMenu()" data-i18n="nav_business"></a>
-  <a href="#curriculum" onclick="closeMenu()" data-i18n="nav_curriculum"></a>
   <a href="#resources" onclick="closeMenu()" data-i18n="nav_resources"></a>
   <a href="#formats" class="mob-cta" onclick="closeMenu()" data-i18n="nav_enroll"></a>
   <a href="#bookcall" class="mob-book" onclick="closeMenu()" data-i18n="nav_book"></a>
@@ -698,7 +696,7 @@ const i18n = {
     fmt_webinar_label:"Webinar", fmt_webinar_h3:"Emotional Intelligence as a Key Success Factor",
     fmt_webinar_p:"A one-time online webinar \u2014 the perfect entry point to explore the world of EQ, ask the speakers your questions, and discover how it works in real life.",
     fmt_webinar_link:"Learn more about the webinar",
-    fmt_course_label:"Full Course", fmt_course_h3:"Emotional Intelligence \u2014 the Key Factor in Your Success",
+    fmt_course_label:"Full Course", fmt_course_h3:"Emotional Transformation",
     fmt_course_p:"A comprehensive 9-module course with practical assignments, live sessions, and a community of like-minded people. Hybrid format: recorded lessons + weekly live meetings.",
     fmt_course_link:"Learn more about the course",
     biz_intro:"We offer fully customized training solutions for businesses in any industry. We tailor the program to your team\u2019s specific needs and goals.",
@@ -706,7 +704,7 @@ const i18n = {
     biz2_h4:"Thematic Webinars", biz2_p:"One-time webinars focused on key aspects of EQ, tailored to your specific request.",
     biz3_h4:"Workshops", biz3_p:"Intensive, hands-on workshops for practicing skills in real-world team scenarios.",
     biz_cta:"Discuss a Partnership", biz_cta_url:"https://form.jotform.com/261165961809061",
-    curr_label:"Course Programme", curr_h2:"9 Modules of Transformational Practice",
+    curr_label:"Course Programme", curr_h2:"9 Modules of Emotional Transformation",
     m1_title:"The Science Behind Emotional Intelligence", m1_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Why EQ outperforms IQ in leadership, sales, and team performance</li><li>The research that changed how top companies hire and promote</li><li>How EQ became the #1 predictor of professional success</li><li>The history of emotional intelligence — from ancient philosophy to modern neuroscience</li><li>How EQ affects every area of your life: career, relationships, decisions</li></ul>",
     m2_title:"EQ in Action: Working with People at a New Level", m2_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Richard Boyatzis’s EQ model — how to apply it in real interactions</li><li>Real scenarios: the client who goes cold, the team that loses momentum, the deal that stalls</li><li>How to reduce conflict, increase engagement, and build loyalty</li><li>The link between emotional intelligence and genuine leadership</li><li>Why people who feel understood — buy, stay, and refer others</li></ul>",
     m3_title:"What Triggers People — and How to Work With It", m3_body:"<ul style=\"list-style:disc;padding-left:18px;margin:0;\"><li>Words, formats, and behaviors the brain reads as threat — without anyone realizing it</li><li>How pressure, criticism, and comparison shut people down</li><li>How to recognize when someone has emotionally checked out — and bring them back</li><li>Coaching-based techniques for navigating resistant clients and stakeholders</li><li>Communication scripts for high-stakes conversations</li></ul>",
@@ -734,7 +732,7 @@ const i18n = {
     res_type_video:"Video",
     res_v1_title:"Overcome your Amygdala",
     res_v2_title:"Serendipity. Coincidences Aren’t Coincidences: How to Make Friends with Luck",
-    res_buy:"Buy now"
+    res_buy:"Learn More"
   },
   uk: {
     nav_about:"\u041f\u0440\u043e \u043f\u0440\u043e\u0454\u043a\u0442", nav_team:"\u041d\u0430\u0448\u0430 \u043a\u043e\u043c\u0430\u043d\u0434\u0430", nav_individuals:"\u0414\u043b\u044f \u043f\u0440\u0438\u0432\u0430\u0442\u043d\u0438\u0445 \u043e\u0441\u0456\u0431", nav_business:"\u0414\u043b\u044f \u0431\u0456\u0437\u043d\u0435\u0441\u0443", nav_curriculum:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0430 \u0422\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044f", nav_resources:"\u0420\u0435\u0441\u0443\u0440\u0441\u0438", nav_enroll:"\u0417\u0430\u043f\u0438\u0441\u0430\u0442\u0438\u0441\u044f", nav_book:"\u0417\u0430\u0431\u0440\u043e\u043d\u044e\u0432\u0430\u0442\u0438 \u0434\u0437\u0432\u0456\u043d\u043e\u043a",
@@ -783,7 +781,7 @@ const i18n = {
     fmt_webinar_label:"\u0412\u0435\u0431\u0456\u043d\u0430\u0440", fmt_webinar_h3:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0406\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u044f\u043a \u043a\u043b\u044e\u0447\u043e\u0432\u0438\u0439 \u0444\u0430\u043a\u0442\u043e\u0440 \u0443\u0441\u043f\u0456\u0445\u0443",
     fmt_webinar_p:"\u041e\u0434\u043d\u043e\u0440\u0430\u0437\u043e\u0432\u0438\u0439 \u043e\u043d\u043b\u0430\u0439\u043d-\u0432\u0435\u0431\u0456\u043d\u0430\u0440.",
     fmt_webinar_link:"\u0414\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e \u0432\u0435\u0431\u0456\u043d\u0430\u0440",
-    fmt_course_label:"\u041f\u043e\u0432\u043d\u0438\u0439 \u043a\u0443\u0440\u0441", fmt_course_h3:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0438\u0439 \u0406\u043d\u0442\u0435\u043b\u0435\u043a\u0442 \u2014 \u043a\u043b\u044e\u0447\u043e\u0432\u0438\u0439 \u0444\u0430\u043a\u0442\u043e\u0440 \u0432\u0430\u0448\u043e\u0433\u043e \u0443\u0441\u043f\u0456\u0445\u0443",
+    fmt_course_label:"\u041f\u043e\u0432\u043d\u0438\u0439 \u043a\u0443\u0440\u0441", fmt_course_h3:"\u0415\u043c\u043e\u0446\u0456\u0439\u043d\u0430 \u0422\u0440\u0430\u043d\u0441\u0444\u043e\u0440\u043c\u0430\u0446\u0456\u044f",
     fmt_course_p:"\u041f\u043e\u0432\u043d\u043e\u0446\u0456\u043d\u043d\u0438\u0439 \u043a\u0443\u0440\u0441 \u0456\u0437 9 \u043c\u043e\u0434\u0443\u043b\u0456\u0432.",
     fmt_course_link:"\u0414\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435 \u043f\u0440\u043e \u043a\u0443\u0440\u0441",
     biz_intro:"\u041c\u0438 \u0430\u0434\u0430\u043f\u0442\u0443\u0454\u043c\u043e \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u0443 \u043f\u0456\u0434 \u0431\u0443\u0434\u044c-\u044f\u043a\u0443 \u0441\u0444\u0435\u0440\u0443.",
@@ -819,7 +817,7 @@ const i18n = {
     res_type_video:"\u0412\u0456\u0434\u0435\u043e",
     res_v1_title:"Overcome your Amygdala",
     res_v2_title:"Серендипність. Випадковості не випадкові: як задружитися з удачею",
-    res_buy:"\u041f\u0440\u0438\u0434\u0431\u0430\u0442\u0438"
+    res_buy:"\u0414\u0456\u0437\u043d\u0430\u0442\u0438\u0441\u044f \u0431\u0456\u043b\u044c\u0448\u0435"
   }
 };
 
